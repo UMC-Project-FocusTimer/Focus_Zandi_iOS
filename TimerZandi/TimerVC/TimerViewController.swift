@@ -125,7 +125,7 @@ class TimerViewController: UIViewController {
         }
 
         // 이걸 저장 한다음 시작했을 때 마지막 값만 가져오기
-        let countOfPreventing = self.usersFocusTime.count - 1
+        let countOfPreventing = self.usersFocusTime.count - 2
         let someOfUsersFocusTimeIndex = self.someOfUsersFocusTime[0]
         
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
