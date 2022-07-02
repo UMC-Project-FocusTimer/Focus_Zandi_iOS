@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         print(UserDefaults.standard.value(forKey: sumTime))
+        print(UserDefaults.standard.value(forKey: countTime))
         return true
     }
 

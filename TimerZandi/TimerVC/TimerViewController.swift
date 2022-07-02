@@ -27,14 +27,14 @@ class TimerViewController: UIViewController {
     
     
     var usersFocusTime: [Int] = []
-    var someOfUsersFocusTime: [Int] = []
-    var setOfSome:[Int] = []
+    var sumOfUsersFocusTime: [Int] = []
+    var setOfSum:[Int] = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
-//        self.loadValues()
+        self.loadValues()
     }
     
     
@@ -58,6 +58,7 @@ class TimerViewController: UIViewController {
         }
     }
     // 시작할 때 만약 이미 있다면 그값을 가져오기
+    
     @IBAction func getUserDefaultValue(_ sender: Any) {
         let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
         let countTimeForUserDefaults = UserDefaults.standard.integer(forKey: countTime)
@@ -88,12 +89,25 @@ class TimerViewController: UIViewController {
     }
     // 총 집중시간도 0이 됨 근데 출력이 안될뿐
     
+//MARK: - 빌드 했는데 그 전에 UserDefaults로 저장된 값이 있다면 이를 다 지움
+    
+    func loadValues() {
+        if UserDefaults.standard.value(forKey: sumTime) as? Int ?? 0 > 0 || UserDefaults.standard.value(forKey: countTime) as? Int ?? 0 >= 0
+        {
+            debugPrint("위와 같이 기존의 값이 기기에 존재해서")
+            UserDefaults.standard.removeObject(forKey: "userFocusTime")
+            UserDefaults.standard.removeObject(forKey: sumTime)
+            UserDefaults.standard.removeObject(forKey: countTime)
+            debugPrint("지우고 시작합니다")
+        }
+        
+    }
+    
     func configureToggleButton() {
         self.toggleButton.setTitle("시작", for: .normal)
         self.toggleButton.setTitle("저장", for: .selected)
     }
     
-    //시작누르면 UserDefaults가 리셋됨
     func startTimer() {
         
         if self.timer == nil {
@@ -117,26 +131,26 @@ class TimerViewController: UIViewController {
         usersFocusTime = UserDefaults.standard.value(forKey: "userFocusTime") as? [Int] ?? [0]
         
         self.usersFocusTime.append(self.currentSeconds)
-        self.someOfUsersFocusTime.append(self.usersFocusTime.reduce(0,+))
+        self.sumOfUsersFocusTime.append(self.usersFocusTime.reduce(0,+))
         
-        if self.someOfUsersFocusTime.count > 1 {
-            self.someOfUsersFocusTime.removeFirst()
-            debugPrint(someOfUsersFocusTime)
+        if self.sumOfUsersFocusTime.count > 1 {
+            self.sumOfUsersFocusTime.removeFirst()
+            debugPrint(sumOfUsersFocusTime)
         }
 
         // 이걸 저장 한다음 시작했을 때 마지막 값만 가져오기
         let countOfPreventing = self.usersFocusTime.count - 2
-        let someOfUsersFocusTimeIndex = self.someOfUsersFocusTime[0]
+        let sumOfUsersFocusTimeIndex = self.sumOfUsersFocusTime[0]
         
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
         UserDefaults.standard.setValue(countOfPreventing, forKey: countTime)
-        UserDefaults.standard.setValue(someOfUsersFocusTimeIndex, forKey: sumTime)
+        UserDefaults.standard.setValue(sumOfUsersFocusTimeIndex, forKey: sumTime)
 
         // 어펜드해서 저장하기
         // 배열 자체를 유저디폴트로 저장하고 가져오기 할때마다 빼오기
         
 //        debugPrint("집중 시간: \(self.usersFocusTime)")
-//        debugPrint("집중 시간의 합: \(someOfUsersFocusTimeIndex)")
+//        debugPrint("집중 시간의 합: \(sumOfUsersFocusTimeIndex)")
 //        debugPrint("집중 방해횟수: \(countOfPreventing)")
 
         currentSeconds = 0
