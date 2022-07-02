@@ -62,8 +62,6 @@ class TimerViewController: UIViewController {
         let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
         let countTimeForUserDefaults = UserDefaults.standard.integer(forKey: countTime)
         
-        debugPrint(sumTimeForUserDefaults)
-
         let hour = (sumTimeForUserDefaults ?? 0 ) / 3600
         let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
         let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
@@ -74,16 +72,21 @@ class TimerViewController: UIViewController {
             self.testLabel.text = "총 집중시간 : " + String(format: "%d분 %d초", minutes,seconds)
         } else if seconds != 0 {
             self.testLabel.text = "총 집중시간 : " + String(format: "%d초", seconds)
+        } else if sumTimeForUserDefaults == 0 {
+            self.testLabel.text = "총 집중시간 : " + String(sumTimeForUserDefaults) + "초"
         }
+            
+            
         self.testLabel2.text = "집중 방해 횟수 : " + String(countTimeForUserDefaults) + "회"
         postTest(a: sumTimeForUserDefaults, b: countTimeForUserDefaults)
     }
     
     @IBAction func resetUserDefaultValue(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "userFocusTime")
         UserDefaults.standard.removeObject(forKey: sumTime)
         UserDefaults.standard.removeObject(forKey: countTime)
     }
-    
+    // 총 집중시간도 0이 됨 근데 출력이 안될뿐
     
     func configureToggleButton() {
         self.toggleButton.setTitle("시작", for: .normal)
@@ -112,13 +115,6 @@ class TimerViewController: UIViewController {
     
     func stopTimer() {
         usersFocusTime = UserDefaults.standard.value(forKey: "userFocusTime") as? [Int] ?? [0]
-        
-        print("usersFocusTime: ")
-        print(usersFocusTime)
-        print("someOfUsersFocusTime: ")
-        print(someOfUsersFocusTime)
-        print("setOfSomes:")
-        print(setOfSome)
         
         self.usersFocusTime.append(self.currentSeconds)
         self.someOfUsersFocusTime.append(self.usersFocusTime.reduce(0,+))
