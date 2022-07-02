@@ -28,13 +28,12 @@ class TimerViewController: UIViewController {
     
     var usersFocusTime: [Int] = []
     var sumOfUsersFocusTime: [Int] = []
-    var setOfSum:[Int] = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
-        self.loadValues()
+        self.remainValuesResetWhenItLoaded()
     }
     
     
@@ -91,7 +90,7 @@ class TimerViewController: UIViewController {
     
 //MARK: - 빌드 했는데 그 전에 UserDefaults로 저장된 값이 있다면 이를 다 지움
     
-    func loadValues() {
+    func remainValuesResetWhenItLoaded() {
         if UserDefaults.standard.value(forKey: sumTime) as? Int ?? 0 > 0 || UserDefaults.standard.value(forKey: countTime) as? Int ?? 0 >= 0
         {
             debugPrint("위와 같이 기존의 값이 기기에 존재해서")
@@ -161,9 +160,6 @@ class TimerViewController: UIViewController {
         self.timer = nil
     }
     
-//    func loadValues() {
-//        debugPrint(UserDefaults.standard.integer(forKey: sumTime))
-//    }
 
     //MARK: - POST로 서버에 값을 내보내기 :: 서버에서 이 데이터를 Json 파일에 저장할 수 있음?
 
