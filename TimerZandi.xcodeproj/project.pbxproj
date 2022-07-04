@@ -19,6 +19,8 @@
 		41091079286F510D00D84B28 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091078286F510D00D84B28 /* API Caller.swift */; };
 		91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */; };
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
+		9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFD2872F416005D410E /* StaticViewController.swift */; };
+		9BF81F002872F461005D410E /* ZandiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFF2872F461005D410E /* ZandiCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerZandi.debug.xcconfig"; path = "Target Support Files/Pods-TimerZandi/Pods-TimerZandi.debug.xcconfig"; sourceTree = "<group>"; };
 		67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerZandi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		9BF81EFD2872F416005D410E /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
+		9BF81EFF2872F461005D410E /* ZandiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				4109104B286F396800D84B28 /* AppDelegate.swift */,
 				4109104D286F396800D84B28 /* SceneDelegate.swift */,
 				41091051286F396800D84B28 /* Main.storyboard */,
+				9BF81EFF2872F461005D410E /* ZandiCell.swift */,
+				9BF81EFD2872F416005D410E /* StaticViewController.swift */,
 				41091054286F396900D84B28 /* Assets.xcassets */,
 				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
 				41091059286F396900D84B28 /* Info.plist */,
@@ -135,7 +141,6 @@
 				5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */,
 				2046D4B8C4FCFFDCC0048BAF /* Pods-TimerZandi.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -256,9 +261,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
+				9BF81F002872F461005D410E /* ZandiCell.swift in Sources */,
 				4109106F286F4E4C00D84B28 /* FollowingViewController.swift in Sources */,
 				41091072286F4E7600D84B28 /* FollowerTableViewCell.swift in Sources */,
 				4109104C286F396800D84B28 /* AppDelegate.swift in Sources */,
+				9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */,
 				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
 				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
 				4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */,
