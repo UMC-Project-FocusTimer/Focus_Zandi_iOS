@@ -10,15 +10,19 @@ import UIKit
 class StaticViewController: UIViewController {
 
     @IBOutlet weak var zandiCollectionView: UICollectionView!
+    var sumArray:[Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureColletionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("SeguePush VC 뷰가 나타날 것이다.")
+//        self.sumArray.append(UserDefaults.standard.integer(forKey: sumTime))
+//        debugPrint(self.sumArray)
+//        debugPrint(self.sumArray.max())
+        self.configureColletionView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,7 +40,6 @@ class StaticViewController: UIViewController {
             self.zandiCollectionView.delegate = self
             self.zandiCollectionView.dataSource = self
         }
-
 }
 
 extension StaticViewController: UICollectionViewDelegateFlowLayout {
@@ -60,7 +63,7 @@ extension StaticViewController: UICollectionViewDataSource {
         let testData = UserDefaults.standard.integer(forKey: sumTime)
 //        self.sumArray.append(testData)
 //        debugPrint("test: \(sumArray)")
-        
+        debugPrint("콜렉션 뷰다 !!")
         if testData > 5 {
             cell.backgroundColor = .green
         }
