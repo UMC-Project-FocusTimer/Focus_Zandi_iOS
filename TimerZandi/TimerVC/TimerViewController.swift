@@ -34,6 +34,7 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
+        self.remainValuesResetWhenItLoaded()
     }
     
     
@@ -46,7 +47,7 @@ class TimerViewController: UIViewController {
 //            }
             self.timerStatus = .start
             self.toggleButton.isSelected = true
-            UIView.animate(withDuration: 0.75, delay: -1, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0, animations: {
                 self.view.backgroundColor = .darkGray
                 self.timerLabel.textColor = .white
                 self.testLabel.textColor = .white
@@ -62,6 +63,7 @@ class TimerViewController: UIViewController {
             self.timerLabel.textColor = .black
             self.testLabel.textColor = .black
             self.testLabel2.textColor = .black
+
             self.stopTimer()
         }
     }

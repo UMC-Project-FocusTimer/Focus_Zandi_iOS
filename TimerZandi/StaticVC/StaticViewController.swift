@@ -69,12 +69,17 @@ extension StaticViewController: UICollectionViewDataSource {
         let testData = UserDefaults.standard.integer(forKey: sumTime)
 
         debugPrint("콜렉션 뷰다 !!")
-        if testData > 3 && testData <= 6 {
-            cell.backgroundColor = .yellow
-        } else if testData > 6 && testData <= 12 {
-            cell.backgroundColor = .orange
-        } else if testData > 12 {
-            cell.backgroundColor = .red
+        //rgb(58, 211, 83)
+        if testData > 4 && testData <= 9 {
+            cell.backgroundColor = UIColor(red: 58/225, green: 211/225, blue: 83/225, alpha: 1.0)
+        } else if testData > 9 && testData <= 15 {
+            cell.backgroundColor = UIColor(red: 38/225, green: 166/225, blue: 65/225, alpha: 1.0)
+        } else if testData > 15 && testData <= 20 {
+            cell.backgroundColor = UIColor(red: 1/225, green: 109/225, blue: 50/225, alpha: 1.0)
+        } else if testData > 20 && testData <= 25 {
+            cell.backgroundColor = UIColor(red: 13/225, green: 68/225, blue: 41/225, alpha: 1.0)
+        } else if testData < 3 {
+            cell.backgroundColor = .darkGray
         }
          
         return cell
