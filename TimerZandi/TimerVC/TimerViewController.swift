@@ -25,6 +25,7 @@ class TimerViewController: UIViewController {
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
     
+//    var ZandiContents = [ZandiContents]()
     
     var usersFocusTime: [Int] = []
     var sumOfUsersFocusTime: [Int] = []
@@ -79,6 +80,7 @@ class TimerViewController: UIViewController {
             
         self.testLabel2.text = "집중 방해 횟수 : " + String(countTimeForUserDefaults) + "회"
         postTest(a: sumTimeForUserDefaults, b: countTimeForUserDefaults)
+
     }
     
     @IBAction func resetUserDefaultValue(_ sender: Any) {
@@ -144,7 +146,7 @@ class TimerViewController: UIViewController {
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
         UserDefaults.standard.setValue(countOfPreventing, forKey: countTime)
         UserDefaults.standard.setValue(sumOfUsersFocusTimeIndex, forKey: sumTime)
-
+        
         // 어펜드해서 저장하기
         // 배열 자체를 유저디폴트로 저장하고 가져오기 할때마다 빼오기
         
