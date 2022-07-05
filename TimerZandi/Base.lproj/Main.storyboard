@@ -63,6 +63,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xd-FP-tF6">
                                 <rect key="frame" x="181" y="424" width="52" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="tintColor" systemColor="tintColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="시작"/>
                                 <connections>
@@ -179,29 +180,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-92-jUB">
-                                <rect key="frame" x="24" y="149" width="366" height="33"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="reLoadButton:" destination="fK4-jI-V4q" eventType="touchUpInside" id="JZz-Xj-mWo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Op8-g8-dMQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
                         <constraints>
                             <constraint firstItem="Mcb-Iz-dpA" firstAttribute="leading" secondItem="Op8-g8-dMQ" secondAttribute="leading" constant="24" id="2s6-8P-qKT"/>
                             <constraint firstItem="Op8-g8-dMQ" firstAttribute="trailing" secondItem="Mcb-Iz-dpA" secondAttribute="trailing" constant="24" id="BzY-PR-gZ9"/>
                             <constraint firstItem="Op8-g8-dMQ" firstAttribute="bottom" secondItem="Mcb-Iz-dpA" secondAttribute="bottom" constant="200" id="DVs-tJ-kDu"/>
-                            <constraint firstItem="Op8-g8-dMQ" firstAttribute="trailing" secondItem="mJp-92-jUB" secondAttribute="trailing" constant="24" id="MSk-1n-Qw6"/>
-                            <constraint firstItem="mJp-92-jUB" firstAttribute="leading" secondItem="Op8-g8-dMQ" secondAttribute="leading" constant="24" id="fit-eX-hLH"/>
                             <constraint firstItem="Mcb-Iz-dpA" firstAttribute="top" secondItem="Op8-g8-dMQ" secondAttribute="top" constant="200" id="grH-jN-S0s"/>
-                            <constraint firstItem="Mcb-Iz-dpA" firstAttribute="top" secondItem="mJp-92-jUB" secondAttribute="bottom" constant="106" id="poK-Ho-O8R"/>
-                            <constraint firstItem="mJp-92-jUB" firstAttribute="top" secondItem="Op8-g8-dMQ" secondAttribute="top" constant="61" id="wFh-OY-lvm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vcA-u9-a1W"/>
+                    <navigationItem key="navigationItem" id="vcA-u9-a1W">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="Tw7-OI-0zV">
+                            <color key="tintColor" systemColor="systemPinkColor"/>
+                            <connections>
+                                <action selector="reLoadButton:" destination="fK4-jI-V4q" id="A5I-TX-2BL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="zandiCollectionView" destination="Mcb-Iz-dpA" id="erZ-v3-3ms"/>
                     </connections>
@@ -278,12 +274,22 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

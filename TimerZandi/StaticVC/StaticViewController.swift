@@ -10,7 +10,7 @@ import UIKit
 class StaticViewController: UIViewController {
 
     @IBOutlet weak var zandiCollectionView: UICollectionView!
-    var sumArray:[Int] = []
+   
     @IBAction func reLoadButton(_ sender: UIButton) {
         debugPrint("새로고침합니다.")
         self.zandiCollectionView.reloadData()
@@ -30,8 +30,7 @@ class StaticViewController: UIViewController {
 //        self.configureColletionView()
     }
     
-    
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("SeguePush VC 뷰가 나타났다.")
@@ -68,8 +67,7 @@ extension StaticViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 6
         
         let testData = UserDefaults.standard.integer(forKey: sumTime)
-//        self.sumArray.append(testData)
-//        debugPrint("test: \(sumArray)")
+
         debugPrint("콜렉션 뷰다 !!")
         if testData > 3 && testData <= 6 {
             cell.backgroundColor = .yellow
@@ -79,20 +77,13 @@ extension StaticViewController: UICollectionViewDataSource {
             cell.backgroundColor = .red
         }
          
-            //        let diary = self.diaryList[indexPath.row]
-//        let diaryTitleNumber = Int(diary.title) ?? 0
-//        cell.titleLabel.text = diary.title
-      
-        
-//        if diaryTitleNumber == 1 {
-//            cell.backgroundColor = UIColor(red: 100/225, green: 220/225, blue: 220/225, alpha: 1.0)
-//        } else {
-//            cell.backgroundColor = .blue
-//        }
         return cell
     } // 콜렉션뷰의 위치에 표시할 셀을 "요청"하는 메소드[필수 메서드]
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        debugPrint("이 날의 총 집중시간 : \(UserDefaults.standard.integer(forKey: sumTime)) 초")
+        debugPrint("이 날의 집중 중단 횟수  : \(UserDefaults.standard.integer(forKey: countTime)) 회")
+    }
 
     
 } // 콜렉션 뷰로 보여지는 컨텐츠를 관리하는 객체

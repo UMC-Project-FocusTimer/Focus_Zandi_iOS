@@ -34,7 +34,6 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
-        self.remainValuesResetWhenItLoaded()
     }
     
     
@@ -47,13 +46,22 @@ class TimerViewController: UIViewController {
 //            }
             self.timerStatus = .start
             self.toggleButton.isSelected = true
+            UIView.animate(withDuration: 0.75, delay: -1, animations: {
+                self.view.backgroundColor = .darkGray
+                self.timerLabel.textColor = .white
+                self.testLabel.textColor = .white
+                self.testLabel2.textColor = .white
+            })
+            
             self.startTimer()
-            debugPrint("시작 버튼이 눌리면 출력되는 메세지")
             
         case .start:
-            
             self.timerStatus = .end
             self.toggleButton.isSelected = false
+            self.view.backgroundColor = .white
+            self.timerLabel.textColor = .black
+            self.testLabel.textColor = .black
+            self.testLabel2.textColor = .black
             self.stopTimer()
         }
     }
@@ -108,6 +116,7 @@ class TimerViewController: UIViewController {
         self.toggleButton.setTitle("시작", for: .normal)
         self.toggleButton.setTitle("저장", for: .selected)
     }
+    
     
     func startTimer() {
         
