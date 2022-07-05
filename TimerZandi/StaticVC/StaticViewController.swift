@@ -11,9 +11,14 @@ class StaticViewController: UIViewController {
 
     @IBOutlet weak var zandiCollectionView: UICollectionView!
     var sumArray:[Int] = []
+    @IBAction func reLoadButton(_ sender: UIButton) {
+        debugPrint("새로고침합니다.")
+        self.zandiCollectionView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureColletionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -22,8 +27,10 @@ class StaticViewController: UIViewController {
 //        self.sumArray.append(UserDefaults.standard.integer(forKey: sumTime))
 //        debugPrint(self.sumArray)
 //        debugPrint(self.sumArray.max())
-        self.configureColletionView()
+//        self.configureColletionView()
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -31,7 +38,7 @@ class StaticViewController: UIViewController {
     }
     
 //    var ZandiContents = [ZandiContents]()
-// 뷰 넘길때마다 합이 저장되어 색을 변경해야 하는데 셀 색깔 바꾸는 메소드가 한번밖에 안일어남. 한번에 저장한 다음에 콜렉션뷰로>
+// 뷰 넘길때마다 합이 저장되어 색을 변경해야 하는데 셀 색깔 바꾸는 메소드가 한번밖에 안일어남. 한번에 저장한 다음에 콜렉션뷰로 리로드 해서 바꾸기
     
     private func configureColletionView() {
             self.zandiCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -64,9 +71,14 @@ extension StaticViewController: UICollectionViewDataSource {
 //        self.sumArray.append(testData)
 //        debugPrint("test: \(sumArray)")
         debugPrint("콜렉션 뷰다 !!")
-        if testData > 5 {
-            cell.backgroundColor = .green
+        if testData > 3 && testData <= 6 {
+            cell.backgroundColor = .yellow
+        } else if testData > 6 && testData <= 12 {
+            cell.backgroundColor = .orange
+        } else if testData > 12 {
+            cell.backgroundColor = .red
         }
+         
             //        let diary = self.diaryList[indexPath.row]
 //        let diaryTitleNumber = Int(diary.title) ?? 0
 //        cell.titleLabel.text = diary.title

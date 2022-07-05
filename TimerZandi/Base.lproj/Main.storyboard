@@ -158,8 +158,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mcb-Iz-dpA">
-                                <rect key="frame" x="24" y="286" width="366" height="325"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mcb-Iz-dpA">
+                                <rect key="frame" x="24" y="288" width="366" height="325"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Bzp-OU-dsG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -175,10 +175,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.99607843139999996" green="0.62745098040000002" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJp-92-jUB">
+                                <rect key="frame" x="24" y="149" width="366" height="33"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="reLoadButton:" destination="fK4-jI-V4q" eventType="touchUpInside" id="JZz-Xj-mWo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Op8-g8-dMQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -186,7 +194,11 @@
                             <constraint firstItem="Mcb-Iz-dpA" firstAttribute="leading" secondItem="Op8-g8-dMQ" secondAttribute="leading" constant="24" id="2s6-8P-qKT"/>
                             <constraint firstItem="Op8-g8-dMQ" firstAttribute="trailing" secondItem="Mcb-Iz-dpA" secondAttribute="trailing" constant="24" id="BzY-PR-gZ9"/>
                             <constraint firstItem="Op8-g8-dMQ" firstAttribute="bottom" secondItem="Mcb-Iz-dpA" secondAttribute="bottom" constant="200" id="DVs-tJ-kDu"/>
+                            <constraint firstItem="Op8-g8-dMQ" firstAttribute="trailing" secondItem="mJp-92-jUB" secondAttribute="trailing" constant="24" id="MSk-1n-Qw6"/>
+                            <constraint firstItem="mJp-92-jUB" firstAttribute="leading" secondItem="Op8-g8-dMQ" secondAttribute="leading" constant="24" id="fit-eX-hLH"/>
                             <constraint firstItem="Mcb-Iz-dpA" firstAttribute="top" secondItem="Op8-g8-dMQ" secondAttribute="top" constant="200" id="grH-jN-S0s"/>
+                            <constraint firstItem="Mcb-Iz-dpA" firstAttribute="top" secondItem="mJp-92-jUB" secondAttribute="bottom" constant="106" id="poK-Ho-O8R"/>
+                            <constraint firstItem="mJp-92-jUB" firstAttribute="top" secondItem="Op8-g8-dMQ" secondAttribute="top" constant="61" id="wFh-OY-lvm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vcA-u9-a1W"/>
