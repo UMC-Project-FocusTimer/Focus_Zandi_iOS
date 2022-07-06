@@ -93,3 +93,4 @@ extension StaticViewController: UICollectionViewDataSource {
     
 } // 콜렉션 뷰로 보여지는 컨텐츠를 관리하는 객체
 
+// 날짜 임의로 정해놓고 바꾸는 거 구현하기 
