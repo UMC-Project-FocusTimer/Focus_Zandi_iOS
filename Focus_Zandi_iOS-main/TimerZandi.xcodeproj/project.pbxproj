@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4109104C286F396800D84B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109104B286F396800D84B28 /* AppDelegate.swift */; };
+		4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109104D286F396800D84B28 /* SceneDelegate.swift */; };
+		41091053286F396800D84B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41091051286F396800D84B28 /* Main.storyboard */; };
+		41091055286F396900D84B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41091054286F396900D84B28 /* Assets.xcassets */; };
+		41091058286F396900D84B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41091056286F396900D84B28 /* LaunchScreen.storyboard */; };
+		4109106F286F4E4C00D84B28 /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109106E286F4E4C00D84B28 /* FollowingViewController.swift */; };
+		41091072286F4E7600D84B28 /* FollowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091070286F4E7600D84B28 /* FollowerTableViewCell.swift */; };
+		41091073286F4E7600D84B28 /* FollowerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41091071286F4E7600D84B28 /* FollowerTableViewCell.xib */; };
+		41091076286F50E600D84B28 /* userAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091075286F50E600D84B28 /* userAPI.swift */; };
+		41091079286F510D00D84B28 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091078286F510D00D84B28 /* API Caller.swift */; };
+		4177A4712875F29200A23629 /* ZandiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177A46F2875F29200A23629 /* ZandiTableViewCell.swift */; };
+		4177A4722875F29200A23629 /* ZandiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4177A4702875F29200A23629 /* ZandiTableViewCell.xib */; };
+		4177A4772875F46300A23629 /* ZandiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177A4752875F46300A23629 /* ZandiCell.swift */; };
+		4177A4782875F46300A23629 /* ZandiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4177A4762875F46300A23629 /* ZandiCell.xib */; };
+		4177A47B2875F98600A23629 /* ZandiTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177A4792875F98600A23629 /* ZandiTitleTableViewCell.swift */; };
+		4177A47C2875F98600A23629 /* ZandiTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4177A47A2875F98600A23629 /* ZandiTitleTableViewCell.xib */; };
+		91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */; };
+		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
+		9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFD2872F416005D410E /* StaticViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2046D4B8C4FCFFDCC0048BAF /* Pods-TimerZandi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerZandi.release.xcconfig"; path = "Target Support Files/Pods-TimerZandi/Pods-TimerZandi.release.xcconfig"; sourceTree = "<group>"; };
+		41091048286F396800D84B28 /* TimerZandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerZandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4109104B286F396800D84B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4109104D286F396800D84B28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		41091052286F396800D84B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		41091054286F396900D84B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41091057286F396900D84B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		41091059286F396900D84B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4109106E286F4E4C00D84B28 /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
+		41091070286F4E7600D84B28 /* FollowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerTableViewCell.swift; sourceTree = "<group>"; };
+		41091071286F4E7600D84B28 /* FollowerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowerTableViewCell.xib; sourceTree = "<group>"; };
+		41091075286F50E600D84B28 /* userAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
+		41091078286F510D00D84B28 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
+		4177A46F2875F29200A23629 /* ZandiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiTableViewCell.swift; sourceTree = "<group>"; };
+		4177A4702875F29200A23629 /* ZandiTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZandiTableViewCell.xib; sourceTree = "<group>"; };
+		4177A4752875F46300A23629 /* ZandiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiCell.swift; sourceTree = "<group>"; };
+		4177A4762875F46300A23629 /* ZandiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZandiCell.xib; sourceTree = "<group>"; };
+		4177A4792875F98600A23629 /* ZandiTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiTitleTableViewCell.swift; sourceTree = "<group>"; };
+		4177A47A2875F98600A23629 /* ZandiTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZandiTitleTableViewCell.xib; sourceTree = "<group>"; };
+		5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerZandi.debug.xcconfig"; path = "Target Support Files/Pods-TimerZandi/Pods-TimerZandi.debug.xcconfig"; sourceTree = "<group>"; };
+		67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerZandi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		9BF81EFD2872F416005D410E /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41091045286F396800D84B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4109103F286F396700D84B28 = {
+			isa = PBXGroup;
+			children = (
+				4109104A286F396800D84B28 /* TimerZandi */,
+				41091049286F396800D84B28 /* Products */,
+				EE23397EA989676454CC5B9C /* Pods */,
+				4AD1A39BC419017E52587BB7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		41091049286F396800D84B28 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41091048286F396800D84B28 /* TimerZandi.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4109104A286F396800D84B28 /* TimerZandi */ = {
+			isa = PBXGroup;
+			children = (
+				9BAC5BE72873095000CC6147 /* StaticVC */,
+				41091077286F50FD00D84B28 /* Methods */,
+				41091074286F50D200D84B28 /* API Models */,
+				4109106D286F4E2500D84B28 /* FollowerVC */,
+				4109106C286F4E0800D84B28 /* TimerVC */,
+				4109104B286F396800D84B28 /* AppDelegate.swift */,
+				4109104D286F396800D84B28 /* SceneDelegate.swift */,
+				41091051286F396800D84B28 /* Main.storyboard */,
+				41091054286F396900D84B28 /* Assets.xcassets */,
+				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
+				41091059286F396900D84B28 /* Info.plist */,
+			);
+			path = TimerZandi;
+			sourceTree = "<group>";
+		};
+		4109106C286F4E0800D84B28 /* TimerVC */ = {
+			isa = PBXGroup;
+			children = (
+				9B7ABB7B286F3C140057F536 /* TimerViewController.swift */,
+			);
+			path = TimerVC;
+			sourceTree = "<group>";
+		};
+		4109106D286F4E2500D84B28 /* FollowerVC */ = {
+			isa = PBXGroup;
+			children = (
+				4109106E286F4E4C00D84B28 /* FollowingViewController.swift */,
+				41091070286F4E7600D84B28 /* FollowerTableViewCell.swift */,
+				41091071286F4E7600D84B28 /* FollowerTableViewCell.xib */,
+			);
+			path = FollowerVC;
+			sourceTree = "<group>";
+		};
+		41091074286F50D200D84B28 /* API Models */ = {
+			isa = PBXGroup;
+			children = (
+				41091075286F50E600D84B28 /* userAPI.swift */,
+			);
+			path = "API Models";
+			sourceTree = "<group>";
+		};
+		41091077286F50FD00D84B28 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				41091078286F510D00D84B28 /* API Caller.swift */,
+			);
+			path = Methods;
+			sourceTree = "<group>";
+		};
+		4177A46E2875F26800A23629 /* ZandiTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4177A46F2875F29200A23629 /* ZandiTableViewCell.swift */,
+				4177A4702875F29200A23629 /* ZandiTableViewCell.xib */,
+				4177A4752875F46300A23629 /* ZandiCell.swift */,
+				4177A4762875F46300A23629 /* ZandiCell.xib */,
+				4177A4792875F98600A23629 /* ZandiTitleTableViewCell.swift */,
+				4177A47A2875F98600A23629 /* ZandiTitleTableViewCell.xib */,
+			);
+			path = ZandiTableViewCell;
+			sourceTree = "<group>";
+		};
+		4AD1A39BC419017E52587BB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BAC5BE72873095000CC6147 /* StaticVC */ = {
+			isa = PBXGroup;
+			children = (
+				4177A46E2875F26800A23629 /* ZandiTableViewCell */,
+				9BF81EFD2872F416005D410E /* StaticViewController.swift */,
+			);
+			path = StaticVC;
+			sourceTree = "<group>";
+		};
+		EE23397EA989676454CC5B9C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */,
+				2046D4B8C4FCFFDCC0048BAF /* Pods-TimerZandi.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41091047286F396800D84B28 /* TimerZandi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4109105C286F396900D84B28 /* Build configuration list for PBXNativeTarget "TimerZandi" */;
+			buildPhases = (
+				23F7D6BCBBEC013F5263F3B1 /* [CP] Check Pods Manifest.lock */,
+				41091044286F396800D84B28 /* Sources */,
+				41091045286F396800D84B28 /* Frameworks */,
+				41091046286F396800D84B28 /* Resources */,
+				716167D6D9546366B11D5A2A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimerZandi;
+			productName = TimerZandi;
+			productReference = 41091048286F396800D84B28 /* TimerZandi.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41091040286F396700D84B28 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					41091047286F396800D84B28 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 41091043286F396700D84B28 /* Build configuration list for PBXProject "TimerZandi" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4109103F286F396700D84B28;
+			productRefGroup = 41091049286F396800D84B28 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41091047286F396800D84B28 /* TimerZandi */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41091046286F396800D84B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4177A4782875F46300A23629 /* ZandiCell.xib in Resources */,
+				41091058286F396900D84B28 /* LaunchScreen.storyboard in Resources */,
+				4177A4722875F29200A23629 /* ZandiTableViewCell.xib in Resources */,
+				41091055286F396900D84B28 /* Assets.xcassets in Resources */,
+				4177A47C2875F98600A23629 /* ZandiTitleTableViewCell.xib in Resources */,
+				41091053286F396800D84B28 /* Main.storyboard in Resources */,
+				41091073286F4E7600D84B28 /* FollowerTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23F7D6BCBBEC013F5263F3B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TimerZandi-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		716167D6D9546366B11D5A2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimerZandi/Pods-TimerZandi-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TimerZandi/Pods-TimerZandi-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TimerZandi/Pods-TimerZandi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41091044286F396800D84B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
+				4177A47B2875F98600A23629 /* ZandiTitleTableViewCell.swift in Sources */,
+				4109106F286F4E4C00D84B28 /* FollowingViewController.swift in Sources */,
+				4177A4772875F46300A23629 /* ZandiCell.swift in Sources */,
+				4177A4712875F29200A23629 /* ZandiTableViewCell.swift in Sources */,
+				41091072286F4E7600D84B28 /* FollowerTableViewCell.swift in Sources */,
+				4109104C286F396800D84B28 /* AppDelegate.swift in Sources */,
+				9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */,
+				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
+				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
+				4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		41091051286F396800D84B28 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41091052286F396800D84B28 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		41091056286F396900D84B28 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				41091057286F396900D84B28 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4109105A286F396900D84B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4109105B286F396900D84B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4109105D286F396900D84B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9LAFQ24GSN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerZandi/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YourCompany.TimerZandi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4109105E286F396900D84B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2046D4B8C4FCFFDCC0048BAF /* Pods-TimerZandi.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9LAFQ24GSN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerZandi/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YourCompany.TimerZandi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41091043286F396700D84B28 /* Build configuration list for PBXProject "TimerZandi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4109105A286F396900D84B28 /* Debug */,
+				4109105B286F396900D84B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4109105C286F396900D84B28 /* Build configuration list for PBXNativeTarget "TimerZandi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4109105D286F396900D84B28 /* Debug */,
+				4109105E286F396900D84B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41091040286F396700D84B28 /* Project object */;
+}
