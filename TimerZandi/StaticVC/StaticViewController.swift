@@ -14,7 +14,7 @@ class StaticViewController: UIViewController {
 
     func viewDate() -> Void {
     let formatter_year = DateFormatter()
-    formatter_year.dateFormat = "ss초"
+    formatter_year.dateFormat = "mm분"
     formatter_year.locale = Locale(identifier: "ko_KR")
     let current_year_string = formatter_year.string(from: Date())
 // 앞에 값이랑 다를 때만 append
@@ -40,13 +40,6 @@ class StaticViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("SeguePush VC 뷰가 나타날 것이다.")
-//        self.sumArray.append(UserDefaults.standard.integer(forKey: sumTime))
-//        debugPrint(self.sumArray)
-//        debugPrint(self.sumArray.max())
-//        self.configureColletionView()
-
-
-
     }
     
 
@@ -55,7 +48,7 @@ class StaticViewController: UIViewController {
         print("SeguePush VC 뷰가 나타났다.")
     }
     
-//    var ZandiContents = [ZandiContents]()
+// var ZandiContents = [ZandiContents]()
 // 뷰 넘길때마다 합이 저장되어 색을 변경해야 하는데 셀 색깔 바꾸는 메소드가 한번밖에 안일어남. 한번에 저장한 다음에 콜렉션뷰로 리로드 해서 바꾸기
     
     private func configureColletionView() {
@@ -83,25 +76,37 @@ extension StaticViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ZandiCell", for: indexPath) as? ZandiCell else {return UICollectionViewCell() }
-        cell.layer.cornerRadius = 6
-        cell.cellTestLabel.text = self.testList[indexPath.row]
+        
         let testData = UserDefaults.standard.integer(forKey: sumTime)
-        
-        
 
-        debugPrint("콜렉션 뷰다 !!")
-        //rgb(58, 211, 83)
-        if testData > 4 && testData <= 9 {
-            cell.backgroundColor = UIColor(red: 58/225, green: 211/225, blue: 83/225, alpha: 1.0)
-        } else if testData > 9 && testData <= 15 {
-            cell.backgroundColor = UIColor(red: 38/225, green: 166/225, blue: 65/225, alpha: 1.0)
-        } else if testData > 15 && testData <= 20 {
-            cell.backgroundColor = UIColor(red: 1/225, green: 109/225, blue: 50/225, alpha: 1.0)
-        } else if testData > 20 && testData <= 25 {
-            cell.backgroundColor = UIColor(red: 13/225, green: 68/225, blue: 41/225, alpha: 1.0)
-        } else if testData < 3 {
-            cell.backgroundColor = .darkGray
+        cell.cellTestLabel.text = self.testList[indexPath.row]
+
+
+        // cell.cellTestLabel.text = self.testList[indexPath.row]
+        cell.layer.cornerRadius = 6
+        
+        if self.testList.contains("49분") == false {
+            debugPrint("48분임 아직")
+        } else {
+            debugPrint("49분이다 !!")
+            
+            if testData > 4 && testData <= 9 && self.testList[indexPath.row] == "49분" {
+                cell.backgroundColor = UIColor(red: 58/225, green: 211/225, blue: 83/225, alpha: 1.0)
+            } else if testData > 9 && testData <= 15 && self.testList[indexPath.row] == "49분" {
+                cell.backgroundColor = UIColor(red: 38/225, green: 166/225, blue: 65/225, alpha: 1.0)
+            } else if testData > 15 && testData <= 20 && self.testList[indexPath.row] == "49분" {
+                cell.backgroundColor = UIColor(red: 1/225, green: 109/225, blue: 50/225, alpha: 1.0)
+            } else if testData > 20 && testData <= 25 && self.testList[indexPath.row] == "49분" {
+                cell.backgroundColor = UIColor(red: 13/225, green: 68/225, blue: 41/225, alpha: 1.0)
+            } else if testData < 3 {
+                cell.backgroundColor = .darkGray
+            }
         }
+// 일자 달라지면 셀이 추가 되도록 ! 하지만 추가한 셀만 색변경이 적용되게는 아직 ..
+// 지금 날짜랑 일치한 셀만 색 변경가능하게
+//
+        debugPrint("콜렉션 뷰다 !!")
+
          
         return cell
     } // 콜렉션뷰의 위치에 표시할 셀을 "요청"하는 메소드[필수 메서드]
