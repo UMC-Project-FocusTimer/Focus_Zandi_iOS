@@ -84,7 +84,7 @@ extension StaticViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ZandiCell", for: indexPath) as? ZandiCell else {return UICollectionViewCell() }
         cell.layer.cornerRadius = 6
-        
+        cell.cellTestLabel.text = self.testList[indexPath.row]
         let testData = UserDefaults.standard.integer(forKey: sumTime)
         
         

@@ -176,18 +176,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOC-Va-Ni1">
-                                                    <rect key="frame" x="43" y="54" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1w-mX-JmN">
+                                                    <rect key="frame" x="48.5" y="57" width="31" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b1w-mX-JmN" firstAttribute="centerY" secondItem="TqS-fq-P0e" secondAttribute="centerY" id="dse-Jg-1ZS"/>
+                                                <constraint firstItem="b1w-mX-JmN" firstAttribute="centerX" secondItem="TqS-fq-P0e" secondAttribute="centerX" id="yhd-0U-6bf"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="testLabel" destination="cOC-Va-Ni1" id="gpO-Em-GYN"/>
+                                            <outlet property="cellTestLabel" destination="b1w-mX-JmN" id="GF1-oi-2hw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
