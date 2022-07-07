@@ -9,11 +9,27 @@ import UIKit
 
 class StaticViewController: UIViewController {
 
+    var testList:[String] = []
+    
+
+    func viewDate() -> Void {
+    let formatter_year = DateFormatter()
+    formatter_year.dateFormat = "ss초"
+    formatter_year.locale = Locale(identifier: "ko_KR")
+    let current_year_string = formatter_year.string(from: Date())
+// 앞에 값이랑 다를 때만 append
+        if self.testList.contains(current_year_string) == false {
+            self.testList.append((current_year_string))
+        }
+    }
+    
     @IBOutlet weak var zandiCollectionView: UICollectionView!
    
     @IBAction func reLoadButton(_ sender: UIButton) {
         debugPrint("새로고침합니다.")
         self.zandiCollectionView.reloadData()
+        self.viewDate()
+        debugPrint(testList)
     }
     
     override func viewDidLoad() {
@@ -28,6 +44,9 @@ class StaticViewController: UIViewController {
 //        debugPrint(self.sumArray)
 //        debugPrint(self.sumArray.max())
 //        self.configureColletionView()
+
+
+
     }
     
 
@@ -59,7 +78,7 @@ extension StaticViewController: UICollectionViewDataSource {
     // 아래는 필수 메소드 두개 !
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.testList.count
     } // 콜렉션뷰의 위치에 표시할 셀의 "갯수"[필수 메서드]
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -67,6 +86,8 @@ extension StaticViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 6
         
         let testData = UserDefaults.standard.integer(forKey: sumTime)
+        
+        
 
         debugPrint("콜렉션 뷰다 !!")
         //rgb(58, 211, 83)
@@ -93,4 +114,6 @@ extension StaticViewController: UICollectionViewDataSource {
     
 } // 콜렉션 뷰로 보여지는 컨텐츠를 관리하는 객체
 
-// 날짜 임의로 정해놓고 바꾸는 거 구현하기 
+// 날짜 임의로 정해놓고 바꾸는 거 구현하기
+// 날짜를 의미하는 텍스트 배열을 넣고, 시간 지나면 날짜 배열에 하나씩 쌓기, 오늘의 날짜랑 배열의 [0] 값이 일치하면 첫번째 index.row에 잔디 칠하기 <일주일치>
+//

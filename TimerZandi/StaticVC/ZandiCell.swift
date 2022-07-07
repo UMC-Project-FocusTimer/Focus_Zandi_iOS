@@ -8,5 +8,6 @@
 import UIKit
 
 class ZandiCell: UICollectionViewCell {
+    @IBOutlet weak var testLabel: UILabel!
     
 }
