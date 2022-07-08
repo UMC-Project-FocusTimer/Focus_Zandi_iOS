@@ -31,6 +31,32 @@ class TimerViewController: UIViewController {
     var usersFocusTime: [Int] = []
     var sumOfUsersFocusTime: [Int] = []
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppearanceCheck(self)
+    }
+
+//MARK: - 다크모드 변경함수 , 다른 VC의 함수 어떻게 호출?
+    
+    func AppearanceCheck(_ viewController: UIViewController) {
+        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+        if appearance == "Dark" {
+            viewController.overrideUserInterfaceStyle = .dark
+            if #available(iOS 13.0, *) {
+                UIApplication.shared.statusBarStyle = .lightContent
+            } else {
+                UIApplication.shared.statusBarStyle = .default
+            }
+        } else {
+            viewController.overrideUserInterfaceStyle = .light
+            if #available(iOS 13.0, *) {
+                UIApplication.shared.statusBarStyle = .darkContent
+            } else {
+                UIApplication.shared.statusBarStyle = .default
+            }
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

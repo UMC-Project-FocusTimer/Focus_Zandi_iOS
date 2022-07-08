@@ -40,6 +40,7 @@ class StaticViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("SeguePush VC 뷰가 나타날 것이다.")
+        AppearanceCheck(self)
     }
     
 
@@ -50,6 +51,28 @@ class StaticViewController: UIViewController {
     
 // var ZandiContents = [ZandiContents]()
 // 뷰 넘길때마다 합이 저장되어 색을 변경해야 하는데 셀 색깔 바꾸는 메소드가 한번밖에 안일어남. 한번에 저장한 다음에 콜렉션뷰로 리로드 해서 바꾸기
+    
+    //MARK: - 다크모드 변경함수 , 다른 VC의 함수 어떻게 호출?
+        
+        func AppearanceCheck(_ viewController: UIViewController) {
+            guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
+            if appearance == "Dark" {
+                viewController.overrideUserInterfaceStyle = .dark
+                if #available(iOS 13.0, *) {
+                    UIApplication.shared.statusBarStyle = .lightContent
+                } else {
+                    UIApplication.shared.statusBarStyle = .default
+                }
+            } else {
+                viewController.overrideUserInterfaceStyle = .light
+                if #available(iOS 13.0, *) {
+                    UIApplication.shared.statusBarStyle = .darkContent
+                } else {
+                    UIApplication.shared.statusBarStyle = .default
+                }
+            }
+        }
+
     
     private func configureColletionView() {
             self.zandiCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
