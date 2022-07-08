@@ -54,72 +54,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxp-DT-WvW">
-                                <rect key="frame" x="24" y="238" width="366" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xd-FP-tF6">
-                                <rect key="frame" x="181" y="424" width="52" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" systemColor="tintColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="시작"/>
-                                <connections>
-                                    <action selector="tapToggleButton:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="jlw-uU-KTr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-8f-w2R">
-                                <rect key="frame" x="24" y="552" width="366" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="UserDefaults로 저장된 값 가져오기 "/>
-                                <connections>
-                                    <action selector="getUserDefaultValue:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="NCK-ns-HoN"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 집중시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-uD-LLS">
-                                <rect key="frame" x="24" y="627" width="366" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-ea-J51">
-                                <rect key="frame" x="24" y="722.5" width="366" height="30"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="UserDefaults로 저장된 값 초기화하기"/>
-                                <connections>
-                                    <action selector="resetUserDefaultValue:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="ilL-zG-8Ra"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집중 방해 횟수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-ly-dpf">
-                                <rect key="frame" x="24" y="668" width="366" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="1Eh-5x-5US">
+                                <rect key="frame" x="24" y="288" width="366" height="168"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxp-DT-WvW">
+                                        <rect key="frame" x="80" y="0.0" width="206.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xd-FP-tF6">
+                                        <rect key="frame" x="157" y="120" width="52" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" systemColor="tintColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="시작"/>
+                                        <connections>
+                                            <action selector="tapToggleButton:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="jlw-uU-KTr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="IUl-pq-Fv4">
+                                <rect key="frame" x="24" y="506" width="366" height="237"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUA-8f-w2R">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="UserDefaults로 저장된 값 가져오기 "/>
+                                        <connections>
+                                            <action selector="getUserDefaultValue:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="NCK-ns-HoN"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 집중시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-uD-LLS">
+                                        <rect key="frame" x="0.0" y="75.5" width="366" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="집중 방해 횟수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg0-ly-dpf">
+                                        <rect key="frame" x="0.0" y="141" width="366" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihV-ea-J51">
+                                        <rect key="frame" x="0.0" y="207" width="366" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="UserDefaults로 저장된 값 초기화하기"/>
+                                        <connections>
+                                            <action selector="resetUserDefaultValue:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="ilL-zG-8Ra"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlx-X7-pkh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dUA-8f-w2R" firstAttribute="top" secondItem="7xd-FP-tF6" secondAttribute="bottom" constant="80" id="6TY-Pe-nDY"/>
-                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="Mg0-ly-dpf" secondAttribute="trailing" constant="24" id="8G1-rR-Nxv"/>
-                            <constraint firstItem="dUA-8f-w2R" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="Fwa-38-jeF"/>
-                            <constraint firstItem="qBP-uD-LLS" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="OtO-yT-FLY"/>
-                            <constraint firstItem="ihV-ea-J51" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="PBp-EP-7ht"/>
-                            <constraint firstItem="7xd-FP-tF6" firstAttribute="centerX" secondItem="I0L-dV-Xi1" secondAttribute="centerX" id="S0P-8a-XAr"/>
-                            <constraint firstItem="Oxp-DT-WvW" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="SgY-7g-yhO"/>
-                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="Oxp-DT-WvW" secondAttribute="trailing" constant="24" id="Tmb-Ry-Hbf"/>
-                            <constraint firstItem="Mg0-ly-dpf" firstAttribute="top" secondItem="qBP-uD-LLS" secondAttribute="bottom" constant="20.5" id="b7N-1T-05R"/>
-                            <constraint firstItem="ihV-ea-J51" firstAttribute="top" secondItem="qBP-uD-LLS" secondAttribute="bottom" constant="75" id="dmQ-oR-HVs"/>
-                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="ihV-ea-J51" secondAttribute="trailing" constant="24" id="imh-6R-ZF6"/>
-                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="qBP-uD-LLS" secondAttribute="trailing" constant="24" id="jN3-dz-yyB"/>
-                            <constraint firstItem="7xd-FP-tF6" firstAttribute="centerY" secondItem="I0L-dV-Xi1" secondAttribute="centerY" id="ngQ-hA-Cij"/>
-                            <constraint firstItem="Oxp-DT-WvW" firstAttribute="top" secondItem="jlx-X7-pkh" secondAttribute="top" constant="150" id="oiy-Do-9al"/>
-                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="dUA-8f-w2R" secondAttribute="trailing" constant="24" id="pN7-Ah-k9e"/>
-                            <constraint firstItem="qBP-uD-LLS" firstAttribute="top" secondItem="dUA-8f-w2R" secondAttribute="bottom" constant="45" id="ubF-GN-5uh"/>
-                            <constraint firstItem="Mg0-ly-dpf" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="waz-oI-xtY"/>
+                            <constraint firstItem="1Eh-5x-5US" firstAttribute="top" secondItem="jlx-X7-pkh" secondAttribute="top" constant="200" id="FAY-Op-Hec"/>
+                            <constraint firstItem="IUl-pq-Fv4" firstAttribute="top" secondItem="1Eh-5x-5US" secondAttribute="bottom" constant="50" id="Gr8-ZN-03V"/>
+                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="IUl-pq-Fv4" secondAttribute="trailing" constant="24" id="P72-Bh-ajr"/>
+                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="1Eh-5x-5US" secondAttribute="trailing" constant="24" id="S8k-J0-bbN"/>
+                            <constraint firstItem="IUl-pq-Fv4" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="XkE-5s-hEB"/>
+                            <constraint firstItem="jlx-X7-pkh" firstAttribute="bottom" secondItem="IUl-pq-Fv4" secondAttribute="bottom" constant="70" id="eDm-IL-Lmu"/>
+                            <constraint firstItem="1Eh-5x-5US" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="s6Q-Pa-nF7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IWL-IC-2GL"/>
@@ -128,6 +128,7 @@
                         <outlet property="testLabel2" destination="Mg0-ly-dpf" id="8vL-yi-ze1"/>
                         <outlet property="timerLabel" destination="Oxp-DT-WvW" id="9Eg-tH-cyf"/>
                         <outlet property="toggleButton" destination="7xd-FP-tF6" id="Ljp-Gr-zeq"/>
+                        <outlet property="willDisappearWhenItStart" destination="IUl-pq-Fv4" id="nrx-mp-JMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sU-TI-ExR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

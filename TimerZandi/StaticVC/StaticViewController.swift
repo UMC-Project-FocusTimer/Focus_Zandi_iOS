@@ -81,22 +81,25 @@ extension StaticViewController: UICollectionViewDataSource {
 
         cell.cellTestLabel.text = self.testList[indexPath.row]
 
-
-        // cell.cellTestLabel.text = self.testList[indexPath.row]
+        let formatter_year = DateFormatter()
+        formatter_year.dateFormat = "mm분"
+        formatter_year.locale = Locale(identifier: "ko_KR")
+        let current_year_string = formatter_year.string(from: Date())
+        
         cell.layer.cornerRadius = 6
         
-        if self.testList.contains("49분") == false {
-            debugPrint("48분임 아직")
+        if self.testList.contains(current_year_string) == false {
+            debugPrint("오늘이 아니다")
         } else {
-            debugPrint("49분이다 !!")
+            debugPrint("오늘이다 ")
             
-            if testData > 4 && testData <= 9 && self.testList[indexPath.row] == "49분" {
+            if testData > 4 && testData <= 9 && self.testList[indexPath.row] == current_year_string {
                 cell.backgroundColor = UIColor(red: 58/225, green: 211/225, blue: 83/225, alpha: 1.0)
-            } else if testData > 9 && testData <= 15 && self.testList[indexPath.row] == "49분" {
+            } else if testData > 9 && testData <= 15 && self.testList[indexPath.row] == current_year_string {
                 cell.backgroundColor = UIColor(red: 38/225, green: 166/225, blue: 65/225, alpha: 1.0)
-            } else if testData > 15 && testData <= 20 && self.testList[indexPath.row] == "49분" {
+            } else if testData > 15 && testData <= 20 && self.testList[indexPath.row] == current_year_string {
                 cell.backgroundColor = UIColor(red: 1/225, green: 109/225, blue: 50/225, alpha: 1.0)
-            } else if testData > 20 && testData <= 25 && self.testList[indexPath.row] == "49분" {
+            } else if testData > 20 && testData <= 25 && self.testList[indexPath.row] == current_year_string {
                 cell.backgroundColor = UIColor(red: 13/225, green: 68/225, blue: 41/225, alpha: 1.0)
             } else if testData < 3 {
                 cell.backgroundColor = .darkGray
@@ -104,7 +107,8 @@ extension StaticViewController: UICollectionViewDataSource {
         }
 // 일자 달라지면 셀이 추가 되도록 ! 하지만 추가한 셀만 색변경이 적용되게는 아직 ..
 // 지금 날짜랑 일치한 셀만 색 변경가능하게
-//
+// 분에 따라 각 셀의 색을 변화시켰지만, 하나의 키로 저장된 유저디폴트로만 이용하기에 다음 날이 되었을 때 새로고침하면 집중시간에 따른 색이 제대로 출력되지 않음
+        
         debugPrint("콜렉션 뷰다 !!")
 
          

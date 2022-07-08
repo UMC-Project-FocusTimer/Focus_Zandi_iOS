@@ -19,6 +19,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var testLabel: UILabel!
+    @IBOutlet weak var willDisappearWhenItStart: UIStackView!
     @IBOutlet weak var testLabel2: UILabel!
 
     var timerStatus: TimerStatus = .end
@@ -48,17 +49,22 @@ class TimerViewController: UIViewController {
             self.timerStatus = .start
             self.toggleButton.isSelected = true
             UIView.animate(withDuration: 0.25, delay: 0, animations: {
+                self.willDisappearWhenItStart.isHidden = true
                 self.view.backgroundColor = .darkGray
                 self.timerLabel.textColor = .white
                 self.testLabel.textColor = .white
                 self.testLabel2.textColor = .white
+                self.tabBarController?.tabBar.isHidden = true
             })
-            
+
             self.startTimer()
             
         case .start:
             self.timerStatus = .end
             self.toggleButton.isSelected = false
+            self.willDisappearWhenItStart.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+
             self.view.backgroundColor = .white
             self.timerLabel.textColor = .black
             self.testLabel.textColor = .black
