@@ -239,17 +239,30 @@
             </objects>
             <point key="canvasLocation" x="1075" y="1963"/>
         </scene>
-        <!--View Controller-->
+        <!--설정-->
         <scene sceneID="E2f-cy-nvu">
             <objects>
                 <viewController id="8yY-TY-zkZ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CZp-SN-6Zu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beB-Ws-ppQ">
+                                <rect key="frame" x="24" y="277" width="366" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="다크모드요"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vHq-DO-5L7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="beB-Ws-ppQ" firstAttribute="top" secondItem="vHq-DO-5L7" secondAttribute="top" constant="189" id="7Gh-0v-6lD"/>
+                            <constraint firstItem="vHq-DO-5L7" firstAttribute="trailing" secondItem="beB-Ws-ppQ" secondAttribute="trailing" constant="24" id="ow9-Zn-2DI"/>
+                            <constraint firstItem="beB-Ws-ppQ" firstAttribute="leading" secondItem="vHq-DO-5L7" secondAttribute="leading" constant="24" id="rsL-Wa-47T"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0l9-dp-eLx"/>
+                    <navigationItem key="navigationItem" title="설정" id="0l9-dp-eLx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAM-Rd-bDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

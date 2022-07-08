@@ -20,6 +20,7 @@
 		91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */; };
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
 		9BAC5BE928730A0300CC6147 /* ZandiContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BE828730A0300CC6147 /* ZandiContents.swift */; };
+		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
 		9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFD2872F416005D410E /* StaticViewController.swift */; };
 		9BF81F002872F461005D410E /* ZandiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFF2872F461005D410E /* ZandiCell.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerZandi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		9BAC5BE828730A0300CC6147 /* ZandiContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiContents.swift; sourceTree = "<group>"; };
+		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9BF81EFD2872F416005D410E /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		9BF81EFF2872F461005D410E /* ZandiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 		4109104A286F396800D84B28 /* TimerZandi */ = {
 			isa = PBXGroup;
 			children = (
+				9BAC5BF42877D20800CC6147 /* SettingVC */,
 				9BAC5BE72873095000CC6147 /* StaticVC */,
 				41091077286F50FD00D84B28 /* Methods */,
 				41091074286F50D200D84B28 /* API Models */,
@@ -144,6 +147,14 @@
 				9BAC5BE828730A0300CC6147 /* ZandiContents.swift */,
 			);
 			path = StaticVC;
+			sourceTree = "<group>";
+		};
+		9BAC5BF42877D20800CC6147 /* SettingVC */ = {
+			isa = PBXGroup;
+			children = (
+				9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */,
+			);
+			path = SettingVC;
 			sourceTree = "<group>";
 		};
 		EE23397EA989676454CC5B9C /* Pods */ = {
@@ -272,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
+				9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */,
 				9BF81F002872F461005D410E /* ZandiCell.swift in Sources */,
 				9BAC5BE928730A0300CC6147 /* ZandiContents.swift in Sources */,
 				4109106F286F4E4C00D84B28 /* FollowingViewController.swift in Sources */,
