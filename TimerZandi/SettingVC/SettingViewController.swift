@@ -8,7 +8,9 @@
 import UIKit
 
 class SettingViewController: UIViewController {
-
+    
+    @IBOutlet weak var mySwitch: UISwitch!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
@@ -27,7 +29,26 @@ class SettingViewController: UIViewController {
         self.viewWillAppear(true)
     }
  
-    public func AppearanceCheck(_ viewController: UIViewController) {
+    @IBAction func switchValueChanged(_ sender: Any) {
+        if self.mySwitch.isOn == false {
+        self.mySwitch.setOn(true, animated: true)
+        self.mySwitch.setOn(false, animated: true)
+        if self.overrideUserInterfaceStyle == .light {
+            UserDefaults.standard.set("Dark", forKey: "Appearance")
+        } else {
+            UserDefaults.standard.set("Light", forKey: "Appearance")
+        }
+        } else {
+            if self.overrideUserInterfaceStyle == .light {
+                UserDefaults.standard.set("Dark", forKey: "Appearance")
+            } else {
+                UserDefaults.standard.set("Light", forKey: "Appearance")
+            }
+        }
+        self.viewWillAppear(true)
+}
+    
+    func AppearanceCheck(_ viewController: UIViewController) {
         guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
         if appearance == "Dark" {
             viewController.overrideUserInterfaceStyle = .dark

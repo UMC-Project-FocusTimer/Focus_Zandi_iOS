@@ -256,6 +256,13 @@
                                     <action selector="darkmodeButotnTap:" destination="8yY-TY-zkZ" eventType="touchUpInside" id="2m8-sv-Nav"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpN-tb-g5y">
+                                <rect key="frame" x="183" y="449" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchValueChanged:" destination="8yY-TY-zkZ" eventType="valueChanged" id="F8J-Xk-Lhv"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vHq-DO-5L7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -266,6 +273,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="0l9-dp-eLx"/>
+                    <connections>
+                        <outlet property="mySwitch" destination="hpN-tb-g5y" id="XR0-xO-esw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAM-Rd-bDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
