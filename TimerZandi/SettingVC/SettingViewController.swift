@@ -10,6 +10,7 @@ import UIKit
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var mySwitch: UISwitch!
+    @IBOutlet weak var moonImage: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -20,14 +21,14 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func darkmodeButotnTap(_ sender: UIButton) {
-        if self.overrideUserInterfaceStyle == .light {
-            UserDefaults.standard.set("Dark", forKey: "Appearance")
-        } else {
-            UserDefaults.standard.set("Light", forKey: "Appearance")
-        }
-        self.viewWillAppear(true)
-    }
+//    @IBAction func darkmodeButotnTap(_ sender: UIButton) {
+//        if self.overrideUserInterfaceStyle == .light {
+//            UserDefaults.standard.set("Dark", forKey: "Appearance")
+//        } else {
+//            UserDefaults.standard.set("Light", forKey: "Appearance")
+//        }
+//        self.viewWillAppear(true)
+//    }
  
     @IBAction func switchValueChanged(_ sender: Any) {
         if self.mySwitch.isOn == false {
@@ -53,17 +54,25 @@ class SettingViewController: UIViewController {
         if appearance == "Dark" {
             viewController.overrideUserInterfaceStyle = .dark
             if #available(iOS 13.0, *) {
-                UIApplication.shared.statusBarStyle = .lightContent
+                UIView.animate(withDuration: 0.5, delay: 0, animations: {
+                    UIApplication.shared.statusBarStyle = .lightContent
+                    self.moonImage.tintColor = .white
+                })
             } else {
                 UIApplication.shared.statusBarStyle = .default
             }
         } else {
             viewController.overrideUserInterfaceStyle = .light
             if #available(iOS 13.0, *) {
-                UIApplication.shared.statusBarStyle = .darkContent
+                UIView.animate(withDuration: 0.5, delay: 0, animations: {
+                    UIApplication.shared.statusBarStyle = .darkContent
+                    self.moonImage.tintColor = UIColor(red: 77/225, green: 22/225, blue: 79/225, alpha: 1)
+                })
             } else {
                 UIApplication.shared.statusBarStyle = .default
             }
         }
     }
+    
 }
+

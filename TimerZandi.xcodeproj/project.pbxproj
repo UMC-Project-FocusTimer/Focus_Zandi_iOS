@@ -21,6 +21,7 @@
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
 		9BAC5BE928730A0300CC6147 /* ZandiContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BE828730A0300CC6147 /* ZandiContents.swift */; };
 		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
+		9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */; };
 		9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFD2872F416005D410E /* StaticViewController.swift */; };
 		9BF81F002872F461005D410E /* ZandiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF81EFF2872F461005D410E /* ZandiCell.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		9BAC5BE828730A0300CC6147 /* ZandiContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiContents.swift; sourceTree = "<group>"; };
 		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		9BF81EFD2872F416005D410E /* StaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticViewController.swift; sourceTree = "<group>"; };
 		9BF81EFF2872F461005D410E /* ZandiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */,
+				9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */,
 			);
 			path = SettingVC;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				4109104C286F396800D84B28 /* AppDelegate.swift in Sources */,
 				9BF81EFE2872F416005D410E /* StaticViewController.swift in Sources */,
 				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
+				9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */,
 				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
 				4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */,
 			);

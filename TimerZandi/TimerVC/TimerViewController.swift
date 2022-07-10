@@ -55,6 +55,7 @@ class TimerViewController: UIViewController {
                 UIApplication.shared.statusBarStyle = .default
             }
         }
+
     }
 
     
@@ -74,7 +75,6 @@ class TimerViewController: UIViewController {
 //            }
             self.timerStatus = .start
             self.toggleButton.isSelected = true
-            debugPrint(view.backgroundColor)
             UIView.animate(withDuration: 0.25, delay: 0, animations: {
                 self.willDisappearWhenItStart.isHidden = true
                 self.view.backgroundColor = .darkGray
