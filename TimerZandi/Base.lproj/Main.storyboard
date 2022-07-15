@@ -318,7 +318,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAe-7S-FpD">
                                 <rect key="frame" x="24" y="592" width="366" height="19.5"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="오늘의 공부기록" image="note.text" catalog="system"/>
+                                <state key="normal" title="이날의 공부기록" image="note.text" catalog="system"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9uC-AO-iqK">
                                 <rect key="frame" x="50" y="631.5" width="314" height="63.5"/>
@@ -383,6 +383,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d7S-HW-eNA">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.clockwise" catalog="system" id="pOO-7Z-ibk">
+                            <connections>
+                                <action selector="reLoadButton:" destination="XX7-KH-rIm" id="pbu-bf-UmW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape.fill" catalog="system" id="uyv-Ov-FdM">
                             <connections>
                                 <segue destination="8yY-TY-zkZ" kind="show" id="Ssu-aj-OtJ"/>
@@ -391,6 +396,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="i5F-EI-Avt" id="vGF-ry-p6q"/>
+                        <outlet property="disturbCount" destination="qNE-nd-HAE" id="0OL-tA-Uik"/>
+                        <outlet property="sumOfTime" destination="IbP-PX-v4a" id="A2y-Sf-uYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jea-gk-Lll" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

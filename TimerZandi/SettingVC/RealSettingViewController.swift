@@ -12,10 +12,68 @@ class RealSettingViewController: UIViewController {
 
     @IBOutlet weak var calendar: FSCalendar!
     
+    @IBOutlet weak var disturbCount: UILabel!
+    @IBOutlet weak var sumOfTime: UILabel!
+    
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendar.delegate = self
+        calendar.dataSource = self
+        
         self.calendarColor()
         self.languageSet()
+        self.fontSize()
+        self.calendar.appearance.borderRadius = 0.5
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
+        self.sumOfTime.text = String(UserDefaults.standard.integer(forKey: sumTime)) + " 초"
+        
+        if UserDefaults.standard.integer(forKey: sumTime) < 5 {
+            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.25)
+        } else if UserDefaults.standard.integer(forKey: sumTime) >= 5 && UserDefaults.standard.integer(forKey: sumTime) < 10 {
+            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.50)
+        } else if UserDefaults.standard.integer(forKey: sumTime) >= 10 && UserDefaults.standard.integer(forKey: sumTime) < 15 {
+            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.75)
+        } else if UserDefaults.standard.integer(forKey: sumTime) >= 15 {
+            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)
+        }
+        
+
+    }
+    
+    @IBAction func reLoadButton(_ sender: Any) {
+            debugPrint("새로고침합니다.")
+    }
+    
+//    func headerSet() {
+//        calendar.appearance.headerTitleColor = UIColor.link
+//
+//        // 헤더의 폰트 정렬 설정
+//        // .center & .left & .justified & .natural & .right
+//        calendar.appearance.headerTitleAlignment = .left
+//
+//        // 헤더 높이 설정
+//        calendar.headerHeight = 45
+//
+//        // 헤더 양 옆(전달 & 다음 달) 글씨 투명도
+//        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+//    }
+    
+    func fontSize() {
+        // 헤더 폰트 설정
+        calendar.appearance.headerTitleFont = UIFont(name: "NotoSansKR-Medium", size: 16)
+
+        // Weekday 폰트 설정
+        calendar.appearance.weekdayFont = UIFont(name: "NotoSansKR-Regular", size: 14)
+
+        // 각각의 일(날짜) 폰트 설정 (ex. 1 2 3 4 5 6 ...)
+        calendar.appearance.titleFont = UIFont(name: "NotoSansKR-Regular", size: 14)
     }
     
     func calendarColor() {
@@ -49,4 +107,31 @@ class RealSettingViewController: UIViewController {
         calendar.calendarWeekdayView.weekdayLabels[6].text = "토"
     }
 
+}
+
+// 터치이벤트
+
+extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(dateFormatter.string(from: date) + " 선택")
+        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
+        self.sumOfTime.text = String(UserDefaults.standard.integer(forKey: sumTime)) + " 초"
+    }
+    // 날짜 선택 해제 시 콜백 메소드
+    public func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print(dateFormatter.string(from: date) + " 선택 해제")
+        debugPrint()
+    }
+    
+    // 선택된 날짜의 채워진 색상 지정 -> 지금은 기본색이지만 공부시간에 따라 색 바뀌게 (조건문)
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+        return appearance.selectionColor
+    
+    }
+
+    // 선택된 날짜 테두리 색상
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
+        return UIColor.white.withAlphaComponent(1.0)
+    }
 }
