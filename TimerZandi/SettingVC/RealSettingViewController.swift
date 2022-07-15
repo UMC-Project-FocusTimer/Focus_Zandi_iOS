@@ -34,18 +34,16 @@ class RealSettingViewController: UIViewController {
         self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
         self.sumOfTime.text = String(UserDefaults.standard.integer(forKey: sumTime)) + " 초"
         
-        if UserDefaults.standard.integer(forKey: sumTime) < 5 {
-            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.25)
+        if UserDefaults.standard.integer(forKey: sumTime) < 5 && UserDefaults.standard.integer(forKey: sumTime) > 0{
+            calendar.appearance.todayColor = UIColor(red: 155/255, green: 233/255, blue: 168/255, alpha: 1.00)
         } else if UserDefaults.standard.integer(forKey: sumTime) >= 5 && UserDefaults.standard.integer(forKey: sumTime) < 10 {
-            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.50)
+            calendar.appearance.todayColor = UIColor(red: 64/255, green: 196/255, blue: 99/255, alpha: 1.00)
         } else if UserDefaults.standard.integer(forKey: sumTime) >= 10 && UserDefaults.standard.integer(forKey: sumTime) < 15 {
-            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 0.75)
+            calendar.appearance.todayColor = UIColor(red: 48/255, green: 161/255, blue: 78/255, alpha: 1.00)
         } else if UserDefaults.standard.integer(forKey: sumTime) >= 15 {
             calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)
         }
-        
-
-    }
+    } // 지정한 날의 색 변경
     
     @IBAction func reLoadButton(_ sender: Any) {
             debugPrint("새로고침합니다.")
