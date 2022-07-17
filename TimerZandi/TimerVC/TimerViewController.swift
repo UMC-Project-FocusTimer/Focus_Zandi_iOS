@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import GoogleSignIn
 
 enum TimerStatus {
     case start
@@ -36,6 +37,19 @@ class TimerViewController: UIViewController {
         AppearanceCheck(self)
     }
 
+    @IBAction func google(_ sender: Any) {
+        let config = GIDConfiguration(clientID: "795344605481-eh9clt5aracqv6avsfmr3ca611nemc7k.apps.googleusercontent.com")
+                
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+            if let error = error { return }
+            guard let user = user else { return }
+         
+            print(user)
+        }
+    }
+    
+    
+    
 //MARK: - 다크모드 변경함수 , 다른 VC의 함수 어떻게 호출?
     
     func AppearanceCheck(_ viewController: UIViewController) {

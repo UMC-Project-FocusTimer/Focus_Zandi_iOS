@@ -6,6 +6,7 @@ target 'TimerZandi' do
   use_frameworks!
 pod ‘Alamofire’
 pod 'FSCalendar'
+pod 'GoogleSignIn'
   # Pods for TimerZandi
 
 end

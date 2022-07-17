@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 let sumTime = "sum"
 let countTime = "count"
@@ -14,13 +15,16 @@ let countTime = "count"
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         print(UserDefaults.standard.value(forKey: sumTime))
         print(UserDefaults.standard.value(forKey: countTime))
+
         return true
     }
     
