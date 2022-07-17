@@ -22,7 +22,12 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var testLabel: UILabel!
     @IBOutlet weak var willDisappearWhenItStart: UIStackView!
     @IBOutlet weak var testLabel2: UILabel!
-
+    
+    @IBOutlet weak var idToken: UILabel!
+    @IBOutlet weak var userId: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
@@ -44,7 +49,12 @@ class TimerViewController: UIViewController {
             if let error = error { return }
             guard let user = user else { return }
          
-            print(user)
+            
+            self.idToken.text = user.authentication.idToken
+            self.userId?.text = user.userID
+            self.email?.text = user.profile?.email
+            self.fullName?.text = user.profile?.name
+
         }
     }
     

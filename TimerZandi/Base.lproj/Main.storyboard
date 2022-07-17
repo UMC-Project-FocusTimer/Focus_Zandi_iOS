@@ -110,34 +110,75 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-AQ-70Y">
-                                <rect key="frame" x="174" y="136" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-AQ-70Y">
+                                <rect key="frame" x="20" y="88" width="374" height="22"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title=" 구글 Sign In" image="globe.asia.australia.fill" catalog="system">
+                                    <color key="titleColor" name="AccentColor"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="google:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="ktU-jY-88O"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9RV-Xv-sC0">
+                                <rect key="frame" x="20" y="120" width="374" height="102"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Token" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFD-4y-5cx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1W-Mp-fka">
+                                        <rect key="frame" x="0.0" y="29.5" width="374" height="13.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8u-bS-Jtv">
+                                        <rect key="frame" x="0.0" y="58" width="374" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwq-MG-xED">
+                                        <rect key="frame" x="0.0" y="87.5" width="374" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jlx-X7-pkh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZVG-AQ-70Y" firstAttribute="top" secondItem="jlx-X7-pkh" secondAttribute="top" id="6BO-XP-C8b"/>
                             <constraint firstItem="1Eh-5x-5US" firstAttribute="top" secondItem="jlx-X7-pkh" secondAttribute="top" constant="200" id="FAY-Op-Hec"/>
                             <constraint firstItem="IUl-pq-Fv4" firstAttribute="top" secondItem="1Eh-5x-5US" secondAttribute="bottom" constant="50" id="Gr8-ZN-03V"/>
+                            <constraint firstItem="9RV-Xv-sC0" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="20" id="M88-hA-qmK"/>
                             <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="IUl-pq-Fv4" secondAttribute="trailing" constant="24" id="P72-Bh-ajr"/>
                             <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="1Eh-5x-5US" secondAttribute="trailing" constant="24" id="S8k-J0-bbN"/>
+                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="9RV-Xv-sC0" secondAttribute="trailing" constant="20" id="SlJ-9W-3tH"/>
                             <constraint firstItem="IUl-pq-Fv4" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="XkE-5s-hEB"/>
+                            <constraint firstItem="jlx-X7-pkh" firstAttribute="trailing" secondItem="ZVG-AQ-70Y" secondAttribute="trailing" constant="20" id="cR0-g9-2z9"/>
                             <constraint firstItem="jlx-X7-pkh" firstAttribute="bottom" secondItem="IUl-pq-Fv4" secondAttribute="bottom" constant="70" id="eDm-IL-Lmu"/>
+                            <constraint firstItem="ZVG-AQ-70Y" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="20" id="nDE-FQ-vaY"/>
                             <constraint firstItem="1Eh-5x-5US" firstAttribute="leading" secondItem="jlx-X7-pkh" secondAttribute="leading" constant="24" id="s6Q-Pa-nF7"/>
+                            <constraint firstItem="9RV-Xv-sC0" firstAttribute="top" secondItem="ZVG-AQ-70Y" secondAttribute="bottom" constant="10" id="vaL-E1-FgF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IWL-IC-2GL"/>
                     <connections>
+                        <outlet property="email" destination="j8u-bS-Jtv" id="zea-fy-Mfm"/>
+                        <outlet property="fullName" destination="vwq-MG-xED" id="9qN-3q-cIU"/>
+                        <outlet property="idToken" destination="rFD-4y-5cx" id="Hj4-n0-CNF"/>
                         <outlet property="testLabel" destination="qBP-uD-LLS" id="BIQ-w5-TB5"/>
                         <outlet property="testLabel2" destination="Mg0-ly-dpf" id="8vL-yi-ze1"/>
                         <outlet property="timerLabel" destination="Oxp-DT-WvW" id="9Eg-tH-cyf"/>
                         <outlet property="toggleButton" destination="7xd-FP-tF6" id="Ljp-Gr-zeq"/>
+                        <outlet property="userId" destination="U1W-Mp-fka" id="ASM-sd-WfR"/>
                         <outlet property="willDisappearWhenItStart" destination="IUl-pq-Fv4" id="nrx-mp-JMj"/>
                     </connections>
                 </viewController>
@@ -509,6 +550,7 @@
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="globe.asia.australia.fill" catalog="system" width="128" height="121"/>
         <image name="moon.circle" catalog="system" width="128" height="121"/>
         <image name="note.text" catalog="system" width="128" height="106"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
