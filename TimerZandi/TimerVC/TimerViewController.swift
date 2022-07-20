@@ -126,7 +126,8 @@ class TimerViewController: UIViewController {
             self.timerLabel.textColor = .black
             self.testLabel.textColor = .black
             self.testLabel2.textColor = .black
-
+            self.toggleButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
+            
             self.stopTimer()
         }
     }
@@ -178,8 +179,7 @@ class TimerViewController: UIViewController {
     }
     
     func configureToggleButton() {
-        self.toggleButton.setTitle("시작", for: .normal)
-        self.toggleButton.setTitle("저장", for: .selected)
+        
     }
     
     

@@ -22,7 +22,7 @@
 		9BAC5BE928730A0300CC6147 /* ZandiContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BE828730A0300CC6147 /* ZandiContents.swift */; };
 		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
 		9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */; };
-		9BEB43722887CB8F0097BD2B /* componentSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB43712887CB8F0097BD2B /* componentSetting.swift */; };
+		9BEB43722887CB8F0097BD2B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB43712887CB8F0097BD2B /* Setting.swift */; };
 		9BEB43752887D0380097BD2B /* NewSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB43742887D0380097BD2B /* NewSettingViewController.swift */; };
 		9BEB43782887D0C20097BD2B /* Vector 17.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB43772887D0C10097BD2B /* Vector 17.png */; };
 		9BEB437C2887D7A80097BD2B /* zandiTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEB437B2887D7A80097BD2B /* zandiTime.png */; };
@@ -52,7 +52,7 @@
 		9BAC5BE828730A0300CC6147 /* ZandiContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZandiContents.swift; sourceTree = "<group>"; };
 		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
-		9BEB43712887CB8F0097BD2B /* componentSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = componentSetting.swift; sourceTree = "<group>"; };
+		9BEB43712887CB8F0097BD2B /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		9BEB43742887D0380097BD2B /* NewSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingViewController.swift; sourceTree = "<group>"; };
 		9BEB43772887D0C10097BD2B /* Vector 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 17.png"; path = "../../../Downloads/Vector 17.png"; sourceTree = "<group>"; };
 		9BEB437B2887D7A80097BD2B /* zandiTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zandiTime.png; path = ../../../Desktop/zandiTime.png; sourceTree = "<group>"; };
@@ -101,10 +101,10 @@
 				41091074286F50D200D84B28 /* API Models */,
 				4109106D286F4E2500D84B28 /* FollowerVC */,
 				4109106C286F4E0800D84B28 /* TimerVC */,
+				9BEB437D2887DEB80097BD2B /* ComponetSetting */,
 				4109104B286F396800D84B28 /* AppDelegate.swift */,
 				4109104D286F396800D84B28 /* SceneDelegate.swift */,
 				41091051286F396800D84B28 /* Main.storyboard */,
-				9BEB43712887CB8F0097BD2B /* componentSetting.swift */,
 				41091054286F396900D84B28 /* Assets.xcassets */,
 				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
 				41091059286F396900D84B28 /* Info.plist */,
@@ -176,6 +176,14 @@
 				9BEBC03728802963003D88D3 /* RealSettingViewController.swift */,
 			);
 			path = SettingVC;
+			sourceTree = "<group>";
+		};
+		9BEB437D2887DEB80097BD2B /* ComponetSetting */ = {
+			isa = PBXGroup;
+			children = (
+				9BEB43712887CB8F0097BD2B /* Setting.swift */,
+			);
+			path = ComponetSetting;
 			sourceTree = "<group>";
 		};
 		EE23397EA989676454CC5B9C /* Pods */ = {
@@ -306,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BEB43722887CB8F0097BD2B /* componentSetting.swift in Sources */,
+				9BEB43722887CB8F0097BD2B /* Setting.swift in Sources */,
 				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
 				9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */,
 				9BF81F002872F461005D410E /* ZandiCell.swift in Sources */,
