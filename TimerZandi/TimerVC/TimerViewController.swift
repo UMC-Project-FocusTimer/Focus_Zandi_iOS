@@ -19,15 +19,18 @@ class TimerViewController: UIViewController {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
-    @IBOutlet weak var testLabel: UILabel!
-    @IBOutlet weak var willDisappearWhenItStart: UIStackView!
-    @IBOutlet weak var testLabel2: UILabel!
+//    @IBOutlet weak var testLabel: UILabel!
+//    @IBOutlet weak var willDisappearWhenItStart: UIStackView!
+//    @IBOutlet weak var testLabel2: UILabel!
     
     @IBOutlet weak var idToken: UILabel!
     @IBOutlet weak var userId: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var fullName: UILabel!
     
+    @IBOutlet weak var firstClasTime: UILabel!
+    
+
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
@@ -42,7 +45,33 @@ class TimerViewController: UIViewController {
         AppearanceCheck(self)
     }
     
+//MARK: - UserDefaults로 저장된 값 초기화하기
     
+    @IBAction func resetData(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "userFocusTime")
+        UserDefaults.standard.removeObject(forKey: sumTime)
+        UserDefaults.standard.removeObject(forKey: countTime)
+    }
+    
+//MARK: - UserDefaults로 저장된 값 가져오기
+    @IBAction func reLoadButton(_ sender: Any) {
+        let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
+        
+        let hour = (sumTimeForUserDefaults ?? 0 ) / 3600
+        let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
+        let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
+
+        if hour != 0, minutes != 0, seconds != 0 {
+            self.firstClasTime.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
+        } else if minutes != 0, seconds != 0 {
+            self.firstClasTime.text = String(format: "%d분 %d초", minutes,seconds)
+        } else if seconds != 0 {
+            self.firstClasTime.text = String(format: "%d초", seconds)
+        } else if sumTimeForUserDefaults == 0 {
+            self.firstClasTime.text = String(sumTimeForUserDefaults) + "초"
+        }
+            
+    }
     
     
 
@@ -92,7 +121,7 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureToggleButton()
-        self.remainValuesResetWhenItLoaded()
+//        self.remainValuesResetWhenItLoaded()
     }
     
     
@@ -106,11 +135,11 @@ class TimerViewController: UIViewController {
             self.timerStatus = .start
             self.toggleButton.isSelected = true
             UIView.animate(withDuration: 0.25, delay: 0, animations: {
-                self.willDisappearWhenItStart.isHidden = true
+//                self.willDisappearWhenItStart.isHidden = true
                 self.view.backgroundColor = .darkGray
                 self.timerLabel.textColor = .white
-                self.testLabel.textColor = .white
-                self.testLabel2.textColor = .white
+//                self.testLabel.textColor = .white
+//                self.testLabel2.textColor = .white
                 self.tabBarController?.tabBar.isHidden = true
             })
 
@@ -119,13 +148,13 @@ class TimerViewController: UIViewController {
         case .start:
             self.timerStatus = .end
             self.toggleButton.isSelected = false
-            self.willDisappearWhenItStart.isHidden = false
+//            self.willDisappearWhenItStart.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
 
             self.view.backgroundColor = .white
             self.timerLabel.textColor = .black
-            self.testLabel.textColor = .black
-            self.testLabel2.textColor = .black
+//            self.testLabel.textColor = .black
+//            self.testLabel2.textColor = .black
             self.toggleButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
             
             self.stopTimer()
@@ -133,35 +162,35 @@ class TimerViewController: UIViewController {
     }
     // 시작할 때 만약 이미 있다면 그값을 가져오기
     
-    @IBAction func getUserDefaultValue(_ sender: Any) {
-        let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
-        let countTimeForUserDefaults = UserDefaults.standard.integer(forKey: countTime)
-        
-        let hour = (sumTimeForUserDefaults ?? 0 ) / 3600
-        let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
-        let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
-
-        if hour != 0, minutes != 0, seconds != 0 {
-            self.testLabel.text = "총 집중시간 : " + String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
-        } else if minutes != 0, seconds != 0 {
-            self.testLabel.text = "총 집중시간 : " + String(format: "%d분 %d초", minutes,seconds)
-        } else if seconds != 0 {
-            self.testLabel.text = "총 집중시간 : " + String(format: "%d초", seconds)
-        } else if sumTimeForUserDefaults == 0 {
-            self.testLabel.text = "총 집중시간 : " + String(sumTimeForUserDefaults) + "초"
-        }
-            
-            
-        self.testLabel2.text = "집중 방해 횟수 : " + String(countTimeForUserDefaults) + "회"
-        postTest(a: sumTimeForUserDefaults, b: countTimeForUserDefaults)
-
-    }
+//    @IBAction func getUserDefaultValue(_ sender: Any) {
+//        let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
+//        let countTimeForUserDefaults = UserDefaults.standard.integer(forKey: countTime)
+//
+//        let hour = (sumTimeForUserDefaults ?? 0 ) / 3600
+//        let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
+//        let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
+//
+//        if hour != 0, minutes != 0, seconds != 0 {
+//            self.testLabel.text = "총 집중시간 : " + String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
+//        } else if minutes != 0, seconds != 0 {
+//            self.testLabel.text = "총 집중시간 : " + String(format: "%d분 %d초", minutes,seconds)
+//        } else if seconds != 0 {
+//            self.testLabel.text = "총 집중시간 : " + String(format: "%d초", seconds)
+//        } else if sumTimeForUserDefaults == 0 {
+//            self.testLabel.text = "총 집중시간 : " + String(sumTimeForUserDefaults) + "초"
+//        }
+//
+//
+//        self.testLabel2.text = "집중 방해 횟수 : " + String(countTimeForUserDefaults) + "회"
+//        postTest(a: sumTimeForUserDefaults, b: countTimeForUserDefaults)
+//
+//    }
     
-    @IBAction func resetUserDefaultValue(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "userFocusTime")
-        UserDefaults.standard.removeObject(forKey: sumTime)
-        UserDefaults.standard.removeObject(forKey: countTime)
-    }
+//    @IBAction func resetUserDefaultValue(_ sender: Any) {
+//        UserDefaults.standard.removeObject(forKey: "userFocusTime")
+//        UserDefaults.standard.removeObject(forKey: sumTime)
+//        UserDefaults.standard.removeObject(forKey: countTime)
+//    }
     // 총 집중시간도 0이 됨 근데 출력이 안될뿐
     
 //MARK: - 빌드 했는데 그 전에 UserDefaults로 저장된 값이 있다면 이를 다 지움

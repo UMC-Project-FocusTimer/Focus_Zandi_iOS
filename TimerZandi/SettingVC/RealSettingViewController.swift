@@ -31,7 +31,7 @@ class RealSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let sumTime = UserDefaults.standard.integer(forKey: "sumTime")
+        let sumTime = UserDefaults.standard.integer(forKey: sumTime)
         
         self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
         self.sumOfTime.text = String(sumTime) + " 초"
@@ -47,6 +47,7 @@ class RealSettingViewController: UIViewController {
         } else {
             calendar.appearance.todayColor = .lightGray
         }
+        
     } // 지정한 날의 색 변경
     
     @IBAction func reLoadButton(_ sender: Any) {
