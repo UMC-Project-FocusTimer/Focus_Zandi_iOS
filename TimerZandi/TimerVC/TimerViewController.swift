@@ -41,7 +41,13 @@ class TimerViewController: UIViewController {
         super.viewWillAppear(animated)
         AppearanceCheck(self)
     }
+    
+    
+    
+    
 
+//MARK: - Google Login -> 유저정보 받아오기
+    
     @IBAction func google(_ sender: Any) {
         let config = GIDConfiguration(clientID: "795344605481-eh9clt5aracqv6avsfmr3ca611nemc7k.apps.googleusercontent.com")
                 

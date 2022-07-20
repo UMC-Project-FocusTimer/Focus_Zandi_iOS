@@ -31,17 +31,21 @@ class RealSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
-        self.sumOfTime.text = String(UserDefaults.standard.integer(forKey: sumTime)) + " 초"
+        let sumTime = UserDefaults.standard.integer(forKey: "sumTime")
         
-        if UserDefaults.standard.integer(forKey: sumTime) < 5 && UserDefaults.standard.integer(forKey: sumTime) > 0{
+        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
+        self.sumOfTime.text = String(sumTime) + " 초"
+        
+        if sumTime < 5 && sumTime > 0{
             calendar.appearance.todayColor = UIColor(red: 155/255, green: 233/255, blue: 168/255, alpha: 1.00)
-        } else if UserDefaults.standard.integer(forKey: sumTime) >= 5 && UserDefaults.standard.integer(forKey: sumTime) < 10 {
+        } else if sumTime >= 5 && sumTime < 10 {
             calendar.appearance.todayColor = UIColor(red: 64/255, green: 196/255, blue: 99/255, alpha: 1.00)
-        } else if UserDefaults.standard.integer(forKey: sumTime) >= 10 && UserDefaults.standard.integer(forKey: sumTime) < 15 {
+        } else if sumTime >= 10 && sumTime < 15 {
             calendar.appearance.todayColor = UIColor(red: 48/255, green: 161/255, blue: 78/255, alpha: 1.00)
-        } else if UserDefaults.standard.integer(forKey: sumTime) >= 15 {
+        } else if sumTime >= 15 {
             calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)
+        } else {
+            calendar.appearance.todayColor = .lightGray
         }
     } // 지정한 날의 색 변경
     
@@ -75,17 +79,22 @@ class RealSettingViewController: UIViewController {
     }
     
     func calendarColor() {
+
         // 달력의 평일 날짜 색깔
         calendar.appearance.titleDefaultColor = .black
 
         // 달력의 토,일 날짜 색깔
         calendar.appearance.titleWeekendColor = .red
 
+        calendar.appearance.headerTitleColor =  UIColor.init(red: 95/256, green: 127/256, blue: 35/256, alpha: 1)
+        
         // 달력의 맨 위의 년도, 월의 색깔
-        calendar.appearance.headerTitleColor = .systemPink
+        calendar.appearance.weekdayTextColor = UIColor.init(red: 224/256, green: 236/256, blue: 212/256, alpha: 1)
 
         // 달력의 요일 글자 색깔
-        calendar.appearance.weekdayTextColor = .orange
+        calendar.appearance.weekdayTextColor = .black
+        
+        
     }
     
     func languageSet() {
@@ -132,4 +141,5 @@ extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderSelectionColorFor date: Date) -> UIColor? {
         return UIColor.white.withAlphaComponent(1.0)
     }
+    
 }
