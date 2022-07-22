@@ -17,32 +17,30 @@ enum TimerStatus {
 
 class TimerViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
-//    @IBOutlet weak var testLabel: UILabel!
-//    @IBOutlet weak var willDisappearWhenItStart: UIStackView!
-//    @IBOutlet weak var testLabel2: UILabel!
-    
-    @IBOutlet weak var idToken: UILabel!
-    @IBOutlet weak var userId: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var fullName: UILabel!
-    
+//    @IBOutlet weak var idToken: UILabel!
+//    @IBOutlet weak var userId: UILabel!
+//    @IBOutlet weak var email: UILabel!
+//    @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var firstClasTime: UILabel!
     
-
+    var topics = [Topic]() {
+        didSet {
+            self.saveTopics()
+        }
+    } // append 될때마다 save Topics 실행되게
+    var times = [Time]()
+    
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer?
     var currentSeconds = 0
-    
-//    var ZandiContents = [ZandiContents]()
-    
     var usersFocusTime: [Int] = []
     var sumOfUsersFocusTime: [Int] = []
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppearanceCheck(self)
     }
     
 //MARK: - UserDefaults로 저장된 값 초기화하기
@@ -73,125 +71,100 @@ class TimerViewController: UIViewController {
             
     }
     
+    @IBAction func tapAddButton(_ sender: Any) {
+        let alert = UIAlertController(title: "할 일 등록", message: "할 일을 입력해주세요.", preferredStyle: .alert)
+        let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
+            guard let title = alert.textFields?[0].text else {return}
+            let topic = Topic(title: title)
+            self?.topics.append(topic)
+            self?.tableView.reloadData()
+        })
+        let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
+        alert.addAction(cancleButton)
+        alert.addAction(registerButton)
+        alert.addTextField(configurationHandler: {
+            textField in textField.placeholder = "여기에 입력하세요"
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
     
-
+    func saveTopics() {
+        let data = self.topics.map {
+            [
+                "title": $0.title
+            ]
+        }
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(data, forKey: "topics")
+    } // 딕셔너리 형태로 UserDefaults에 저장
+    
+    func loadTopics() {
+        let userDefaults = UserDefaults.standard
+      guard let data = userDefaults.object(forKey: "topics") as? [[String:Any]] else {return}
+        self.topics = data.compactMap {
+            guard let title = $0["title"] as? String else {return nil}
+            guard let time = $0["time"] as? Int else {return nil}
+            return Topic(title: title)
+        }
+    }
+    
 //MARK: - Google Login -> 유저정보 받아오기
     
-    @IBAction func google(_ sender: Any) {
-        let config = GIDConfiguration(clientID: "795344605481-eh9clt5aracqv6avsfmr3ca611nemc7k.apps.googleusercontent.com")
-                
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-            if let error = error { return }
-            guard let user = user else { return }
-         
-            
-            self.idToken.text = user.authentication.idToken
-            self.userId?.text = user.userID
-            self.email?.text = user.profile?.email
-            self.fullName?.text = user.profile?.name
-
-        }
-    }
-    
-    
-    
-//MARK: - 다크모드 변경함수 , 다른 VC의 함수 어떻게 호출?
-    
-    func AppearanceCheck(_ viewController: UIViewController) {
-        guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-        if appearance == "Dark" {
-            viewController.overrideUserInterfaceStyle = .dark
-            if #available(iOS 13.0, *) {
-                UIApplication.shared.statusBarStyle = .lightContent
-            } else {
-                UIApplication.shared.statusBarStyle = .default
-            }
-        } else {
-            viewController.overrideUserInterfaceStyle = .light
-            if #available(iOS 13.0, *) {
-                UIApplication.shared.statusBarStyle = .darkContent
-            } else {
-                UIApplication.shared.statusBarStyle = .default
-            }
-        }
-
-    }
-
+//    @IBAction func google(_ sender: Any) {
+//        let config = GIDConfiguration(clientID: "795344605481-eh9clt5aracqv6avsfmr3ca611nemc7k.apps.googleusercontent.com")
+//
+//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+//            if let error = error { return }
+//            guard let user = user else { return }
+//
+//
+//            self.idToken.text = user.authentication.idToken
+//            self.userId?.text = user.userID
+//            self.email?.text = user.profile?.email
+//            self.fullName?.text = user.profile?.name
+//
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureToggleButton()
-//        self.remainValuesResetWhenItLoaded()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.loadTopics()
     }
-    
     
     @IBAction func tapToggleButton(_ sender: UIButton) {
         debugPrint(timerStatus)
         switch self.timerStatus {
         case .end:
-//            if UserDefaults.standard.integer(forKey: sumTime) == true {
-//                debugPrint("값이 이미 존재함")
-//            }
             self.timerStatus = .start
             self.toggleButton.isSelected = true
             UIView.animate(withDuration: 0.25, delay: 0, animations: {
-//                self.willDisappearWhenItStart.isHidden = true
                 self.view.backgroundColor = .darkGray
                 self.timerLabel.textColor = .white
-//                self.testLabel.textColor = .white
-//                self.testLabel2.textColor = .white
                 self.tabBarController?.tabBar.isHidden = true
             })
-
             self.startTimer()
             
         case .start:
             self.timerStatus = .end
             self.toggleButton.isSelected = false
-//            self.willDisappearWhenItStart.isHidden = false
             self.tabBarController?.tabBar.isHidden = false
 
             self.view.backgroundColor = .white
             self.timerLabel.textColor = .black
-//            self.testLabel.textColor = .black
-//            self.testLabel2.textColor = .black
             self.toggleButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .selected)
-            
             self.stopTimer()
         }
     }
-    // 시작할 때 만약 이미 있다면 그값을 가져오기
-    
-//    @IBAction func getUserDefaultValue(_ sender: Any) {
-//        let sumTimeForUserDefaults = UserDefaults.standard.integer(forKey: sumTime)
-//        let countTimeForUserDefaults = UserDefaults.standard.integer(forKey: countTime)
-//
-//        let hour = (sumTimeForUserDefaults ?? 0 ) / 3600
-//        let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
-//        let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
-//
-//        if hour != 0, minutes != 0, seconds != 0 {
-//            self.testLabel.text = "총 집중시간 : " + String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
-//        } else if minutes != 0, seconds != 0 {
-//            self.testLabel.text = "총 집중시간 : " + String(format: "%d분 %d초", minutes,seconds)
-//        } else if seconds != 0 {
-//            self.testLabel.text = "총 집중시간 : " + String(format: "%d초", seconds)
-//        } else if sumTimeForUserDefaults == 0 {
-//            self.testLabel.text = "총 집중시간 : " + String(sumTimeForUserDefaults) + "초"
-//        }
-//
-//
-//        self.testLabel2.text = "집중 방해 횟수 : " + String(countTimeForUserDefaults) + "회"
-//        postTest(a: sumTimeForUserDefaults, b: countTimeForUserDefaults)
-//
-//    }
-    
-//    @IBAction func resetUserDefaultValue(_ sender: Any) {
-//        UserDefaults.standard.removeObject(forKey: "userFocusTime")
-//        UserDefaults.standard.removeObject(forKey: sumTime)
-//        UserDefaults.standard.removeObject(forKey: countTime)
-//    }
-    // 총 집중시간도 0이 됨 근데 출력이 안될뿐
+
+    func testFunc() {
+        
+    } // stoptimer에서 저장된 값을 배열에 넣기
+    // 테이블뷰 셀의 label로
+    // 저장된 시간을 topic.time에 넣어야함
+    // 이 배열에 넣기만 하면 알아서 끄집어 냄
     
 //MARK: - 빌드 했는데 그 전에 UserDefaults로 저장된 값이 있다면 이를 다 지움
     
@@ -207,13 +180,7 @@ class TimerViewController: UIViewController {
         
     }
     
-    func configureToggleButton() {
-        
-    }
-    
-    
     func startTimer() {
-        
         if self.timer == nil {
             self.timer = DispatchSource.makeTimerSource(flags: [], queue: .main) // [GCB] UI관련작업은 main Thread에서 !
             self.timer?.schedule(deadline: .now(), repeating: 1) // 타이머의 주기 설정 메소드
@@ -234,6 +201,7 @@ class TimerViewController: UIViewController {
     func stopTimer() {
         usersFocusTime = UserDefaults.standard.value(forKey: "userFocusTime") as? [Int] ?? [0]
         
+        
         self.usersFocusTime.append(self.currentSeconds)
         self.sumOfUsersFocusTime.append(self.usersFocusTime.reduce(0,+))
         
@@ -246,10 +214,16 @@ class TimerViewController: UIViewController {
         let countOfPreventing = self.usersFocusTime.count - 2
         let sumOfUsersFocusTimeIndex = self.sumOfUsersFocusTime[0]
         
+        
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
         UserDefaults.standard.setValue(countOfPreventing, forKey: countTime)
         UserDefaults.standard.setValue(sumOfUsersFocusTimeIndex, forKey: sumTime)
         
+        let time = Time(FStime: sumOfUsersFocusTimeIndex)
+        self.times.append(time)
+        self.tableView.reloadData()
+        print(topics)
+        print(times)
         // 어펜드해서 저장하기
         // 배열 자체를 유저디폴트로 저장하고 가져오기 할때마다 빼오기
         
@@ -269,35 +243,59 @@ class TimerViewController: UIViewController {
     //MARK: - POST로 서버에 값을 내보내기 :: 서버에서 이 데이터를 Json 파일에 저장할 수 있음?
 
         func postTest(a:Int, b:Int) {
-                    let url = "https://ptsv2.com/t/ln306-1656702503/post"
-                    var request = URLRequest(url: URL(string: url)!)
-                    request.httpMethod = "POST"
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.timeoutInterval = 10
+            let url = "https://ptsv2.com/t/ln306-1656702503/post"
+            var request = URLRequest(url: URL(string: url)!)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.timeoutInterval = 10
 
-                    // POST 로 보낼 정보
-                    let params = [
-                        "총 집중시간": a,
-                        "집중 방해 횟수": b
-                    ] as [String : Any]
+            // POST 로 보낼 정보
+            let params = [
+                "총 집중시간": a,
+                "집중 방해 횟수": b
+            ] as [String : Any]
 
-                    // httpBody 에 parameters 추가
-                    do {
-                        try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-                    } catch {
-                        print("http Body Error")
-                    }
+            // httpBody 에 parameters 추가
+            do {
+                try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+            } catch {
+                print("http Body Error")
+            }
 
-                    AF.request(request).responseString { (response) in
-                        switch response.result {
-                        case .success:
-                            print("POST 성공")
-                        case .failure(let error):
-                            print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-                        }
-                    }
+            AF.request(request).responseString { (response) in
+                switch response.result {
+                case .success:
+                    print("POST 성공")
+                case .failure(let error):
+                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
                 }
-    
-
+            }
+    }
 }
 
+extension TimerViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.topics.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ClassTableViewCell", for: indexPath) as! ClassTableViewCell
+        let topic = self.topics[indexPath.row]
+//        let time = self.times[indexPath.row] 방금 누른 값을 라벨에 넣으면 됨
+        cell.className?.text = topic.title
+//        cell.FocusTime.text = String(time.FStime)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        self.topics.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+}
+
+extension TimerViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+}
