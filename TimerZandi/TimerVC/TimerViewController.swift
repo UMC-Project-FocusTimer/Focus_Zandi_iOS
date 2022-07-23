@@ -89,6 +89,7 @@ class TimerViewController: UIViewController {
             guard let title = alert.textFields?[0].text else {return}
             let topic = Topic(title: title)
             self?.topics.append(topic)
+            self?.eachClassTimeSum.append(0)
             self?.tableView.reloadData()
         })
         let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
@@ -234,16 +235,25 @@ class TimerViewController: UIViewController {
         let sumOfUsersFocusTimeIndex = self.sumOfUsersFocusTime[0]
         
         
-        
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
         UserDefaults.standard.setValue(countOfPreventing, forKey: countTime)
         UserDefaults.standard.setValue(sumOfUsersFocusTimeIndex, forKey: sumTime)
         
-        let tagKey = UserDefaults.standard.string(forKey: "tagKey")
-        UserDefaults.standard.setValue(self.currentSeconds, forKey: "class_\(tagKey!)")
-        self.eachClassTimeSum.append(UserDefaults.standard.object(forKey: "class_\(tagKey!)"))
-        print(eachClassTimeSum)
+        let tagKey = UserDefaults.standard.integer(forKey: "tagKey")
+        UserDefaults.standard.setValue(self.currentSeconds, forKey: "class_\(tagKey)")
+        let numberForSum = UserDefaults.standard.integer(forKey: "class_\(tagKey)")
+        
+        self.eachClassTimeSum[tagKey] = UserDefaults.standard.object(forKey: "class_\(tagKey)")!
+
+        print("tagKey is \(tagKey)")
+        print("numberForSum is \(numberForSum)")
+        print("eachClassTimeSum is \(eachClassTimeSum)")
+      print("eachClassTimeSum[tagKey] is \(eachClassTimeSum[tagKey])")
+        
+
         // 각각의 배열에 더해지게
+        // 태그 값이랑 배열 값이랑 같아지면 더하도록
+        // eachClassTimeSum에 이전 값이 존재하면 더하도록 설계하기
         
         
         currentSeconds = 0
