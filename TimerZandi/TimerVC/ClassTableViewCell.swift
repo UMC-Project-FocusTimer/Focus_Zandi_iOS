@@ -7,8 +7,19 @@
 
 import UIKit
 
+protocol YourCellDelegate : class {
+    func didPressButton(_ tag: Int)
+}
+
 class ClassTableViewCell: UITableViewCell {
 
+    
+    var cellDelegate: YourCellDelegate?
+        @IBOutlet weak var btn: UIButton!
+      // connect the button from your cell with this method
+      @IBAction func buttonPressed(_ sender: UIButton) {
+          cellDelegate?.didPressButton(sender.tag)
+      }
         
     @IBOutlet weak var FocusTime: UILabel!
     @IBOutlet weak var className: UILabel!

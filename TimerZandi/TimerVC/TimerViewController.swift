@@ -14,9 +14,12 @@ enum TimerStatus {
     case end
 }
 
-
 class TimerViewController: UIViewController {
 
+    @IBOutlet weak var textWillBeChanged: UILabel!
+    @IBOutlet weak var exampleClassView: UIView!
+    @IBOutlet weak var userDayInfo: UIStackView!
+    @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var toggleButton: UIButton!
@@ -25,13 +28,16 @@ class TimerViewController: UIViewController {
 //    @IBOutlet weak var email: UILabel!
 //    @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var firstClasTime: UILabel!
+
+    var TimeList:[String] = []
     
     var topics = [Topic]() {
         didSet {
             self.saveTopics()
         }
     } // append 될때마다 save Topics 실행되게
-    var times = [Time]()
+    
+    var eachClassTimeSum:[Any] = []
     
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer?
@@ -59,6 +65,8 @@ class TimerViewController: UIViewController {
         let minutes = (sumTimeForUserDefaults ?? 0 % 3600) / 60
         let seconds = (sumTimeForUserDefaults ?? 0 % 3600) % 60
 
+        self.tableView.reloadData()
+        
         if hour != 0, minutes != 0, seconds != 0 {
             self.firstClasTime.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
         } else if minutes != 0, seconds != 0 {
@@ -68,11 +76,15 @@ class TimerViewController: UIViewController {
         } else if sumTimeForUserDefaults == 0 {
             self.firstClasTime.text = String(sumTimeForUserDefaults) + "초"
         }
-            
+//        let tagKey = UserDefaults.standard.string(forKey: "tagKey")
+//        UserDefaults.standard.setValue(sumTimeForUserDefaults, forKey: "class_\(tagKey!)")
+//        print(UserDefaults.standard.integer(forKey: sumTime))
+//        print(UserDefaults.standard.integer(forKey: "userFocusTime"))
+
     }
     
     @IBAction func tapAddButton(_ sender: Any) {
-        let alert = UIAlertController(title: "할 일 등록", message: "할 일을 입력해주세요.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "과목 등록", message: "오늘 공부할 과목 등록하기", preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else {return}
             let topic = Topic(title: title)
@@ -83,7 +95,7 @@ class TimerViewController: UIViewController {
         alert.addAction(cancleButton)
         alert.addAction(registerButton)
         alert.addTextField(configurationHandler: {
-            textField in textField.placeholder = "여기에 입력하세요"
+            textField in textField.placeholder = "과목을 입력해주세요"
         })
         self.present(alert, animated: true, completion: nil)
     }
@@ -104,7 +116,6 @@ class TimerViewController: UIViewController {
       guard let data = userDefaults.object(forKey: "topics") as? [[String:Any]] else {return}
         self.topics = data.compactMap {
             guard let title = $0["title"] as? String else {return nil}
-            guard let time = $0["time"] as? Int else {return nil}
             return Topic(title: title)
         }
     }
@@ -132,6 +143,7 @@ class TimerViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.loadTopics()
+        self.remainValuesResetWhenItLoaded()
     }
     
     @IBAction func tapToggleButton(_ sender: UIButton) {
@@ -144,6 +156,9 @@ class TimerViewController: UIViewController {
                 self.view.backgroundColor = .darkGray
                 self.timerLabel.textColor = .white
                 self.tabBarController?.tabBar.isHidden = true
+                self.logoImage.isHidden = true
+                self.userDayInfo.isHidden = true
+                self.tableView.isHidden = true
             })
             self.startTimer()
             
@@ -151,6 +166,9 @@ class TimerViewController: UIViewController {
             self.timerStatus = .end
             self.toggleButton.isSelected = false
             self.tabBarController?.tabBar.isHidden = false
+            self.logoImage.isHidden = false
+            self.userDayInfo.isHidden = false
+            self.tableView.isHidden = false
 
             self.view.backgroundColor = .white
             self.timerLabel.textColor = .black
@@ -200,10 +218,11 @@ class TimerViewController: UIViewController {
     
     func stopTimer() {
         usersFocusTime = UserDefaults.standard.value(forKey: "userFocusTime") as? [Int] ?? [0]
-        
+
         
         self.usersFocusTime.append(self.currentSeconds)
         self.sumOfUsersFocusTime.append(self.usersFocusTime.reduce(0,+))
+        
         
         if self.sumOfUsersFocusTime.count > 1 {
             self.sumOfUsersFocusTime.removeFirst()
@@ -215,28 +234,25 @@ class TimerViewController: UIViewController {
         let sumOfUsersFocusTimeIndex = self.sumOfUsersFocusTime[0]
         
         
+        
         UserDefaults.standard.setValue(self.usersFocusTime, forKey: "userFocusTime")
         UserDefaults.standard.setValue(countOfPreventing, forKey: countTime)
         UserDefaults.standard.setValue(sumOfUsersFocusTimeIndex, forKey: sumTime)
         
-        let time = Time(FStime: sumOfUsersFocusTimeIndex)
-        self.times.append(time)
-        self.tableView.reloadData()
-        print(topics)
-        print(times)
-        // 어펜드해서 저장하기
-        // 배열 자체를 유저디폴트로 저장하고 가져오기 할때마다 빼오기
+        let tagKey = UserDefaults.standard.string(forKey: "tagKey")
+        UserDefaults.standard.setValue(self.currentSeconds, forKey: "class_\(tagKey!)")
+        self.eachClassTimeSum.append(UserDefaults.standard.object(forKey: "class_\(tagKey!)"))
+        print(eachClassTimeSum)
+        // 각각의 배열에 더해지게
         
-//        debugPrint("집중 시간: \(self.usersFocusTime)")
-//        debugPrint("집중 시간의 합: \(sumOfUsersFocusTimeIndex)")
-//        debugPrint("집중 방해횟수: \(countOfPreventing)")
-
+        
         currentSeconds = 0
         self.timerLabel.text = "00:00:00"
         self.timerStatus = .end
         self.toggleButton.isSelected = false
         self.timer?.cancel()
         self.timer = nil
+        self.TimeList.append(String(sumOfUsersFocusTimeIndex))
     }
     
 
@@ -273,6 +289,7 @@ class TimerViewController: UIViewController {
     }
 }
 
+
 extension TimerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.topics.count
@@ -281,9 +298,12 @@ extension TimerViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassTableViewCell", for: indexPath) as! ClassTableViewCell
         let topic = self.topics[indexPath.row]
-//        let time = self.times[indexPath.row] 방금 누른 값을 라벨에 넣으면 됨
         cell.className?.text = topic.title
-//        cell.FocusTime.text = String(time.FStime)
+        cell.cellDelegate = self
+        cell.btn.tag = indexPath.row
+        cell.FocusTime.text = UserDefaults.standard.string(forKey: "class_\(indexPath.row)")
+        
+
         return cell
     }
     
@@ -299,3 +319,16 @@ extension TimerViewController: UITableViewDelegate {
         print(indexPath.row)
     }
 }
+
+extension TimerViewController: YourCellDelegate {
+    func didPressButton(_ tag: Int) {
+         print("\(tag)번 인덱스에 있는 버튼입니다")
+        self.textWillBeChanged.text = topics[tag].title
+        UserDefaults.standard.setValue(tag, forKey: "tagKey")
+        print(UserDefaults.standard.string(forKey: "tagKey"))
+    }
+}
+
+// 버튼 누르면 몇번째 셀인지를 의미하는 태그번호가 유저디폴트로 저장 1번 누르면 tag = 1 이 tagKey로 저장
+// 그 키 담고 있는 값(tag = 1)의 Key 하여금 순간 집중 값을 저장
+// 그 순간 집중값을 인덱스화 시켜서 각 셀에 저장
