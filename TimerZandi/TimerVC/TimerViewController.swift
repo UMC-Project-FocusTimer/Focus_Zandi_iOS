@@ -37,7 +37,7 @@ class TimerViewController: UIViewController {
         }
     } // append 될때마다 save Topics 실행되게
     
-    var eachClassTimeSum:[Any] = []
+    var eachClassTimeSum:[Int] = []
     
     var timerStatus: TimerStatus = .end
     var timer: DispatchSourceTimer?
@@ -68,18 +68,19 @@ class TimerViewController: UIViewController {
         self.tableView.reloadData()
         
         if hour != 0, minutes != 0, seconds != 0 {
-            self.firstClasTime.text = String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
+            self.firstClasTime.text = "총 공부시간 :" + String(format: "%d시간 %d분 %d초", hour,minutes,seconds)
         } else if minutes != 0, seconds != 0 {
-            self.firstClasTime.text = String(format: "%d분 %d초", minutes,seconds)
+            self.firstClasTime.text = "총 공부시간 :" + String(format: "%d분 %d초", minutes,seconds)
         } else if seconds != 0 {
-            self.firstClasTime.text = String(format: "%d초", seconds)
+            self.firstClasTime.text = "총 공부시간 :" + String(format: "%d초", seconds)
         } else if sumTimeForUserDefaults == 0 {
-            self.firstClasTime.text = String(sumTimeForUserDefaults) + "초"
+            self.firstClasTime.text = "총 공부시간 :" + String(sumTimeForUserDefaults) + "초"
         }
 //        let tagKey = UserDefaults.standard.string(forKey: "tagKey")
 //        UserDefaults.standard.setValue(sumTimeForUserDefaults, forKey: "class_\(tagKey!)")
 //        print(UserDefaults.standard.integer(forKey: sumTime))
 //        print(UserDefaults.standard.integer(forKey: "userFocusTime"))
+        
 
     }
     
@@ -243,18 +244,37 @@ class TimerViewController: UIViewController {
         UserDefaults.standard.setValue(self.currentSeconds, forKey: "class_\(tagKey)")
         let numberForSum = UserDefaults.standard.integer(forKey: "class_\(tagKey)")
         
-        self.eachClassTimeSum[tagKey] = UserDefaults.standard.object(forKey: "class_\(tagKey)")!
 
         print("tagKey is \(tagKey)")
         print("numberForSum is \(numberForSum)")
         print("eachClassTimeSum is \(eachClassTimeSum)")
-      print("eachClassTimeSum[tagKey] is \(eachClassTimeSum[tagKey])")
+        print("eachClassTimeSum[tagKey] is \(eachClassTimeSum[tagKey])")
         
-
+        // numberForSum 값을 eachClassTimeSum[tagKey] 값에 더한 후 다시 넣어줄거임
+        if eachClassTimeSum[tagKey] != 0 {
+            print("값이 존재함")
+            self.eachClassTimeSum[tagKey] += numberForSum
+        } else if eachClassTimeSum[tagKey] == 0 {
+            print("값이 없음")
+            self.eachClassTimeSum[tagKey] = UserDefaults.standard.integer(forKey: "class_\(tagKey)")
+        }
+        
+        UserDefaults.standard.setValue(eachClassTimeSum[tagKey], forKey: "focustime_number_\(tagKey)")
+            
+        print("tagKey is \(tagKey)")
+        print("numberForSum is \(numberForSum)")
+        print("eachClassTimeSum is \(eachClassTimeSum)")
+        print("eachClassTimeSum[tagKey] is \(eachClassTimeSum[tagKey])")
+        
+        
         // 각각의 배열에 더해지게
         // 태그 값이랑 배열 값이랑 같아지면 더하도록
         // eachClassTimeSum에 이전 값이 존재하면 더하도록 설계하기
         
+        // 스크린샷 참고 ! 시작할때 앱 삭제 후 다시 시작하기 (위에 0으로 채우는 메소드가 유저디폴트가 아니라서 오류뜸)
+        // 과목 추가 -> 타이머 실행하면 eachClassTimeSum에 값이 각각 교체되어 들어감(0->3)
+        // 근데 이미 추가되어있다면 0이 아니라면 더해서 들어가야 하는데, 새로운 값이 업데이트 되어 들어감
+        // 인덱스 0인 값 0이라면 더하는 조건문 만들기
         
         currentSeconds = 0
         self.timerLabel.text = "00:00:00"
@@ -311,7 +331,7 @@ extension TimerViewController: UITableViewDataSource {
         cell.className?.text = topic.title
         cell.cellDelegate = self
         cell.btn.tag = indexPath.row
-        cell.FocusTime.text = UserDefaults.standard.string(forKey: "class_\(indexPath.row)")
+        cell.FocusTime.text = UserDefaults.standard.string(forKey: "focustime_number_\(indexPath.row)")
         
 
         return cell

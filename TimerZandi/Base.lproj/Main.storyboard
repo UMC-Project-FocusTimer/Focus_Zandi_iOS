@@ -71,8 +71,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D-193" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joL-PH-jkj">
-                                        <rect key="frame" x="163" y="29" width="48" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 공부시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joL-PH-jkj">
+                                        <rect key="frame" x="148" y="29" width="78" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -88,14 +88,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LOi-j1-aqx">
                                 <rect key="frame" x="18" y="309.5" width="378" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrT-oV-hJr">
-                                        <rect key="frame" x="332" y="8" width="38" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-Ve-EVc">
-                                        <rect key="frame" x="8" y="8" width="138" height="54"/>
+                                        <rect key="frame" x="8" y="8" width="239.5" height="54"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xd-FP-tF6">
                                                 <rect key="frame" x="0.0" y="0.0" width="39" height="54"/>
@@ -108,10 +102,10 @@
                                                     <action selector="tapToggleButton:" destination="HfB-Gk-8C9" eventType="touchUpInside" id="jlw-uU-KTr"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="실감미디어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTl-gF-HoO">
-                                                <rect key="frame" x="64" y="0.0" width="74" height="54"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선택한 과목이 표시됩니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTl-gF-HoO">
+                                                <rect key="frame" x="64" y="0.0" width="175.5" height="54"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" red="0.54117647059999996" green="0.54117647059999996" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -119,11 +113,8 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="YrT-oV-hJr" secondAttribute="bottom" constant="8" id="1nL-fE-rJ5"/>
                                     <constraint firstAttribute="bottom" secondItem="7pb-Ve-EVc" secondAttribute="bottom" constant="8" id="d9g-aH-gv3"/>
                                     <constraint firstItem="7pb-Ve-EVc" firstAttribute="top" secondItem="LOi-j1-aqx" secondAttribute="top" constant="8" id="dAR-nc-hBC"/>
-                                    <constraint firstItem="YrT-oV-hJr" firstAttribute="top" secondItem="LOi-j1-aqx" secondAttribute="top" constant="8" id="dPV-gz-vgQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="YrT-oV-hJr" secondAttribute="trailing" constant="8" id="fBN-Cm-lVn"/>
                                     <constraint firstItem="7pb-Ve-EVc" firstAttribute="leading" secondItem="LOi-j1-aqx" secondAttribute="leading" constant="8" id="frb-AC-2KC"/>
                                     <constraint firstAttribute="height" constant="70" id="mJO-pb-Q37"/>
                                 </constraints>
@@ -157,21 +148,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG7-8c-3ds">
-                                                    <rect key="frame" x="121" y="12" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="96.5" y="12" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.31764705879999999" green="0.61568627450000002" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-Aw-Tr8">
-                                                    <rect key="frame" x="20" y="7" width="67" height="31"/>
+                                                    <rect key="frame" x="20" y="7" width="42.5" height="31"/>
+                                                    <color key="tintColor" red="1" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="arrow.up" catalog="system"/>
                                                     <connections>
                                                         <action selector="buttonPressed:" destination="Jw6-uW-Ppk" eventType="touchUpInside" id="o4x-gD-zFd"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfF-4o-bgV">
-                                                    <rect key="frame" x="352.5" y="12" width="41.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfF-4o-bgV">
+                                                    <rect key="frame" x="356" y="12" width="38" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -240,7 +232,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="exampleClassView" destination="LOi-j1-aqx" id="Fi7-72-kcG"/>
-                        <outlet property="firstClasTime" destination="YrT-oV-hJr" id="ZV7-G1-hK2"/>
+                        <outlet property="firstClasTime" destination="joL-PH-jkj" id="6nW-HY-NYk"/>
                         <outlet property="logoImage" destination="kUJ-Ti-Eg5" id="4bu-MM-fbL"/>
                         <outlet property="tableView" destination="Gg9-H6-nt4" id="8uG-Vj-X3N"/>
                         <outlet property="textWillBeChanged" destination="JTl-gF-HoO" id="fjO-Nx-N7z"/>
@@ -1013,6 +1005,7 @@
         <image name="IMG_1482.jpg" width="76" height="75.666664123535156"/>
         <image name="Vector 17.png" width="304" height="130"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="bitcoinsign.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock" catalog="system" width="128" height="121"/>
