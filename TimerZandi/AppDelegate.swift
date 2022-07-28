@@ -10,7 +10,8 @@ import GoogleSignIn
 
 let sumTime = "sum"
 let countTime = "count"
-
+let initialKey = "initialKey"
+let themePurchaseKey = "themePurchaseKey"
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if !UserDefaults.standard.bool(forKey: initialKey) {
+            UserDefaults.standard.set(Array(repeating: false, count: 8), forKey: themePurchaseKey)
+            UserDefaults.standard.set(true, forKey: initialKey)
+        }
+        
         
         print(UserDefaults.standard.value(forKey: sumTime))
         print(UserDefaults.standard.value(forKey: countTime))

@@ -2,69 +2,101 @@
 //  MarketViewController.swift
 //  TimerZandi
 //
-//  Created by Jin younkyum on 2022/07/21.
+//  Created by Jin younkyum on 2022/07/27.
 //
 
 import UIKit
 
-class MarketViewController: UIViewController {
+var color = [UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1),
+             UIColor(red: 0.938, green: 0.638, blue: 0.638, alpha: 1),
+             UIColor(red: 0.962, green: 0.851, blue: 0.719, alpha: 1),
+             UIColor(red: 0.938, green: 0.888, blue: 0.651, alpha: 1),
+             UIColor(red: 0.742, green: 0.859, blue: 0.925, alpha: 1),
+             UIColor(red: 0.805, green: 0.829, blue: 0.954, alpha: 1)]
+var colorName = ["Pink", "Warm Pink", "Light Pink", "Light Yellow", "Sky Blue", "Blue"]
 
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        //tableView.register(themeTableViewCell.self, forCellReuseIdentifier: themeTableViewCell.identifier)
-        return tableView
-    }()
+var character = [UIImage(named: "jjangu"), UIImage(named: "puu")]
+var characterName = ["짱구", "푸"]
+
+
+class MarketViewController: UIViewController {
+    
+
+
+    @IBOutlet weak var adImageView: UIImageView!
+    @IBOutlet weak var normalThemeCollectionView: UICollectionView!
+    @IBOutlet weak var characterThemeCollectionView: UICollectionView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "스토어"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.dataSource = self
-        tableView.delegate = self
-        setTableViewAutoLayout()
-    }
-
-    
-    func setTableViewAutoLayout() {
-        self.view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        tableView.separatorStyle = .none
-        tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
-        tableView.register(UINib(nibName: "Market1TableViewCell", bundle: nil), forCellReuseIdentifier: "Market1TableViewCell")
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "스토어"
+        normalThemeCollectionView.delegate = self
+        normalThemeCollectionView.dataSource = self
+        characterThemeCollectionView.delegate = self
+        characterThemeCollectionView.dataSource = self
+        normalThemeCollectionView.register(UINib(nibName: "ElementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ElementCollectionViewCell")
+        characterThemeCollectionView.register(UINib(nibName: "ElementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ElementCollectionViewCell")
+        
+        
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 100, height: 150)
+        flowLayout.scrollDirection = .horizontal
+        
+        characterThemeCollectionView.collectionViewLayout = flowLayout
+        normalThemeCollectionView.collectionViewLayout = flowLayout
+        // Do any additional setup after loading the view.
     }
     
 }
 
-extension MarketViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as? AdTableViewCell else { return UITableViewCell() }
-            print(type(of: cell))
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Market1TableViewCell", for: indexPath) as? Market1TableViewCell else { return UITableViewCell() }
-            
-            return cell
-        default:
-            return UITableViewCell()
+extension MarketViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == normalThemeCollectionView {
+            return color.count
+        } else if collectionView == characterThemeCollectionView {
+            return character.count
+        } else {
+            return 0
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == normalThemeCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ElementCollectionViewCell", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.ElementImage.backgroundColor = color[indexPath.row]
+            cell.ElementLabel.text = colorName[indexPath.row]
+            
+            return cell
+        } else if collectionView == characterThemeCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ElementCollectionViewCell", for: indexPath) as? ElementCollectionViewCell else { return UICollectionViewCell() }
+            
+            cell.ElementImage.image = character[indexPath.row]
+            cell.ElementLabel.text = characterName[indexPath.row]
+            
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 250
-        default:
-            return 250
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == normalThemeCollectionView {
+            guard let nextVC = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
+            
+            nextVC.theme = indexPath.row
+            
+            self.present(nextVC, animated: true)
+        } else if collectionView == characterThemeCollectionView {
+            
+            guard let nextVC = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
+            
+            nextVC.theme = indexPath.row + 100
+            
+            self.present(nextVC, animated: true)
         }
     }
 }

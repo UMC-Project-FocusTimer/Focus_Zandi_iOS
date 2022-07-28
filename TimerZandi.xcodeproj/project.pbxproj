@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		410849C528893187007C4406 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410849C428893187007C4406 /* MarketViewController.swift */; };
 		4109104C286F396800D84B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109104B286F396800D84B28 /* AppDelegate.swift */; };
 		4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109104D286F396800D84B28 /* SceneDelegate.swift */; };
 		41091053286F396800D84B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41091051286F396800D84B28 /* Main.storyboard */; };
@@ -19,14 +18,12 @@
 		41091076286F50E600D84B28 /* userAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091075286F50E600D84B28 /* userAPI.swift */; };
 		41091079286F510D00D84B28 /* API Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41091078286F510D00D84B28 /* API Caller.swift */; };
 		412646402889366700DE9C78 /* zandiTime.png in Resources */ = {isa = PBXBuildFile; fileRef = 4126463F2889366700DE9C78 /* zandiTime.png */; };
-		41264647288938E100DE9C78 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41264645288938E100DE9C78 /* AdTableViewCell.swift */; };
-		41264648288938E100DE9C78 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41264646288938E100DE9C78 /* AdTableViewCell.xib */; };
-		412646572889558700DE9C78 /* Market1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412646552889558700DE9C78 /* Market1TableViewCell.swift */; };
-		412646582889558700DE9C78 /* Market1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 412646562889558700DE9C78 /* Market1TableViewCell.xib */; };
 		4126465C288957AF00DE9C78 /* ElementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4126465A288957AF00DE9C78 /* ElementCollectionViewCell.swift */; };
 		4126465D288957AF00DE9C78 /* ElementCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4126465B288957AF00DE9C78 /* ElementCollectionViewCell.xib */; };
+		416F08FF2890E1C4006CACF9 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416F08FE2890E1C4006CACF9 /* MarketViewController.swift */; };
 		41C4EAE228896ECD00BD51F3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C4EAE128896ECD00BD51F3 /* DetailViewController.swift */; };
 		91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */; };
+		9B62F45E2892B48E00AB88DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62F45D2892B48E00AB88DD /* LoginViewController.swift */; };
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
 		9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */; };
 		9BA12E09288AB58B00038E40 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E08288AB58B00038E40 /* Topic.swift */; };
@@ -41,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		2046D4B8C4FCFFDCC0048BAF /* Pods-TimerZandi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerZandi.release.xcconfig"; path = "Target Support Files/Pods-TimerZandi/Pods-TimerZandi.release.xcconfig"; sourceTree = "<group>"; };
-		410849C428893187007C4406 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		41091048286F396800D84B28 /* TimerZandi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerZandi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4109104B286F396800D84B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4109104D286F396800D84B28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,15 +51,13 @@
 		41091075286F50E600D84B28 /* userAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
 		41091078286F510D00D84B28 /* API Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Caller.swift"; sourceTree = "<group>"; };
 		4126463F2889366700DE9C78 /* zandiTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zandiTime.png; sourceTree = "<group>"; };
-		41264645288938E100DE9C78 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
-		41264646288938E100DE9C78 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
-		412646552889558700DE9C78 /* Market1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market1TableViewCell.swift; sourceTree = "<group>"; };
-		412646562889558700DE9C78 /* Market1TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Market1TableViewCell.xib; sourceTree = "<group>"; };
 		4126465A288957AF00DE9C78 /* ElementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCollectionViewCell.swift; sourceTree = "<group>"; };
 		4126465B288957AF00DE9C78 /* ElementCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ElementCollectionViewCell.xib; sourceTree = "<group>"; };
+		416F08FE2890E1C4006CACF9 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		41C4EAE128896ECD00BD51F3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5961B36B51C707E4BF764CE9 /* Pods-TimerZandi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimerZandi.debug.xcconfig"; path = "Target Support Files/Pods-TimerZandi/Pods-TimerZandi.debug.xcconfig"; sourceTree = "<group>"; };
 		67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerZandi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B62F45D2892B48E00AB88DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		9BA12E08288AB58B00038E40 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -92,9 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				41264651288950D600DE9C78 /* ProductCell */,
-				412646492889409200DE9C78 /* AdTableCell */,
-				410849C428893187007C4406 /* MarketViewController.swift */,
 				41C4EAE128896ECD00BD51F3 /* DetailViewController.swift */,
+				416F08FE2890E1C4006CACF9 /* MarketViewController.swift */,
 			);
 			path = MarketVC;
 			sourceTree = "<group>";
@@ -130,6 +123,7 @@
 				4109104B286F396800D84B28 /* AppDelegate.swift */,
 				4109104D286F396800D84B28 /* SceneDelegate.swift */,
 				41091051286F396800D84B28 /* Main.storyboard */,
+				9B62F45D2892B48E00AB88DD /* LoginViewController.swift */,
 				41091054286F396900D84B28 /* Assets.xcassets */,
 				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
 				41091059286F396900D84B28 /* Info.plist */,
@@ -176,31 +170,12 @@
 			path = Methods;
 			sourceTree = "<group>";
 		};
-		412646492889409200DE9C78 /* AdTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				41264645288938E100DE9C78 /* AdTableViewCell.swift */,
-				41264646288938E100DE9C78 /* AdTableViewCell.xib */,
-			);
-			path = AdTableCell;
-			sourceTree = "<group>";
-		};
 		41264651288950D600DE9C78 /* ProductCell */ = {
 			isa = PBXGroup;
 			children = (
 				412646592889578400DE9C78 /* marketCell */,
-				412646522889533200DE9C78 /* 1 */,
 			);
 			path = ProductCell;
-			sourceTree = "<group>";
-		};
-		412646522889533200DE9C78 /* 1 */ = {
-			isa = PBXGroup;
-			children = (
-				412646552889558700DE9C78 /* Market1TableViewCell.swift */,
-				412646562889558700DE9C78 /* Market1TableViewCell.xib */,
-			);
-			path = 1;
 			sourceTree = "<group>";
 		};
 		412646592889578400DE9C78 /* marketCell */ = {
@@ -312,9 +287,7 @@
 				9BEB43782887D0C20097BD2B /* Vector 17.png in Resources */,
 				9BEBC03B28802CA5003D88D3 /* IMG_1482.jpg in Resources */,
 				41091055286F396900D84B28 /* Assets.xcassets in Resources */,
-				412646582889558700DE9C78 /* Market1TableViewCell.xib in Resources */,
 				4126465D288957AF00DE9C78 /* ElementCollectionViewCell.xib in Resources */,
-				41264648288938E100DE9C78 /* AdTableViewCell.xib in Resources */,
 				412646402889366700DE9C78 /* zandiTime.png in Resources */,
 				41091053286F396800D84B28 /* Main.storyboard in Resources */,
 				41091073286F4E7600D84B28 /* FollowerTableViewCell.xib in Resources */,
@@ -370,15 +343,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B62F45E2892B48E00AB88DD /* LoginViewController.swift in Sources */,
 				9BEB43722887CB8F0097BD2B /* Setting.swift in Sources */,
 				41C4EAE228896ECD00BD51F3 /* DetailViewController.swift in Sources */,
 				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
+				416F08FF2890E1C4006CACF9 /* MarketViewController.swift in Sources */,
 				9BA12E09288AB58B00038E40 /* Topic.swift in Sources */,
 				9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */,
 				4109106F286F4E4C00D84B28 /* FollowingViewController.swift in Sources */,
-				410849C528893187007C4406 /* MarketViewController.swift in Sources */,
 				41091072286F4E7600D84B28 /* FollowerTableViewCell.swift in Sources */,
-				41264647288938E100DE9C78 /* AdTableViewCell.swift in Sources */,
 				9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */,
 				4109104C286F396800D84B28 /* AppDelegate.swift in Sources */,
 				9BEB43752887D0380097BD2B /* NewSettingViewController.swift in Sources */,
@@ -386,7 +359,6 @@
 				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
 				9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */,
 				9BEBC03828802963003D88D3 /* RealSettingViewController.swift in Sources */,
-				412646572889558700DE9C78 /* Market1TableViewCell.swift in Sources */,
 				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
 				4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */,
 			);
