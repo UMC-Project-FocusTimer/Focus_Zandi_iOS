@@ -1342,20 +1342,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l9P-OA-SXv">
+                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="yvZ-IL-IEa">
+                            <color key="tintColor" red="0.43465179070431909" green="0.70468842842323232" blue="0.40649028570691664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="tapBackButton:" destination="6fU-1o-gPF" id="CTt-Oc-2EU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="3rv-r5-xRF">
                             <color key="tintColor" red="0.1843137255" green="0.070588235289999995" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="brokenCount" destination="Kl8-7q-YHk" id="oll-J1-A4Z"/>
-                        <outlet property="calendar" destination="ftJ-Nt-RbU" id="Hpy-Pp-7Co"/>
-                        <outlet property="disturbCount" destination="Kl8-7q-YHk" id="me7-Yk-Sd7"/>
+                        <outlet property="calendar" destination="ftJ-Nt-RbU" id="fuk-WP-UYN"/>
                         <outlet property="focusTimeForThisMonth" destination="xhi-xc-n7H" id="TOe-6g-8KN"/>
                         <outlet property="followeName" destination="EQi-IH-8mn" id="Yks-x7-7Gk"/>
                         <outlet property="follwerDesciption" destination="96V-oz-XwE" id="iug-EX-PXO"/>
                         <outlet property="imgae" destination="dXA-IP-0ev" id="3mH-fy-4Um"/>
-                        <outlet property="numberOfFollower" destination="oRj-OQ-YA7" id="QTH-sB-R2d"/>
-                        <outlet property="sumOfTime" destination="nic-F5-BNd" id="S2P-oX-hOX"/>
+                        <outlet property="numberOfFollwer" destination="vgL-0o-owb" id="gM5-NQ-EXg"/>
                         <outlet property="todayFocusTime" destination="nic-F5-BNd" id="cX6-wR-0Fh"/>
                     </connections>
                 </viewController>
@@ -1370,6 +1374,7 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="bitcoinsign.circle" catalog="system" width="128" height="121"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>

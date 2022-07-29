@@ -9,6 +9,7 @@ import UIKit
 
 class FollowerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tapFollwerPage: UIButton!
     @IBOutlet weak var follwerImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
 //    @IBOutlet weak var totalTimeLabel: UILabel!

@@ -25,12 +25,11 @@ class FollowingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         follwerTableView.dataSource = self
         follwerTableView.delegate = self
 //        followerTableViewAutoLayout()
         follwerTableView.register(UINib(nibName: "FollowerTableViewCell", bundle: .main), forCellReuseIdentifier: "FollowerTableViewCell")
-        follwerTableView.allowsSelection
+        follwerTableView.allowsSelection = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +64,15 @@ class FollowingViewController: UIViewController {
 //}
 
 extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
+
+        guard let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FollwersPageViewController") as? FollwersPageViewController else {return}
+            self.navigationController?.pushViewController(ViewController, animated: true)    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return follwerDataModel.count
     }
@@ -81,18 +89,13 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
         cell.userNameLabel.text = followerName
 //        cell.disturbCountLabel.text = String(brokenCount) + "초"
 //        cell.totalTimeLabel.text = String(todayFocusTime) + "회"
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 100
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+          
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -112,3 +115,4 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
 }
+// 선택되면 페이지 넘어가고 넘어간 페이지에서 데이터 가져오기

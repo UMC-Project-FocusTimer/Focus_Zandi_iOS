@@ -29,7 +29,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USERNAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8U-np-1e8">
-                        <rect key="frame" x="118" y="31" width="136" height="58"/>
+                        <rect key="frame" x="118" y="45" width="136" height="30"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -45,20 +45,19 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="w8U-np-1e8" firstAttribute="leading" secondItem="drb-Aj-zNK" secondAttribute="trailing" constant="8" symbolic="YES" id="3LQ-wU-t07"/>
-                    <constraint firstItem="w8U-np-1e8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="31" id="8Cj-2z-9gl"/>
-                    <constraint firstAttribute="bottom" secondItem="w8U-np-1e8" secondAttribute="bottom" constant="32" id="9uj-cV-CwH"/>
+                    <constraint firstItem="Lcr-UY-kps" firstAttribute="centerY" secondItem="drb-Aj-zNK" secondAttribute="centerY" id="4vu-Jk-pcX"/>
                     <constraint firstItem="drb-Aj-zNK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="JXQ-DU-oZa"/>
                     <constraint firstAttribute="bottom" secondItem="drb-Aj-zNK" secondAttribute="bottom" constant="10" id="Uya-Ed-oZh"/>
-                    <constraint firstItem="Lcr-UY-kps" firstAttribute="centerY" secondItem="w8U-np-1e8" secondAttribute="centerY" id="num-d1-E67"/>
+                    <constraint firstAttribute="trailing" secondItem="Lcr-UY-kps" secondAttribute="trailing" constant="20" symbolic="YES" id="YfG-EQ-TFh"/>
+                    <constraint firstItem="w8U-np-1e8" firstAttribute="leading" secondItem="drb-Aj-zNK" secondAttribute="trailing" constant="8" symbolic="YES" id="dgg-Sc-0Eg"/>
                     <constraint firstItem="drb-Aj-zNK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="oeU-JQ-Gct"/>
-                    <constraint firstItem="w8U-np-1e8" firstAttribute="centerY" secondItem="drb-Aj-zNK" secondAttribute="centerY" id="rQX-hj-QkL"/>
-                    <constraint firstAttribute="trailing" secondItem="Lcr-UY-kps" secondAttribute="trailing" constant="20" symbolic="YES" id="u5b-OG-kqQ"/>
+                    <constraint firstItem="w8U-np-1e8" firstAttribute="centerY" secondItem="drb-Aj-zNK" secondAttribute="centerY" id="omy-Xt-lOY"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="follwerImage" destination="drb-Aj-zNK" id="tQm-Mw-n8x"/>
+                <outlet property="tapFollwerPage" destination="Lcr-UY-kps" id="vQ6-DU-lFL"/>
                 <outlet property="userNameLabel" destination="w8U-np-1e8" id="Jo8-5S-7R4"/>
             </connections>
             <point key="canvasLocation" x="148.55072463768118" y="184.48660714285714"/>
