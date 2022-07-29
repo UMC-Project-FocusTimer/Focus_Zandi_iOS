@@ -122,23 +122,6 @@ class TimerViewController: UIViewController {
         }
     }
     
-//MARK: - Google Login -> 유저정보 받아오기
-    
-//    @IBAction func google(_ sender: Any) {
-//        let config = GIDConfiguration(clientID: "795344605481-eh9clt5aracqv6avsfmr3ca611nemc7k.apps.googleusercontent.com")
-//
-//        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-//            if let error = error { return }
-//            guard let user = user else { return }
-//
-//
-//            self.idToken.text = user.authentication.idToken
-//            self.userId?.text = user.userID
-//            self.email?.text = user.profile?.email
-//            self.fullName?.text = user.profile?.name
-//
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

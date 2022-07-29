@@ -9,9 +9,10 @@ import UIKit
 
 class FollowerTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var follwerImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var totalTimeLabel: UILabel!
-    @IBOutlet weak var disturbCountLabel: UILabel!
+//    @IBOutlet weak var totalTimeLabel: UILabel!
+//    @IBOutlet weak var disturbCountLabel: UILabel!
     
     
     override func awakeFromNib() {

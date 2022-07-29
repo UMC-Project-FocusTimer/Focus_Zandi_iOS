@@ -11,26 +11,30 @@ var followingList: [String] = ["Song", "Onve", "Jason", "Yk"]
 var followerTime = ["00:03:30", "02:34:33", "07:55:34", "00:40:23"]
 var disturbCount = [3, 5, 6, 3]
 
+var follwerDataModel = FollwerDataModel ()
+
 class FollowingViewController: UIViewController {
     
-    let followerTableView: UITableView = {
-        let tableView = UITableView()
-        return tableView
-    }()
+//    let followerTableView: UITableView = {
+//        let tableView = UITableView()
+//        return tableView
+//    }()
     
 
+    @IBOutlet weak var follwerTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        followerTableView.dataSource = self
-        followerTableView.delegate = self
-        followerTableViewAutoLayout()
-        followerTableView.register(UINib(nibName: "FollowerTableViewCell", bundle: .main), forCellReuseIdentifier: "FollowerTableViewCell")
+        follwerTableView.dataSource = self
+        follwerTableView.delegate = self
+//        followerTableViewAutoLayout()
+        follwerTableView.register(UINib(nibName: "FollowerTableViewCell", bundle: .main), forCellReuseIdentifier: "FollowerTableViewCell")
+        follwerTableView.allowsSelection
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        AppearanceCheck(self)
     }
 
     
@@ -41,58 +45,42 @@ class FollowingViewController: UIViewController {
     
     @IBAction func pushReloadButton(_ sender: Any) {
         print("reload")
-        followerTableView.reloadData()
+        follwerTableView.reloadData()
     }
-    
-    //MARK: - 다크모드 변경함수 , 다른 VC의 함수 어떻게 호출?
-        
-        func AppearanceCheck(_ viewController: UIViewController) {
-            guard let appearance = UserDefaults.standard.string(forKey: "Appearance") else { return }
-            if appearance == "Dark" {
-                viewController.overrideUserInterfaceStyle = .dark
-                if #available(iOS 13.0, *) {
-                    UIApplication.shared.statusBarStyle = .lightContent
-                } else {
-                    UIApplication.shared.statusBarStyle = .default
-                }
-            } else {
-                viewController.overrideUserInterfaceStyle = .light
-                if #available(iOS 13.0, *) {
-                    UIApplication.shared.statusBarStyle = .darkContent
-                } else {
-                    UIApplication.shared.statusBarStyle = .default
-                }
-            }
-        }
-
 
 }
 
-extension FollowingViewController {
-    func followerTableViewAutoLayout() {
-        self.view.addSubview(followerTableView)
-        followerTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        followerTableView.separatorInset.left = 0
-        
-        followerTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        followerTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        followerTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        followerTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-    }
-}
+//extension FollowingViewController {
+//    func followerTableViewAutoLayout() {
+//        self.view.addSubview(followerTableView)
+//        followerTableView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        followerTableView.separatorInset.left = 0
+//
+//        followerTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+//        followerTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        followerTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+//        followerTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+//    }
+//}
 
 extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return followingList.count
+        return follwerDataModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FollowerTableViewCell", for: indexPath) as? FollowerTableViewCell else { return UITableViewCell() }
         
-        cell.userNameLabel.text = followingList[indexPath.row]
-        cell.disturbCountLabel.text = String(disturbCount[indexPath.row]) + "회"
-        cell.totalTimeLabel.text = followerTime[indexPath.row]
+        let followerName = follwerDataModel.getFolloweName(index: indexPath.row)
+        let brokenCount = follwerDataModel.getBrokenCount(index: indexPath.row)
+        let todayFocusTime = follwerDataModel.getTodayFocusTime(index: indexPath.row)
+        let image = follwerDataModel.getImage(index: indexPath.row)
+        
+        cell.follwerImage.image = UIImage(named: image)
+        cell.userNameLabel.text = followerName
+//        cell.disturbCountLabel.text = String(brokenCount) + "초"
+//        cell.totalTimeLabel.text = String(todayFocusTime) + "회"
         
         return cell
     }
@@ -120,7 +108,7 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
 
-        }
+        } // model에 remove함수 만들어서 가져오기 
     }
     
 }

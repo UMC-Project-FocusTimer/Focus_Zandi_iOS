@@ -28,6 +28,11 @@
 		9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */; };
 		9BA12E09288AB58B00038E40 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E08288AB58B00038E40 /* Topic.swift */; };
 		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
+		9BB9426B2893EA7E0005843B /* FollwersPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9426A2893EA7E0005843B /* FollwersPageViewController.swift */; };
+		9BB9426E2893EB7F0005843B /* FollwerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9426D2893EB7F0005843B /* FollwerInfo.swift */; };
+		9BB942702893EBF00005843B /* FollwerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9426F2893EBF00005843B /* FollwerDataModel.swift */; };
+		9BB942762893EC8A0005843B /* IMG_1394.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9BB942742893EC890005843B /* IMG_1394.JPG */; };
+		9BB942772893EC8A0005843B /* IMG_0518.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BB942752893EC8A0005843B /* IMG_0518.jpg */; };
 		9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */; };
 		9BEB43722887CB8F0097BD2B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB43712887CB8F0097BD2B /* Setting.swift */; };
 		9BEB43752887D0380097BD2B /* NewSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEB43742887D0380097BD2B /* NewSettingViewController.swift */; };
@@ -62,6 +67,13 @@
 		9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		9BA12E08288AB58B00038E40 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9BB9426A2893EA7E0005843B /* FollwersPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollwersPageViewController.swift; sourceTree = "<group>"; };
+		9BB9426D2893EB7F0005843B /* FollwerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollwerInfo.swift; sourceTree = "<group>"; };
+		9BB9426F2893EBF00005843B /* FollwerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollwerDataModel.swift; sourceTree = "<group>"; };
+		9BB942722893EC580005843B /* IMG_1482.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_1482.jpg; sourceTree = "<group>"; };
+		9BB942732893EC580005843B /* Vector 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vector 17.png"; sourceTree = "<group>"; };
+		9BB942742893EC890005843B /* IMG_1394.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_1394.JPG; path = ../../../IMG_1394.JPG; sourceTree = "<group>"; };
+		9BB942752893EC8A0005843B /* IMG_0518.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IMG_0518.jpg; path = ../../../IMG_0518.jpg; sourceTree = "<group>"; };
 		9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		9BEB43712887CB8F0097BD2B /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		9BEB43742887D0380097BD2B /* NewSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSettingViewController.swift; sourceTree = "<group>"; };
@@ -127,9 +139,9 @@
 				41091054286F396900D84B28 /* Assets.xcassets */,
 				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
 				41091059286F396900D84B28 /* Info.plist */,
+				9BB942712893EC530005843B /* TestImage */,
 				9BEBC03A28802CA5003D88D3 /* IMG_1482.jpg */,
 				9BEB43772887D0C10097BD2B /* Vector 17.png */,
-				4126463F2889366700DE9C78 /* zandiTime.png */,
 			);
 			path = TimerZandi;
 			sourceTree = "<group>";
@@ -147,6 +159,8 @@
 		4109106D286F4E2500D84B28 /* FollowerVC */ = {
 			isa = PBXGroup;
 			children = (
+				9BB9426C2893EB680005843B /* Model */,
+				9BB9426A2893EA7E0005843B /* FollwersPageViewController.swift */,
 				4109106E286F4E4C00D84B28 /* FollowingViewController.swift */,
 				41091070286F4E7600D84B28 /* FollowerTableViewCell.swift */,
 				41091071286F4E7600D84B28 /* FollowerTableViewCell.xib */,
@@ -204,6 +218,27 @@
 				9BEBC03728802963003D88D3 /* RealSettingViewController.swift */,
 			);
 			path = SettingVC;
+			sourceTree = "<group>";
+		};
+		9BB9426C2893EB680005843B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BB9426D2893EB7F0005843B /* FollwerInfo.swift */,
+				9BB9426F2893EBF00005843B /* FollwerDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9BB942712893EC530005843B /* TestImage */ = {
+			isa = PBXGroup;
+			children = (
+				9BB942752893EC8A0005843B /* IMG_0518.jpg */,
+				9BB942742893EC890005843B /* IMG_1394.JPG */,
+				9BB942722893EC580005843B /* IMG_1482.jpg */,
+				9BB942732893EC580005843B /* Vector 17.png */,
+				4126463F2889366700DE9C78 /* zandiTime.png */,
+			);
+			path = TestImage;
 			sourceTree = "<group>";
 		};
 		9BEB437D2887DEB80097BD2B /* ComponetSetting */ = {
@@ -283,6 +318,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BB942762893EC8A0005843B /* IMG_1394.JPG in Resources */,
+				9BB942772893EC8A0005843B /* IMG_0518.jpg in Resources */,
 				41091058286F396900D84B28 /* LaunchScreen.storyboard in Resources */,
 				9BEB43782887D0C20097BD2B /* Vector 17.png in Resources */,
 				9BEBC03B28802CA5003D88D3 /* IMG_1482.jpg in Resources */,
@@ -354,6 +391,7 @@
 				41091072286F4E7600D84B28 /* FollowerTableViewCell.swift in Sources */,
 				9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */,
 				4109104C286F396800D84B28 /* AppDelegate.swift in Sources */,
+				9BB9426E2893EB7F0005843B /* FollwerInfo.swift in Sources */,
 				9BEB43752887D0380097BD2B /* NewSettingViewController.swift in Sources */,
 				4126465C288957AF00DE9C78 /* ElementCollectionViewCell.swift in Sources */,
 				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
@@ -361,6 +399,8 @@
 				9BEBC03828802963003D88D3 /* RealSettingViewController.swift in Sources */,
 				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
 				4109104E286F396800D84B28 /* SceneDelegate.swift in Sources */,
+				9BB9426B2893EA7E0005843B /* FollwersPageViewController.swift in Sources */,
+				9BB942702893EBF00005843B /* FollwerDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
