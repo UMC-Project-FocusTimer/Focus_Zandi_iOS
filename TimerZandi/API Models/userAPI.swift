@@ -15,3 +15,13 @@ struct UserAPI: Codable {
     let total_time: Int
     let timeStamp: String
 }
+
+struct Pram: Codable {
+    let profileObj: ProfileObj1
+}
+
+struct ProfileObj1: Codable {
+    var userToken: String
+    var email: String
+    var fullName: String
+}

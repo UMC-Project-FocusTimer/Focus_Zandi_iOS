@@ -25,13 +25,6 @@
                                     <action selector="tapGoogleLogin:" destination="9NI-RR-238" eventType="touchUpInside" id="AKo-cj-r01"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEg-FT-0Dq">
-                                <rect key="frame" x="186" y="395" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gI-nE-tSu">
                                 <rect key="frame" x="186" y="438" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -61,7 +54,6 @@
                     <connections>
                         <outlet property="email" destination="VeN-AN-BwS" id="cd7-tZ-JLw"/>
                         <outlet property="fullName" destination="jse-bk-SZO" id="iAO-dm-S38"/>
-                        <outlet property="idToken" destination="xEg-FT-0Dq" id="aFc-tb-5bS"/>
                         <outlet property="userToken" destination="5gI-nE-tSu" id="s6b-Vi-dd9"/>
                     </connections>
                 </viewController>

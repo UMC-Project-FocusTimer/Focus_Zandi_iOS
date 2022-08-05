@@ -25,6 +25,7 @@
 		91DA02635933FC8EB26A49C4 /* Pods_TimerZandi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */; };
 		9B62F45E2892B48E00AB88DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62F45D2892B48E00AB88DD /* LoginViewController.swift */; };
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
+		9B9842F5289CAAFB002E6561 /* Real_API_Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9842F4289CAAFB002E6561 /* Real_API_Caller.swift */; };
 		9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */; };
 		9BA12E09288AB58B00038E40 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E08288AB58B00038E40 /* Topic.swift */; };
 		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
@@ -64,6 +65,7 @@
 		67C569C28CBEC319A394090B /* Pods_TimerZandi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimerZandi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B62F45D2892B48E00AB88DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		9B9842F4289CAAFB002E6561 /* Real_API_Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Real_API_Caller.swift; sourceTree = "<group>"; };
 		9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		9BA12E08288AB58B00038E40 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -132,10 +134,10 @@
 				4109106D286F4E2500D84B28 /* FollowerVC */,
 				4109106C286F4E0800D84B28 /* TimerVC */,
 				9BEB437D2887DEB80097BD2B /* ComponetSetting */,
+				9BC7CC20289CAA980039E68B /* Server */,
 				4109104B286F396800D84B28 /* AppDelegate.swift */,
 				4109104D286F396800D84B28 /* SceneDelegate.swift */,
 				41091051286F396800D84B28 /* Main.storyboard */,
-				9B62F45D2892B48E00AB88DD /* LoginViewController.swift */,
 				41091054286F396900D84B28 /* Assets.xcassets */,
 				41091056286F396900D84B28 /* LaunchScreen.storyboard */,
 				41091059286F396900D84B28 /* Info.plist */,
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				41091078286F510D00D84B28 /* API Caller.swift */,
+				9B9842F4289CAAFB002E6561 /* Real_API_Caller.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -213,8 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				9BEB43742887D0380097BD2B /* NewSettingViewController.swift */,
-				9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */,
 				9BD13C6E287AA6F6000A7915 /* ThemeTableViewCell.swift */,
+				9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */,
 				9BEBC03728802963003D88D3 /* RealSettingViewController.swift */,
 			);
 			path = SettingVC;
@@ -239,6 +242,15 @@
 				4126463F2889366700DE9C78 /* zandiTime.png */,
 			);
 			path = TestImage;
+			sourceTree = "<group>";
+		};
+		9BC7CC20289CAA980039E68B /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				9B62F45D2892B48E00AB88DD /* LoginViewController.swift */,
+			);
+			name = Server;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9BEB437D2887DEB80097BD2B /* ComponetSetting */ = {
@@ -395,6 +407,7 @@
 				9BEB43752887D0380097BD2B /* NewSettingViewController.swift in Sources */,
 				4126465C288957AF00DE9C78 /* ElementCollectionViewCell.swift in Sources */,
 				41091076286F50E600D84B28 /* userAPI.swift in Sources */,
+				9B9842F5289CAAFB002E6561 /* Real_API_Caller.swift in Sources */,
 				9BD13C6F287AA6F6000A7915 /* ThemeTableViewCell.swift in Sources */,
 				9BEBC03828802963003D88D3 /* RealSettingViewController.swift in Sources */,
 				9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */,
