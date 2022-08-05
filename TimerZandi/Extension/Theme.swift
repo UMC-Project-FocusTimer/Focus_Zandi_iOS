@@ -1,7 +1,6 @@
 import UIKit
 
 // MARK: - Themes
-
 let themes = [
     [UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1)], // 연한 빨강
     [UIColor(red: 0.938, green: 0.638, blue: 0.638, alpha: 1)], // 다홍

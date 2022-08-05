@@ -33,10 +33,19 @@ class FollowingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
+
         super.viewWillAppear(animated)
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1)]
+        
+        if THEME_KEY != 0 {
+        let textAttributes = [NSAttributedString.Key.foregroundColor:themes[THEME_KEY][0]]
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-    
+            navigationController?.navigationBar.titleTextAttributes = textAttributes
+        } else {
+            let textAttributes = [NSAttributedString.Key.foregroundColor:themes[8][0]]
+            navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+            navigationController?.navigationBar.titleTextAttributes = textAttributes
+        }
     }
 
     
@@ -73,7 +82,9 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
         UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
 
         guard let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FollwersPageViewController") as? FollwersPageViewController else {return}
-            self.navigationController?.pushViewController(ViewController, animated: true)    }
+            self.navigationController?.pushViewController(ViewController, animated: true)
+        
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

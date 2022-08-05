@@ -61,6 +61,15 @@ class FollwersPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.getInfoFromModel()
+        
+        var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
+
+        if THEME_KEY != 0 {
+        calendar.backgroundColor = themes[THEME_KEY][0]
+        // UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1)
+        } else {
+        calendar.backgroundColor = themes[8][0]
+        }
     }
     
     func fontSize() {
@@ -77,20 +86,20 @@ class FollwersPageViewController: UIViewController {
     func calendarColor() {
 
         // 달력의 평일 날짜 색깔
-        calendar.appearance.titleDefaultColor = .black
+        self.calendar.appearance.titleDefaultColor = .black
 
         // 달력의 토,일 날짜 색깔
-        calendar.appearance.titleWeekendColor = .red
+        self.calendar.appearance.titleWeekendColor = .red
 
-        calendar.appearance.headerTitleColor =  UIColor.init(red: 95/256, green: 127/256, blue: 35/256, alpha: 1)
+        self.calendar.appearance.headerTitleColor = .black
         // 달력의 맨 위의 년도, 월의 색깔
-        
-        calendar.appearance.weekdayTextColor = UIColor.init(red: 224/256, green: 236/256, blue: 212/256, alpha: 1)
-        // 달력의 요일 글자 색깔
-        calendar.appearance.weekdayTextColor = .black
-        
+        self.calendar.appearance.weekdayTextColor = UIColor.init(red: 224/256, green: 236/256, blue: 212/256, alpha: 1)
 
+        // 달력의 요일 글자 색깔
+        self.calendar.appearance.weekdayTextColor = .black
         
+        calendar.cornerRadius = 15
+
     }
     
     func languageSet() {

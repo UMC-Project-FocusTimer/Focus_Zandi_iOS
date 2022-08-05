@@ -21,16 +21,13 @@ class RealSettingViewController: UIViewController {
         super.viewDidLoad()
         calendar.delegate = self
         calendar.dataSource = self
-        
-        self.calendarColor()
-        self.languageSet()
-        self.fontSize()
-        self.calendar.appearance.borderRadius = 0.5
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
+
+        print(THEME_KEY)
         let sumTime = UserDefaults.standard.integer(forKey: sumTime)
         
         self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
@@ -48,6 +45,16 @@ class RealSettingViewController: UIViewController {
             calendar.appearance.todayColor = .lightGray
         }
         
+        self.calendarColor()
+        self.languageSet()
+        self.fontSize()
+        self.calendar.appearance.borderRadius = 0.5
+        if THEME_KEY != 0 {
+        calendar.backgroundColor = themes[THEME_KEY][0]
+        // UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1)
+        } else {
+        calendar.backgroundColor = themes[8][0]
+        }
         calendar.cornerRadius = 15
         
     } // 지정한 날의 색 변경
@@ -76,7 +83,7 @@ class RealSettingViewController: UIViewController {
         // 달력의 토,일 날짜 색깔
         calendar.appearance.titleWeekendColor = .red
 
-        calendar.appearance.headerTitleColor =  UIColor.init(red: 95/256, green: 127/256, blue: 35/256, alpha: 1)
+        calendar.appearance.headerTitleColor =  .black
         
         // 달력의 맨 위의 년도, 월의 색깔
         calendar.appearance.weekdayTextColor = UIColor.init(red: 224/256, green: 236/256, blue: 212/256, alpha: 1)

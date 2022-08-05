@@ -7,13 +7,29 @@
 
 import UIKit
 
-var color = [UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1),
-             UIColor(red: 0.938, green: 0.638, blue: 0.638, alpha: 1),
-             UIColor(red: 0.962, green: 0.851, blue: 0.719, alpha: 1),
-             UIColor(red: 0.938, green: 0.888, blue: 0.651, alpha: 1),
-             UIColor(red: 0.742, green: 0.859, blue: 0.925, alpha: 1),
-             UIColor(red: 0.805, green: 0.829, blue: 0.954, alpha: 1)]
-var colorName = ["Pink", "Warm Pink", "Light Pink", "Light Yellow", "Sky Blue", "Blue"]
+var color = [themes[0][0],
+             themes[1][0],
+             themes[2][0],
+             themes[3][0],
+             themes[4][0],
+             themes[5][0],
+             themes[6][0],
+             themes[7][0],
+             themes[8][0],
+             themes[9][0],
+
+            ]
+var colorName = ["Light Red",
+                 "Crimson",
+                 "Light Orange",
+                 "Light Yellow",
+                 "Light Green",
+                 "Sky",
+                 "Deep Blue",
+                 "Purple",
+                 "Pink",
+                 "Black"
+                ]
 
 var character = [UIImage(named: "jjangu"), UIImage(named: "puu")]
 var characterName = ["짱구", "푸"]
@@ -32,14 +48,14 @@ class MarketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "스토어"
+        self.navigationItem.title = "Store"
+
         normalThemeCollectionView.delegate = self
         normalThemeCollectionView.dataSource = self
         characterThemeCollectionView.delegate = self
         characterThemeCollectionView.dataSource = self
         normalThemeCollectionView.register(UINib(nibName: "ElementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ElementCollectionViewCell")
         characterThemeCollectionView.register(UINib(nibName: "ElementCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ElementCollectionViewCell")
-        
         
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 100, height: 150)
@@ -88,14 +104,16 @@ extension MarketViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard let nextVC = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
             
             nextVC.theme = indexPath.row
-            
+            UserDefaults.standard.setValue(indexPath.row, forKey: "THEME_KEY")
             self.present(nextVC, animated: true)
         } else if collectionView == characterThemeCollectionView {
             
             guard let nextVC = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
             
             nextVC.theme = indexPath.row + 100
+            nextVC.theme_key = indexPath.row
             
+                        
             self.present(nextVC, animated: true)
         }
     }

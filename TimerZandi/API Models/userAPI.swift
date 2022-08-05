@@ -25,3 +25,11 @@ struct ProfileObj1: Codable {
     var email: String
     var fullName: String
 }
+
+
+struct getInfo_login: Codable {
+    var userToken: String
+    var email: String
+    var fullName: String
+    var memo: String
+}
