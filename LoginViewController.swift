@@ -11,7 +11,6 @@ import Alamofire
 
 class LoginViewController: UIViewController {
 
-//    @IBOutlet weak var idToken: UILabel!
     @IBOutlet weak var userToken: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var fullName: UILabel!

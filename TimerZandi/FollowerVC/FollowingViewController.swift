@@ -34,6 +34,9 @@ class FollowingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor(red: 0.962, green: 0.832, blue: 0.832, alpha: 1)]
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+    
     }
 
     

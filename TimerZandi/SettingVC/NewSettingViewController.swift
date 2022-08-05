@@ -13,6 +13,10 @@ class NewSettingViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func tapBackButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func tapLogout(_ sender: Any) {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") else {return}
               viewController.modalPresentationStyle = .fullScreen // 기본적인 모달형식(밑에서 올라오지만 꽉 차지 않음)을 Fullscreen으로 변경 !

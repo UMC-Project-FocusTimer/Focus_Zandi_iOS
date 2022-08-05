@@ -26,6 +26,18 @@
 		9B62F45E2892B48E00AB88DD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B62F45D2892B48E00AB88DD /* LoginViewController.swift */; };
 		9B7ABB7C286F3C140057F536 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7ABB7B286F3C140057F536 /* TimerViewController.swift */; };
 		9B9842F5289CAAFB002E6561 /* Real_API_Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9842F4289CAAFB002E6561 /* Real_API_Caller.swift */; };
+		9B9842FB289CE800002E6561 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B9842FA289CE800002E6561 /* launchScreen.png */; };
+		9B9842FE289CE8B3002E6561 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9842FD289CE8B3002E6561 /* Theme.swift */; };
+		9B98430B289CEDD4002E6561 /* Vector 30.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984301289CEDD4002E6561 /* Vector 30.png */; };
+		9B98430C289CEDD4002E6561 /* Vector 29.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984302289CEDD4002E6561 /* Vector 29.png */; };
+		9B98430D289CEDD4002E6561 /* Vector 32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984303289CEDD4002E6561 /* Vector 32.png */; };
+		9B98430E289CEDD4002E6561 /* Vector 35.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984304289CEDD4002E6561 /* Vector 35.png */; };
+		9B98430F289CEDD4002E6561 /* Vector 37.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984305289CEDD4002E6561 /* Vector 37.png */; };
+		9B984310289CEDD4002E6561 /* Vector 28.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984306289CEDD4002E6561 /* Vector 28.png */; };
+		9B984311289CEDD4002E6561 /* Vector 36.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984307289CEDD4002E6561 /* Vector 36.png */; };
+		9B984312289CEDD4002E6561 /* Vector 33.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984308289CEDD4002E6561 /* Vector 33.png */; };
+		9B984313289CEDD4002E6561 /* Vector 31.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B984309289CEDD4002E6561 /* Vector 31.png */; };
+		9B984314289CEDD4002E6561 /* Vector 34.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B98430A289CEDD4002E6561 /* Vector 34.png */; };
 		9BA12E07288AB50500038E40 /* ClassTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */; };
 		9BA12E09288AB58B00038E40 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA12E08288AB58B00038E40 /* Topic.swift */; };
 		9BAC5BF82877D22F00CC6147 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */; };
@@ -66,6 +78,18 @@
 		9B62F45D2892B48E00AB88DD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B7ABB7B286F3C140057F536 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		9B9842F4289CAAFB002E6561 /* Real_API_Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Real_API_Caller.swift; sourceTree = "<group>"; };
+		9B9842FA289CE800002E6561 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen.png; path = ../../../launchScreen.png; sourceTree = "<group>"; };
+		9B9842FD289CE8B3002E6561 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9B984301289CEDD4002E6561 /* Vector 30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 30.png"; path = "../../../UMC (2) 2/Vector 30.png"; sourceTree = "<group>"; };
+		9B984302289CEDD4002E6561 /* Vector 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 29.png"; path = "../../../UMC (2) 2/Vector 29.png"; sourceTree = "<group>"; };
+		9B984303289CEDD4002E6561 /* Vector 32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 32.png"; path = "../../../UMC (2) 2/Vector 32.png"; sourceTree = "<group>"; };
+		9B984304289CEDD4002E6561 /* Vector 35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 35.png"; path = "../../../UMC (2) 2/Vector 35.png"; sourceTree = "<group>"; };
+		9B984305289CEDD4002E6561 /* Vector 37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 37.png"; path = "../../../UMC (2) 2/Vector 37.png"; sourceTree = "<group>"; };
+		9B984306289CEDD4002E6561 /* Vector 28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 28.png"; path = "../../../UMC (2) 2/Vector 28.png"; sourceTree = "<group>"; };
+		9B984307289CEDD4002E6561 /* Vector 36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 36.png"; path = "../../../UMC (2) 2/Vector 36.png"; sourceTree = "<group>"; };
+		9B984308289CEDD4002E6561 /* Vector 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 33.png"; path = "../../../UMC (2) 2/Vector 33.png"; sourceTree = "<group>"; };
+		9B984309289CEDD4002E6561 /* Vector 31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 31.png"; path = "../../../UMC (2) 2/Vector 31.png"; sourceTree = "<group>"; };
+		9B98430A289CEDD4002E6561 /* Vector 34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Vector 34.png"; path = "../../../UMC (2) 2/Vector 34.png"; sourceTree = "<group>"; };
 		9BA12E06288AB50400038E40 /* ClassTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassTableViewCell.swift; sourceTree = "<group>"; };
 		9BA12E08288AB58B00038E40 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		9BAC5BF72877D22F00CC6147 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +151,8 @@
 		4109104A286F396800D84B28 /* TimerZandi */ = {
 			isa = PBXGroup;
 			children = (
+				9B9842FF289CEDB2002E6561 /* VectorImage */,
+				9B9842FC289CE8A1002E6561 /* Extension */,
 				410849C32889316E007C4406 /* MarketVC */,
 				9BAC5BF42877D20800CC6147 /* SettingVC */,
 				41091077286F50FD00D84B28 /* Methods */,
@@ -212,6 +238,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B9842FC289CE8A1002E6561 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9B9842FD289CE8B3002E6561 /* Theme.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9B9842FF289CEDB2002E6561 /* VectorImage */ = {
+			isa = PBXGroup;
+			children = (
+				9B984306289CEDD4002E6561 /* Vector 28.png */,
+				9B984302289CEDD4002E6561 /* Vector 29.png */,
+				9B984301289CEDD4002E6561 /* Vector 30.png */,
+				9B984309289CEDD4002E6561 /* Vector 31.png */,
+				9B984303289CEDD4002E6561 /* Vector 32.png */,
+				9B984308289CEDD4002E6561 /* Vector 33.png */,
+				9B98430A289CEDD4002E6561 /* Vector 34.png */,
+				9B984304289CEDD4002E6561 /* Vector 35.png */,
+				9B984307289CEDD4002E6561 /* Vector 36.png */,
+				9B984305289CEDD4002E6561 /* Vector 37.png */,
+			);
+			path = VectorImage;
+			sourceTree = "<group>";
+		};
 		9BAC5BF42877D20800CC6147 /* SettingVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +286,7 @@
 		9BB942712893EC530005843B /* TestImage */ = {
 			isa = PBXGroup;
 			children = (
+				9B9842FA289CE800002E6561 /* launchScreen.png */,
 				9BB942752893EC8A0005843B /* IMG_0518.jpg */,
 				9BB942742893EC890005843B /* IMG_1394.JPG */,
 				9BB942722893EC580005843B /* IMG_1482.jpg */,
@@ -332,14 +384,25 @@
 			files = (
 				9BB942762893EC8A0005843B /* IMG_1394.JPG in Resources */,
 				9BB942772893EC8A0005843B /* IMG_0518.jpg in Resources */,
+				9B984312289CEDD4002E6561 /* Vector 33.png in Resources */,
 				41091058286F396900D84B28 /* LaunchScreen.storyboard in Resources */,
 				9BEB43782887D0C20097BD2B /* Vector 17.png in Resources */,
 				9BEBC03B28802CA5003D88D3 /* IMG_1482.jpg in Resources */,
 				41091055286F396900D84B28 /* Assets.xcassets in Resources */,
 				4126465D288957AF00DE9C78 /* ElementCollectionViewCell.xib in Resources */,
 				412646402889366700DE9C78 /* zandiTime.png in Resources */,
+				9B9842FB289CE800002E6561 /* launchScreen.png in Resources */,
+				9B984314289CEDD4002E6561 /* Vector 34.png in Resources */,
 				41091053286F396800D84B28 /* Main.storyboard in Resources */,
+				9B984313289CEDD4002E6561 /* Vector 31.png in Resources */,
+				9B984311289CEDD4002E6561 /* Vector 36.png in Resources */,
+				9B984310289CEDD4002E6561 /* Vector 28.png in Resources */,
+				9B98430B289CEDD4002E6561 /* Vector 30.png in Resources */,
 				41091073286F4E7600D84B28 /* FollowerTableViewCell.xib in Resources */,
+				9B98430D289CEDD4002E6561 /* Vector 32.png in Resources */,
+				9B98430F289CEDD4002E6561 /* Vector 37.png in Resources */,
+				9B98430E289CEDD4002E6561 /* Vector 35.png in Resources */,
+				9B98430C289CEDD4002E6561 /* Vector 29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +458,7 @@
 				9B62F45E2892B48E00AB88DD /* LoginViewController.swift in Sources */,
 				9BEB43722887CB8F0097BD2B /* Setting.swift in Sources */,
 				41C4EAE228896ECD00BD51F3 /* DetailViewController.swift in Sources */,
+				9B9842FE289CE8B3002E6561 /* Theme.swift in Sources */,
 				41091079286F510D00D84B28 /* API Caller.swift in Sources */,
 				416F08FF2890E1C4006CACF9 /* MarketViewController.swift in Sources */,
 				9BA12E09288AB58B00038E40 /* Topic.swift in Sources */,

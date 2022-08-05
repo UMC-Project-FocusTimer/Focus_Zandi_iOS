@@ -61,23 +61,6 @@ class FollwersPageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.getInfoFromModel()
-//        let sumTime = UserDefaults.standard.integer(forKey: sumTime)
-//
-//        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
-//        self.sumOfTime.text = String(sumTime) + " 초"
-//
-//        if sumTime < 5 && sumTime > 0{
-//            calendar.appearance.todayColor = UIColor(red: 155/255, green: 233/255, blue: 168/255, alpha: 1.00)
-//        } else if sumTime >= 5 && sumTime < 10 {
-//            calendar.appearance.todayColor = UIColor(red: 64/255, green: 196/255, blue: 99/255, alpha: 1.00)
-//        } else if sumTime >= 10 && sumTime < 15 {
-//            calendar.appearance.todayColor = UIColor(red: 48/255, green: 161/255, blue: 78/255, alpha: 1.00)
-//        } else if sumTime >= 15 {
-//            calendar.appearance.todayColor = UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)
-//        } else {
-//            calendar.appearance.todayColor = .lightGray
-//        }
-//
     }
     
     func fontSize() {
@@ -100,13 +83,13 @@ class FollwersPageViewController: UIViewController {
         calendar.appearance.titleWeekendColor = .red
 
         calendar.appearance.headerTitleColor =  UIColor.init(red: 95/256, green: 127/256, blue: 35/256, alpha: 1)
-        
         // 달력의 맨 위의 년도, 월의 색깔
+        
         calendar.appearance.weekdayTextColor = UIColor.init(red: 224/256, green: 236/256, blue: 212/256, alpha: 1)
-
         // 달력의 요일 글자 색깔
         calendar.appearance.weekdayTextColor = .black
         
+
         
     }
     

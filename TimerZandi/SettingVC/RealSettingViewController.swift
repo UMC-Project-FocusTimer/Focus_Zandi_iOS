@@ -48,25 +48,14 @@ class RealSettingViewController: UIViewController {
             calendar.appearance.todayColor = .lightGray
         }
         
+        calendar.cornerRadius = 15
+        
     } // 지정한 날의 색 변경
     
     @IBAction func reLoadButton(_ sender: Any) {
             debugPrint("새로고침합니다.")
     }
-    
-//    func headerSet() {
-//        calendar.appearance.headerTitleColor = UIColor.link
-//
-//        // 헤더의 폰트 정렬 설정
-//        // .center & .left & .justified & .natural & .right
-//        calendar.appearance.headerTitleAlignment = .left
-//
-//        // 헤더 높이 설정
-//        calendar.headerHeight = 45
-//
-//        // 헤더 양 옆(전달 & 다음 달) 글씨 투명도
-//        calendar.appearance.headerMinimumDissolvedAlpha = 0.0
-//    }
+
     
     func fontSize() {
         // 헤더 폰트 설정
