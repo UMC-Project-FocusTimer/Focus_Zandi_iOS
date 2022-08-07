@@ -11,7 +11,7 @@ import Alamofire
 
 //MARK: - GET
     
-    func getTest(accessToken:String, refToken:String) {
+    func getShowMember(accessToken:String, refToken:String, onCompleted: @escaping (Result<showMember,Error>)-> Void) {
         let url = "https://aquistion.shop/showMember"
         AF.request(url,
                    method:.get, // 어떤 통신방식을 사용할 지
@@ -19,12 +19,32 @@ import Alamofire
                    encoding: URLEncoding.default, // URL을 통해 접근할 것이니 URLEncoding
                    headers: ["ACCESS_TOKEN":accessToken, "REFRESH_TOKEN":refToken]) // json 형식으로 받게끔
         .validate(statusCode: 200..<500) // 에러여부
-        .responseJSON{
-            (json) in debugPrint(json)
-        } // 정보를 받는 부분
+        .responseData(completionHandler: { response in // 응답데이터를 받을수 있는 메소드를 Chaning
+            switch response.result { // 요청에 대한 응답 결과
+            case let .success(data): // 요청 O
+                do { // 요청 O 응답 O
+                    let decoder = JSONDecoder()
+                    // json 객체에서 data 유형의 인스턴스로 디코딩하는 객체! Decodable, Codable 프로토콜을 준수하는 라인!
+                    let result = try decoder.decode(showMember.self, from: data)
+                    // 서버에서 전달받은 data를 매핑시켜줄 객체타입으로 CityCovideOverview를 설정
+                    onCompleted(.success(result))
+
+                    // 응답이 완료되면. Completion Handler가 호출됨 -> result를 넘겨받아 data가 구조체로 매핑
+                } catch { // 요청 O 응답 X
+                    print("error")
+                    onCompleted(.failure(error))
+
+                    // 응답을 못받으면 error를 받음
+                }
+                
+            case let .failure(error): // 요청 X
+                onCompleted(.failure(error))
+            }
+        })
         
     }
     
+
 //MARK: - POST
     
 func postTestnd(userToken:String, email:String, fullName: String) {
@@ -72,7 +92,9 @@ func postTestnd(userToken:String, email:String, fullName: String) {
                 if let ACCESS_TOKEN = jsonObject["accessToken"],
                     let REF_TOKEN = jsonObject["refToken"]
                 {
-                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
+//                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
+                    accessToken = ACCESS_TOKEN as! String
+                    refToken = REF_TOKEN as! String
                 }
                 
             } catch {

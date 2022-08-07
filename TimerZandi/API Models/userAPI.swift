@@ -7,6 +7,9 @@
 
 import UIKit
 
+public var accessToken = ""
+public var refToken = ""
+
 struct UserAPI: Codable {
     let memberId: Int
     let recordId: Int
@@ -27,9 +30,10 @@ struct ProfileObj1: Codable {
 }
 
 
-struct getInfo_login: Codable {
+struct showMember: Codable {
     var userToken: String
     var email: String
     var fullName: String
-    var memo: String
+    var memo: String  // null
+    var numberOfFollowers : Int
 }
