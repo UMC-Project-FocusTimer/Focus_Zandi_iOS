@@ -29,11 +29,21 @@ struct ProfileObj1: Codable {
     var fullName: String
 }
 
-
 struct showMember: Codable {
     var userToken: String
     var email: String
     var fullName: String
     var memo: String  // null
     var numberOfFollowers : Int
+}
+
+struct MonthRecords: Codable {
+    let monthRecord: [MonthRecord]
+}
+
+// MARK: - MonthRecord
+struct MonthRecord: Codable {
+    let concentratedTime: Int
+    let brokenCount: Int
+    let date: String
 }

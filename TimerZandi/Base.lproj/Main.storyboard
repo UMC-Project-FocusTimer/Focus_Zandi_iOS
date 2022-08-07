@@ -716,6 +716,9 @@
                     <connections>
                         <outlet property="calendar" destination="i5F-EI-Avt" id="vGF-ry-p6q"/>
                         <outlet property="disturbCount" destination="qNE-nd-HAE" id="0OL-tA-Uik"/>
+                        <outlet property="fullName" destination="dhh-qa-CC3" id="wsJ-0P-BLj"/>
+                        <outlet property="memo" destination="TAl-sh-c63" id="ULd-RK-HmK"/>
+                        <outlet property="numberOfFollwers" destination="i5x-UB-JGy" id="1AG-jK-lNJ"/>
                         <outlet property="sumOfTime" destination="IbP-PX-v4a" id="A2y-Sf-uYU"/>
                     </connections>
                 </viewController>

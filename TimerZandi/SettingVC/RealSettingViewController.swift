@@ -17,6 +17,10 @@ class RealSettingViewController: UIViewController {
     
     let dateFormatter = DateFormatter()
     
+    @IBOutlet weak var numberOfFollwers: UILabel!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var memo: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
@@ -29,7 +33,27 @@ class RealSettingViewController: UIViewController {
             switch result {
             case let .success(result):
          
-                print(result.)
+                DispatchQueue.main.async {
+                    self.fullName.text = result.fullName
+                    self.memo.text = result.memo
+                    self.numberOfFollwers.text = String(result.numberOfFollowers)
+                }
+                
+            case let .failure(error):
+                debugPrint("error \(error)")
+            }
+        })
+        
+        getMonthRecords(accessToken: accessToken, refToken: refToken, onCompleted: {
+            [weak self] result in // 순환 참조 방지, 전달인자로 result
+            guard let self = self else { return } // 일시적으로 strong ref가 되게
+     
+            switch result {
+            case let .success(result):
+         
+                DispatchQueue.main.async {
+                    print(result)
+                }
                 
             case let .failure(error):
                 debugPrint("error \(error)")
