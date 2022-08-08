@@ -719,6 +719,7 @@
                         <outlet property="fullName" destination="dhh-qa-CC3" id="wsJ-0P-BLj"/>
                         <outlet property="memo" destination="TAl-sh-c63" id="ULd-RK-HmK"/>
                         <outlet property="numberOfFollwers" destination="i5x-UB-JGy" id="1AG-jK-lNJ"/>
+                        <outlet property="sumOfThisMonth" destination="G3P-Z9-CTW" id="bIV-Um-Xqp"/>
                         <outlet property="sumOfTime" destination="IbP-PX-v4a" id="A2y-Sf-uYU"/>
                     </connections>
                 </viewController>

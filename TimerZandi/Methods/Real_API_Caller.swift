@@ -63,7 +63,7 @@ import Alamofire
                     let result = try decoder.decode(MonthRecords.self, from: data)
                     // 서버에서 전달받은 data를 매핑시켜줄 객체타입으로 CityCovideOverview를 설정
                     onCompleted(.success(result))
-
+                    print(result)
                     // 응답이 완료되면. Completion Handler가 호출됨 -> result를 넘겨받아 data가 구조체로 매핑
                 } catch { // 요청 O 응답 X
                     print("error")

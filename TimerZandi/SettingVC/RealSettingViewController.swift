@@ -16,6 +16,11 @@ class RealSettingViewController: UIViewController {
     @IBOutlet weak var sumOfTime: UILabel!
     
     let dateFormatter = DateFormatter()
+    let matchDateForZandi = DateFormatter()
+    let nowDate = Date()
+    var eventsArray:[String] = []
+    
+    @IBOutlet weak var sumOfThisMonth: UILabel!
     
     @IBOutlet weak var numberOfFollwers: UILabel!
     @IBOutlet weak var fullName: UILabel!
@@ -23,6 +28,12 @@ class RealSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        matchDateForZandi.dateFormat = "yyyy-MM-dd"
+        let str = matchDateForZandi.string(from: nowDate)
+        print(str)
+        
+        
         calendar.delegate = self
         calendar.dataSource = self
         
@@ -32,7 +43,9 @@ class RealSettingViewController: UIViewController {
      
             switch result {
             case let .success(result):
-         
+                
+
+                
                 DispatchQueue.main.async {
                     self.fullName.text = result.fullName
                     self.memo.text = result.memo
@@ -44,15 +57,32 @@ class RealSettingViewController: UIViewController {
             }
         })
         
+        // 특정날짜 존재하면 그 날짜 색 변경
+        
         getMonthRecords(accessToken: accessToken, refToken: refToken, onCompleted: {
             [weak self] result in // 순환 참조 방지, 전달인자로 result
             guard let self = self else { return } // 일시적으로 strong ref가 되게
      
             switch result {
             case let .success(result):
+                
+            self.eventsArray = result.monthRecord.map({ $0.date })
+            print(self.eventsArray)
+                
+                
+                
+                let sumMonth = result.monthRecord.compactMap{
+                    $0.concentratedTime // monthRecord[] 내 각 요소의 .concentratedTime Key를 뽑은후 , reduce를 이용해 0부터 끝까지 그 값을 더한다!
+                }.reduce(0, { (first: Int, second: Int) -> Int in
+                    return first + second
+                })
          
+
+                
                 DispatchQueue.main.async {
-                    print(result)
+                    self.sumOfThisMonth.text = String(sumMonth)
+                    self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0)
+                    self.disturbCount.text = String(result.monthRecord.last?.brokenCount ?? 0)
                 }
                 
             case let .failure(error):
@@ -156,6 +186,7 @@ class RealSettingViewController: UIViewController {
 
 extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택")
         self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
