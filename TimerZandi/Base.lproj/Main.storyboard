@@ -706,6 +706,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="d7S-HW-eNA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="YHa-HS-OoE">
+                            <connections>
+                                <action selector="reLoadCalendar:" destination="XX7-KH-rIm" id="3a5-qk-Yro"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="uyv-Ov-FdM">
                             <color key="tintColor" red="0.1843137255" green="0.070588235289999995" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>

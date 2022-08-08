@@ -26,6 +26,8 @@ class RealSettingViewController: UIViewController {
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var memo: UILabel!
     
+    @IBAction func reLoadCalendar(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -186,6 +188,21 @@ class RealSettingViewController: UIViewController {
 
 extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: String) -> Int {
+          if self.eventsArray.contains(date){
+              return 1
+          }
+
+          return 0
+      }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: String) -> [UIColor]?{
+            if self.eventsArray.contains(date){
+                return [UIColor.green]
+            }
+            
+            return nil
+        }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택")
