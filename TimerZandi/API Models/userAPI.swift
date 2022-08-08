@@ -47,3 +47,8 @@ struct MonthRecord: Codable {
     let brokenCount: Int
     let date: String
 }
+
+//MARK: - Add Follwer
+struct AddFollwer: Codable {
+    let followeeName: String
+}

@@ -20,7 +20,22 @@ class FollowingViewController: UIViewController {
 //        return tableView
 //    }()
     
+    @IBAction func addFollwer(_ sender: Any) {
+        let alert = UIAlertController(title: "팔로워 등록", message: "같이 공부할 친구 추가하기", preferredStyle: .alert)
+        let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
+            guard let follwee_Name = alert.textFields?[0].text else {return}
+            addFollwerPost(accessToken: accessToken, refToken: refToken, follweeName: follwee_Name)
 
+        })
+        let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
+        alert.addAction(cancleButton)
+        alert.addAction(registerButton)
+        alert.addTextField(configurationHandler: {
+            textField in textField.placeholder = "친구의 이름을 알려주세요"
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBOutlet weak var follwerTableView: UITableView!
     
     override func viewDidLoad() {

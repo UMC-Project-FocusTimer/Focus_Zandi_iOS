@@ -1193,7 +1193,14 @@
                             <constraint firstItem="FxM-II-x7I" firstAttribute="bottom" secondItem="DcH-Pc-XLt" secondAttribute="bottom" id="yZf-EK-Pc8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Follwer" id="6iL-Qf-iFw"/>
+                    <navigationItem key="navigationItem" title="Follwer" id="6iL-Qf-iFw">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="hzV-4A-Qyg">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addFollwer:" destination="3Ng-u6-U8f" id="s5O-ka-6sE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="follwerTableView" destination="FxM-II-x7I" id="1Qz-42-Rlp"/>
                         <segue destination="6fU-1o-gPF" kind="show" id="nda-BU-Wep"/>

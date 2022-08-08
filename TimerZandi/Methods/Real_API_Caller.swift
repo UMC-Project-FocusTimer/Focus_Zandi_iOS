@@ -82,61 +82,115 @@ import Alamofire
 
 //MARK: - POST
     
-func postTestnd(userToken:String, email:String, fullName: String) {
-        let Testurl = URL(string: "https://aquistion.shop/oauth/google")!
+    //MARK: -  3.1 유저 로그인
+    func postTestnd(userToken:String, email:String, fullName: String) {
+            let Testurl = URL(string: "https://aquistion.shop/oauth/google")!
 
-        var profile = ProfileObj1(userToken: userToken , email: email, fullName: fullName)
-        var profileOBJ = Pram(profileObj: profile)
-        
-        guard let jsonData = try? JSONEncoder().encode(profileOBJ) else {
-            print("error: cannot encode data")
-            return
-        }
-        print(jsonData)
-        
-        var request1 = URLRequest(url: Testurl)
-        request1.httpMethod = "POST"
-        request1.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request1.setValue("application/json", forHTTPHeaderField: "Accept")
-        request1.httpBody = jsonData
-        
-        
-        URLSession.shared.dataTask(with: request1) { (data, response, error) in
-            guard error == nil else {
-                print("error at first")
-                print(error)
+            var profile = ProfileObj1(userToken: userToken , email: email, fullName: fullName)
+            var profileOBJ = Pram(profileObj: profile)
+            
+            guard let jsonData = try? JSONEncoder().encode(profileOBJ) else {
+                print("error: cannot encode data")
                 return
             }
+            print(jsonData)
             
-            guard let data = data else {
-                print("error at data")
-                return
-            }
+            var request1 = URLRequest(url: Testurl)
+            request1.httpMethod = "POST"
+            request1.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request1.setValue("application/json", forHTTPHeaderField: "Accept")
+            request1.httpBody = jsonData
             
-            guard let response = response else {
-                print("error at response")
-                return
-            }
             
-            do {
-                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
-                    print("error cannot convert json")
+            URLSession.shared.dataTask(with: request1) { (data, response, error) in
+                guard error == nil else {
+                    print("error at first")
+                    print(error)
                     return
                 }
                 
-                if let ACCESS_TOKEN = jsonObject["accessToken"],
-                    let REF_TOKEN = jsonObject["refToken"]
-                {
-//                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
-                    accessToken = ACCESS_TOKEN as! String
-                    refToken = REF_TOKEN as! String
+                guard let data = data else {
+                    print("error at data")
+                    return
                 }
                 
-            } catch {
-                print("error while print json")
+                guard let response = response else {
+                    print("error at response")
+                    return
+                }
+                
+                do {
+                    guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                        print("error cannot convert json")
+                        return
+                    }
+                    
+                    if let ACCESS_TOKEN = jsonObject["accessToken"],
+                        let REF_TOKEN = jsonObject["refToken"]
+                    {
+    //                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
+                        accessToken = ACCESS_TOKEN as! String
+                        refToken = REF_TOKEN as! String
+                    }
+                    
+                } catch {
+                    print("error while print json")
+                }
+
+            }.resume()
+        }
+
+
+    //MARK: - 4.1 친구추가
+
+func addFollwerPost(accessToken:String, refToken:String,follweeName: String) {
+            let Testurl = URL(string: "https://aquistion.shop/addFriend")!
+
+            var FollwerName = AddFollwer(followeeName: follweeName)
+            
+            guard let jsonData = try? JSONEncoder().encode(FollwerName) else {
+                print("error: cannot encode data")
+                return
             }
+            print(jsonData)
+            
+            var request1 = URLRequest(url: Testurl)
+            request1.httpMethod = "POST"
+            request1.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request1.setValue("application/json", forHTTPHeaderField: "Accept")
+            request1.setValue(accessToken, forHTTPHeaderField: "ACCESS_TOKEN")
+            request1.setValue(refToken, forHTTPHeaderField: "REFRESH_TOKEN")
+            request1.httpBody = jsonData
+            
+            
+            URLSession.shared.dataTask(with: request1) { (data, response, error) in
+                guard error == nil else {
+                    print("error at first")
+                    print(error)
+                    return
+                }
+                
+                guard let data = data else {
+                    print("error at data")
+                    return
+                }
+                
+                guard let response = response else {
+                    print("error at response")
+                    return
+                }
+                
+                do {
+                    guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                        print("error cannot convert json")
+                        return
+                    }
+                    
+                    print(jsonObject)
+                    
+                } catch {
+                    print("error while print json")
+                }
 
-        }.resume()
-    }
-
-  
+            }.resume()
+        }

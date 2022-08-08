@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
             
             if LOGINKEY == 1 {
                 postTestnd(userToken: USER_TOKEN, email: USER_EMAIL, fullName: USER_NAME)
-        
+                
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainController") else {return}
                       viewController.modalPresentationStyle = .fullScreen // 기본적인 모달형식(밑에서 올라오지만 꽉 차지 않음)을 Fullscreen으로 변경 !
                       self.present(viewController, animated: true, completion: nil)
