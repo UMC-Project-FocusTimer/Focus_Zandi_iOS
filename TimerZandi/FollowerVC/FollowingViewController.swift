@@ -25,7 +25,7 @@ class FollowingViewController: UIViewController {
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let follwee_Name = alert.textFields?[0].text else {return}
             addFollwerPost(accessToken: accessToken, refToken: refToken, follweeName: follwee_Name)
-
+            
         })
         let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
         alert.addAction(cancleButton)

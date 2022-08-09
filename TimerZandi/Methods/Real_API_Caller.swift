@@ -9,6 +9,7 @@ import UIKit
 import Security
 import Alamofire
 
+
 //MARK: - GET
     
     //MARK: - 1.1 유저 정보 조회
@@ -145,6 +146,8 @@ import Alamofire
 
 func addFollwerPost(accessToken:String, refToken:String,follweeName: String) {
             let Testurl = URL(string: "https://aquistion.shop/addFriend")!
+    
+            var follwerDataModel = FollwerDataModel ()
 
             var FollwerName = AddFollwer(followeeName: follweeName)
             
@@ -152,7 +155,8 @@ func addFollwerPost(accessToken:String, refToken:String,follweeName: String) {
                 print("error: cannot encode data")
                 return
             }
-            print(jsonData)
+             print(jsonData)
+    
             
             var request1 = URLRequest(url: Testurl)
             request1.httpMethod = "POST"
@@ -185,8 +189,16 @@ func addFollwerPost(accessToken:String, refToken:String,follweeName: String) {
                         print("error cannot convert json")
                         return
                     }
-                    
-                    print(jsonObject)
+
+                    if let USERNAME = jsonObject["username"],
+                        let MEMO = jsonObject["memo"],
+                       let NUMBER_OF_FOLLWERS = jsonObject["numberOfFollowers"],
+                       let MONTH_RECORD = jsonObject["monthRecord"]
+                    {
+                        print(MEMO)
+                        print(MONTH_RECORD)
+                    }
+                    //                    follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: jsonObject, focusTimeForThisMonth: <#T##Int#>, followeName: <#T##String#>, follwerDesciption: <#T##String#>, todayFocusTime: <#T##Int#>, brokenCount: <#T##Int#>)
                     
                 } catch {
                     print("error while print json")

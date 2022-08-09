@@ -15,6 +15,11 @@ class FollwerDataModel {
         follwerInfo(image: "IMG_1482.jpg", numberOfFollower: 13, focusTimeForThisMonth: 29, followeName: "Kason", follwerDesciption: "3번타자", todayFocusTime: 82, brokenCount: 2)
    ]
     
+    public func inputData(image:String, numberOfFollower:Int, focusTimeForThisMonth:Int, followeName:String, follwerDesciption:String, todayFocusTime:Int, brokenCount:Int) {
+        self.arrayStruct.append(follwerInfo(image: image, numberOfFollower: numberOfFollower, focusTimeForThisMonth: focusTimeForThisMonth, followeName: followeName, follwerDesciption: follwerDesciption, todayFocusTime: todayFocusTime, brokenCount: brokenCount))
+    }
+
+    
     public var count: Int {
         return arrayStruct.count
     }
