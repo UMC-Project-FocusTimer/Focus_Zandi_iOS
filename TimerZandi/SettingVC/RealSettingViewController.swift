@@ -45,9 +45,7 @@ class RealSettingViewController: UIViewController {
      
             switch result {
             case let .success(result):
-                
-
-                
+                                
                 DispatchQueue.main.async {
                     self.fullName.text = result.fullName
                     self.memo.text = result.memo
@@ -79,8 +77,6 @@ class RealSettingViewController: UIViewController {
                     return first + second
                 })
          
-
-                
                 DispatchQueue.main.async {
                     self.sumOfThisMonth.text = String(sumMonth)
                     self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0)
