@@ -11,20 +11,35 @@ var followingList: [String] = ["Song", "Onve", "Jason", "Yk"]
 var followerTime = ["00:03:30", "02:34:33", "07:55:34", "00:40:23"]
 var disturbCount = [3, 5, 6, 3]
 
-var follwerDataModel = FollwerDataModel ()
 
 class FollowingViewController: UIViewController {
     
-//    let followerTableView: UITableView = {
-//        let tableView = UITableView()
-//        return tableView
-//    }()
+    
+    var follwerDataModel = FollwerDataModel ()
     
     @IBAction func addFollwer(_ sender: Any) {
         let alert = UIAlertController(title: "팔로워 등록", message: "같이 공부할 친구 추가하기", preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let follwee_Name = alert.textFields?[0].text else {return}
-            addFollwerPost(accessToken: accessToken, refToken: refToken, follweeName: follwee_Name)
+//            addFollwerPost(accessToken: accessToken, refToken: refToken, follweeName: follwee_Name)
+            addFriend(follweeName: follwee_Name, accessToken: accessToken, refToken: refToken, onCompleted: {
+                [weak self] result in // 순환 참조 방지, 전달인자로 result
+                guard let self = self else { return } // 일시적으로 strong ref가 되게
+         
+                switch result {
+                case let .success(result):
+                    self.follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: 22, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
+                    self.follwerTableView.reloadData()
+                    print(self.follwerDataModel.count)
+
+                    // 받아와 지면 여기에서는 appende가 됨.
+
+                    
+                    
+                case let .failure(error):
+                    debugPrint("error \(error)")
+                }
+            })
             
         })
         let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
@@ -48,6 +63,7 @@ class FollowingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(follwerDataModel.count)
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
         super.viewWillAppear(animated)
@@ -93,10 +109,28 @@ class FollowingViewController: UIViewController {
 extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
         UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
 
+        print(self.follwerDataModel.getFolloweName(index: indexPath.row))
+
+        
+//        let cellName = follwerDataModel.getFolloweName(index: indexPath.row)
+        
+
+//        NotificationCenter.default.post(name: NSNotification.Name("test04"), object: nil,
+//        userInfo: ["image": follwerDataModel.getImage(index: indexPath.row) ?? "",
+//                   "numberOfFollower": follwerDataModel.getNumberOfFollower(index:) ?? 0,
+//                   "focusTimeForThisMonth": follwerDataModel.getTodayFocusTime(index: indexPath.row),
+//                   "followeName": follwerDataModel.getFolloweName(index: indexPath.row) ?? "",
+//                   "follwerDesciption": result.memo ?? "",
+//                   "todayFocusTime": 33,
+//                   "brokenCount": 44
+//                  ]
+//            ) // 셀 눌렀을때 전송되게
+
         guard let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FollwersPageViewController") as? FollwersPageViewController else {return}
+        
+        ViewController.name = self.follwerDataModel.getFolloweName(index: indexPath.row)
             self.navigationController?.pushViewController(ViewController, animated: true)
         
     }

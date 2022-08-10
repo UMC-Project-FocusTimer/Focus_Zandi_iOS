@@ -15,11 +15,12 @@ class FollwersPageViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
     let dateFormatter = DateFormatter()
-    
+
     @IBOutlet weak var imgae: UIImageView!
     @IBOutlet weak var numberOfFollwer: UILabel!
     @IBOutlet weak var focusTimeForThisMonth: UILabel!
     @IBOutlet weak var followeName: UILabel!
+    var name: String?
     @IBOutlet weak var follwerDesciption: UILabel!
     @IBOutlet weak var todayFocusTime: UILabel!
     @IBOutlet weak var brokenCount: UILabel!
@@ -35,11 +36,16 @@ class FollwersPageViewController: UIViewController {
         self.fontSize()
         self.calendar.appearance.borderRadius = 0.5
         
+        if let codePushName = name {
+                 self.followeName.text = codePushName
+             }
+        
     }
-    
+
     func getInfoFromModel() {
         let selectedIndex = UserDefaults.standard.integer(forKey: "SELECTED")
-        
+        print(selectedIndex)
+
         let image = follwerDataModel.getImage(index: selectedIndex)
         let numberOfFollower = follwerDataModel.getNumberOfFollower(index: selectedIndex)
         let focusTimeForThisMonth = follwerDataModel.getTodayFocusTime(index: selectedIndex)
@@ -55,12 +61,12 @@ class FollwersPageViewController: UIViewController {
         self.follwerDesciption.text = follwerDesciption
         self.todayFocusTime.text = String(todayFocusTime)
         self.brokenCount.text = String(brokenCount)
-        //        let image = self.follwerDataModel.get
     }
     
     override func viewWillAppear(_ animated: Bool) {
+   
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.getInfoFromModel()
+//        self.getInfoFromModel()
         
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
@@ -71,6 +77,27 @@ class FollwersPageViewController: UIViewController {
         calendar.backgroundColor = themes[8][0]
         }
     }
+    
+    
+//
+
+    
+
+//    @objc func test(_ notification:NSNotification){
+//        print("it`s")
+//        guard let image = notification.userInfo!["image"] as? String else {return}
+//        guard let numberOfFollower = notification.userInfo!["numberOfFollower"] as? Int else {return}
+//        guard let focusTimeForThisMonth = notification.userInfo!["focusTimeForThisMonth"] as? Int else {return}
+//        guard let followeName = notification.userInfo!["followeName"] as? String else {return}
+//        guard let follwerDesciption = notification.userInfo!["follwerDesciption"] as? String else {return}
+//        guard let todayFocusTime = notification.userInfo!["todayFocusTime"] as? Int else {return}
+//        guard let brokenCount = notification.userInfo!["brokenCount"] as? Int else {return}
+//        
+//        print(brokenCount)
+//        self.follwerDataModel.inputData(image: image, numberOfFollower: numberOfFollower, focusTimeForThisMonth: focusTimeForThisMonth, followeName: followeName, follwerDesciption: follwerDesciption, todayFocusTime: todayFocusTime, brokenCount: brokenCount)
+//        
+//    }
+    
     
     func fontSize() {
         // 헤더 폰트 설정

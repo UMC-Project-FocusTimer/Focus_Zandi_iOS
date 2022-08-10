@@ -48,7 +48,14 @@ struct MonthRecord: Codable {
     let date: String
 }
 
-//MARK: - Add Follwer
-struct AddFollwer: Codable {
-    let followeeName: String
+// MARK: - AddFriend
+struct AddFriend: Codable {
+    let username, memo: String
+    let numberOfFollowers: Int
+    let monthRecord: [MonthRecord_AF]
+}
+
+struct MonthRecord_AF: Codable {
+    let concentratedTime, brokenCount: Int
+    let date: String
 }
