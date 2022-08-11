@@ -20,12 +20,18 @@ class FollwersPageViewController: UIViewController {
     @IBOutlet weak var numberOfFollwer: UILabel!
     @IBOutlet weak var focusTimeForThisMonth: UILabel!
     @IBOutlet weak var followeName: UILabel!
-    var name: String?
     @IBOutlet weak var follwerDesciption: UILabel!
     @IBOutlet weak var todayFocusTime: UILabel!
     @IBOutlet weak var brokenCount: UILabel!
-    
-    
+
+    var Image:String?
+    var NumberOfFollower:Int?
+    var FocusTimeForThisMonth:Int?
+    var FolloweName:String?
+    var FollwerDesciption:String?
+    var TodayFocusTime:Int?
+    var BrokenCount:Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
@@ -36,37 +42,28 @@ class FollwersPageViewController: UIViewController {
         self.fontSize()
         self.calendar.appearance.borderRadius = 0.5
         
-        if let codePushName = name {
-                 self.followeName.text = codePushName
-             }
+        if let FolloweName = FolloweName, let Image = Image, let NumberOfFollower = NumberOfFollower, let FocusTimeForThisMonth = FocusTimeForThisMonth, let FollwerDesciption = FollwerDesciption, let TodayFocusTime = TodayFocusTime, let BrokenCount = BrokenCount
+        {
+                self.followeName.text = FolloweName
+                self.imgae.image = UIImage(named: Image)
+                self.numberOfFollwer.text = String(NumberOfFollower)
+                self.focusTimeForThisMonth.text = String(FocusTimeForThisMonth)
+                self.follwerDesciption.text = FollwerDesciption
+                self.todayFocusTime.text = String(TodayFocusTime)
+                self.brokenCount.text = String(BrokenCount)
+        }
         
     }
 
     func getInfoFromModel() {
         let selectedIndex = UserDefaults.standard.integer(forKey: "SELECTED")
         print(selectedIndex)
-
-        let image = follwerDataModel.getImage(index: selectedIndex)
-        let numberOfFollower = follwerDataModel.getNumberOfFollower(index: selectedIndex)
-        let focusTimeForThisMonth = follwerDataModel.getTodayFocusTime(index: selectedIndex)
-        let followeName = follwerDataModel.getFolloweName(index: selectedIndex)
-        let follwerDesciption = follwerDataModel.getFollwerDesciption(index: selectedIndex)
-        let todayFocusTime = follwerDataModel.getTodayFocusTime(index: selectedIndex)
-        let brokenCount = follwerDataModel.getBrokenCount(index: selectedIndex)
-        
-        self.imgae.image = UIImage(named: image)
-        self.numberOfFollwer.text = String(numberOfFollower)
-        self.focusTimeForThisMonth.text = String(focusTimeForThisMonth)
-        self.followeName.text = followeName
-        self.follwerDesciption.text = follwerDesciption
-        self.todayFocusTime.text = String(todayFocusTime)
-        self.brokenCount.text = String(brokenCount)
     }
     
     override func viewWillAppear(_ animated: Bool) {
    
         self.navigationController?.navigationBar.prefersLargeTitles = false
-//        self.getInfoFromModel()
+        self.getInfoFromModel()
         
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 

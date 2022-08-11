@@ -14,8 +14,10 @@ var disturbCount = [3, 5, 6, 3]
 
 class FollowingViewController: UIViewController {
     
-    
+        
+    @IBOutlet var editButton: UIBarButtonItem!
     var follwerDataModel = FollwerDataModel ()
+    var doneButton: UIBarButtonItem?
     
     @IBAction func addFollwer(_ sender: Any) {
         let alert = UIAlertController(title: "팔로워 등록", message: "같이 공부할 친구 추가하기", preferredStyle: .alert)
@@ -55,15 +57,29 @@ class FollowingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
         follwerTableView.dataSource = self
         follwerTableView.delegate = self
 //        followerTableViewAutoLayout()
         follwerTableView.register(UINib(nibName: "FollowerTableViewCell", bundle: .main), forCellReuseIdentifier: "FollowerTableViewCell")
         follwerTableView.allowsSelection = true
+//        follwerTableView.setEditing(true, animated: true)
+    }
+    
+    @objc func doneButtonTap() {
+        self.navigationItem.leftBarButtonItem = self.editButton
+        self.follwerTableView.setEditing(false, animated: true)
+    }
+    
+    @IBAction func tapEditButton(_ sender: Any) {
+        guard !self.follwerDataModel.arrayStruct.isEmpty else {return}
+        self.navigationItem.leftBarButtonItem = self.doneButton
+        self.follwerTableView.setEditing(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(follwerDataModel.count)
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
         super.viewWillAppear(animated)
@@ -92,47 +108,24 @@ class FollowingViewController: UIViewController {
 
 }
 
-//extension FollowingViewController {
-//    func followerTableViewAutoLayout() {
-//        self.view.addSubview(followerTableView)
-//        followerTableView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        followerTableView.separatorInset.left = 0
-//
-//        followerTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//        followerTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//        followerTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-//        followerTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-//    }
-//}
-
 extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
-
-        print(self.follwerDataModel.getFolloweName(index: indexPath.row))
-
-        
-//        let cellName = follwerDataModel.getFolloweName(index: indexPath.row)
-        
-
-//        NotificationCenter.default.post(name: NSNotification.Name("test04"), object: nil,
-//        userInfo: ["image": follwerDataModel.getImage(index: indexPath.row) ?? "",
-//                   "numberOfFollower": follwerDataModel.getNumberOfFollower(index:) ?? 0,
-//                   "focusTimeForThisMonth": follwerDataModel.getTodayFocusTime(index: indexPath.row),
-//                   "followeName": follwerDataModel.getFolloweName(index: indexPath.row) ?? "",
-//                   "follwerDesciption": result.memo ?? "",
-//                   "todayFocusTime": 33,
-//                   "brokenCount": 44
-//                  ]
-//            ) // 셀 눌렀을때 전송되게
-
+    
         guard let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FollwersPageViewController") as? FollwersPageViewController else {return}
         
-        ViewController.name = self.follwerDataModel.getFolloweName(index: indexPath.row)
-            self.navigationController?.pushViewController(ViewController, animated: true)
-        
+        ViewController.FolloweName = self.follwerDataModel.getFolloweName(index: indexPath.row)
+        ViewController.Image = self.follwerDataModel.getImage(index: indexPath.row)
+        ViewController.NumberOfFollower = self.follwerDataModel.getNumberOfFollower(index: indexPath.row)
+        ViewController.TodayFocusTime = self.follwerDataModel.getTodayFocusTime(index: indexPath.row)
+        ViewController.FollwerDesciption = self.follwerDataModel.getFollwerDesciption(index: indexPath.row)
+        ViewController.TodayFocusTime = self.follwerDataModel.getTodayFocusTime(index: indexPath.row)
+        ViewController.BrokenCount = self.follwerDataModel.getBrokenCount(index: indexPath.row)
+        ViewController.FocusTimeForThisMonth = self.follwerDataModel.getFocusTimeForThisMonth(index: indexPath.row)
+    
+        self.navigationController?.pushViewController(ViewController, animated: true)
+
     }
     
     
@@ -158,24 +151,16 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-          
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
+
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        
-        if editingStyle == .delete {
-            tableView.beginUpdates()
-            followingList.remove(at: indexPath.row)
-            followerTime.remove(at: indexPath.row)
-            disturbCount.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.endUpdates()
-
-        } // model에 remove함수 만들어서 가져오기 
+        self.follwerDataModel.removeFromDataModel(index: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    
+    
     
 }
 // 선택되면 페이지 넘어가고 넘어간 페이지에서 데이터 가져오기

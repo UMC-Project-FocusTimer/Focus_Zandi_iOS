@@ -1194,6 +1194,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Follwer" id="6iL-Qf-iFw">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="0PF-1U-3a9">
+                            <connections>
+                                <action selector="tapEditButton:" destination="3Ng-u6-U8f" id="ubl-m9-KqG"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="hzV-4A-Qyg">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -1202,6 +1207,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="0PF-1U-3a9" id="5al-Q0-bjs"/>
                         <outlet property="follwerTableView" destination="FxM-II-x7I" id="1Qz-42-Rlp"/>
                         <segue destination="6fU-1o-gPF" kind="show" id="nda-BU-Wep"/>
                     </connections>

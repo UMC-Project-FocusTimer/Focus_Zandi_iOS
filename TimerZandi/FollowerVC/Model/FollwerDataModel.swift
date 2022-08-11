@@ -19,6 +19,9 @@ class FollwerDataModel {
         self.arrayStruct.append(follwerInfo(image: image, numberOfFollower: numberOfFollower, focusTimeForThisMonth: focusTimeForThisMonth, followeName: followeName, follwerDesciption: follwerDesciption, todayFocusTime: todayFocusTime, brokenCount: brokenCount))
     }
 
+    public func removeFromDataModel(index:Int) {
+        self.arrayStruct.remove(at: index)
+    }
     
     public var count: Int {
         return arrayStruct.count
