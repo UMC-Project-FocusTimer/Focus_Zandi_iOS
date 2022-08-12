@@ -43,7 +43,6 @@ import Alamofire
                 onCompleted(.failure(error))
             }
         })
-        
     }
 
     //MARK: - 2.2 월별 공부내역 조회

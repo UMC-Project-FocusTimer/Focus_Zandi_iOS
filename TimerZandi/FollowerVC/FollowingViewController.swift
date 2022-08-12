@@ -125,7 +125,7 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
         ViewController.FocusTimeForThisMonth = self.follwerDataModel.getFocusTimeForThisMonth(index: indexPath.row)
     
         self.navigationController?.pushViewController(ViewController, animated: true)
-
+        
     }
     
     

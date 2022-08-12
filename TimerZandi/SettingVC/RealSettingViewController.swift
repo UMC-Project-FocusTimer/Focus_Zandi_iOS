@@ -19,6 +19,14 @@ class RealSettingViewController: UIViewController {
     let matchDateForZandi = DateFormatter()
     let nowDate = Date()
     var eventsArray:[String] = []
+    var dates:[Date] = []
+    var zandiArray:[Int] = []
+    
+    var zandiArray_3th:[Date] = []
+    var zandiArray_2th:[Date] = []
+    var zandiArray_1th:[Date] = []
+
+
     
     @IBOutlet weak var sumOfThisMonth: UILabel!
     
@@ -31,13 +39,19 @@ class RealSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let matchDateForZandi = DateFormatter()
+        matchDateForZandi.locale = Locale(identifier: "ko_KR")
         matchDateForZandi.dateFormat = "yyyy-MM-dd"
-        let str = matchDateForZandi.string(from: nowDate)
-        print(str)
-        
+               
+         let xmas = matchDateForZandi.date(from: "2022-12-25")
+         let sampledate = matchDateForZandi.date(from: "2022-12-22")
+        self.dates = [xmas!, sampledate!]
+
         
         calendar.delegate = self
         calendar.dataSource = self
+        calendar.appearance.eventDefaultColor = UIColor.green
+        calendar.appearance.eventSelectionColor = UIColor.green
         
         getShowMember(accessToken: accessToken, refToken: refToken,onCompleted: {
             [weak self] result in // 순환 참조 방지, 전달인자로 result
@@ -66,21 +80,60 @@ class RealSettingViewController: UIViewController {
             switch result {
             case let .success(result):
                 
-            self.eventsArray = result.monthRecord.map({ $0.date })
-            print(self.eventsArray)
-                
-                
+
                 
                 let sumMonth = result.monthRecord.compactMap{
                     $0.concentratedTime // monthRecord[] 내 각 요소의 .concentratedTime Key를 뽑은후 , reduce를 이용해 0부터 끝까지 그 값을 더한다!
                 }.reduce(0, { (first: Int, second: Int) -> Int in
                     return first + second
                 })
-         
+                
+                self.zandiArray = result.monthRecord.map({
+                    $0.concentratedTime
+                })
+                
+                DispatchQueue.global(qos: .userInteractive).async {
+                    for i in 0..<self.eventsArray.count {
+                        
+                        if Int(self.zandiArray[i]) > 0 && Int(self.zandiArray[i]) < 150 {
+                            
+                            self.zandiArray_1th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                  
+                            
+                        } else if Int(self.zandiArray[i]) > 200 && Int(self.zandiArray[i]) < 400 {
+                            self.zandiArray_2th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+
+                        } else if Int(self.zandiArray[i]) > 450 && Int(self.zandiArray[i]) < 800 {
+                            self.zandiArray_3th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+
+                        }
+                    }
+                 
+
+                    print(self.zandiArray_1th)
+                    print(self.zandiArray_2th)
+                    print(self.zandiArray_3th)
+
+                }
+                
                 DispatchQueue.main.async {
+//                    self.zandiArray = result.monthRecord.map({
+//                        $0.concentratedTime
+//                    })
+//
+        
                     self.sumOfThisMonth.text = String(sumMonth)
                     self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0)
                     self.disturbCount.text = String(result.monthRecord.last?.brokenCount ?? 0)
+                    
+                    self.eventsArray = result.monthRecord.map({ $0.date })
+
+                    for i in 0...self.eventsArray.count - 1{
+                        self.dates.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                    }
+                    
+                    self.calendar.reloadData()
+
                 }
                 
             case let .failure(error):
@@ -184,6 +237,25 @@ class RealSettingViewController: UIViewController {
 
 extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if self.dates.contains(date){
+            return 1
+        }
+        return 0
+    }
+
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+
+        if self.zandiArray_3th.contains(date) {
+            return [UIColor.red]
+        } else if self.zandiArray_2th.contains(date) {
+            return [UIColor.orange]
+        } else if self.zandiArray_2th.contains(date){
+            return [UIColor.yellow]
+        }
+        return [UIColor.white]
+    }
+
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: String) -> Int {
           if self.eventsArray.contains(date){
               return 1
@@ -201,6 +273,7 @@ extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, 
         }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    
         print(dateFormatter.string(from: date) + " 선택")
         self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
         self.sumOfTime.text = String(UserDefaults.standard.integer(forKey: sumTime)) + " 초"
