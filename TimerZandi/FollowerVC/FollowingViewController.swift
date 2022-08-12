@@ -14,6 +14,12 @@ var disturbCount = [3, 5, 6, 3]
 
 class FollowingViewController: UIViewController {
     
+
+    var eventsArray:[String] = []
+    var dates:[Date] = []
+    var zandiArray:[Int] = []
+    
+
         
     @IBOutlet var editButton: UIBarButtonItem!
     var follwerDataModel = FollwerDataModel ()
@@ -30,14 +36,58 @@ class FollowingViewController: UIViewController {
          
                 switch result {
                 case let .success(result):
-                    self.follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: 22, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
+                    
+                    let sumMonth = result.monthRecord.compactMap{
+                        $0.concentratedTime // monthRecord[] 내 각 요소의 .concentratedTime Key를 뽑은후 , reduce를 이용해 0부터 끝까지 그 값을 더한다!
+                    }.reduce(0, { (first: Int, second: Int) -> Int in
+                        return first + second
+                    })
+                    
+                    self.follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: sumMonth, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
+                    
+                    
+                    self.zandiArray = result.monthRecord.map({
+                        $0.concentratedTime
+                    })
+                    self.eventsArray = result.monthRecord.map({ $0.date })
+
+                    print(self.eventsArray)
+                    print(self.zandiArray)
+//
+//                    if self.eventsArray.count > 0 {
+//                        for i in 0...self.eventsArray.count - 1{
+//                            self.dates.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//
+//                            if self.zandiArray[i] > 800 && self.zandiArray[i] < 999 {
+//                                self.day_5_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//                                print("5_depth is : \(self.day_5_dpeth)")
+//                            } else if self.zandiArray[i] > 600 && self.zandiArray[i] < 799 {
+//                                self.day_4_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//                                print("4_depth is : \(self.day_4_dpeth)")
+//                            } else if self.zandiArray[i] > 400 && self.zandiArray[i] < 599 {
+//                                self.day_3_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//                                print("3_depth is : \(self.day_3_dpeth)")
+//                            } else if self.zandiArray[i] > 200 && self.zandiArray[i] < 399 {
+//                                self.day_2_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//                                print("2_depth is : \(self.day_2_dpeth)")
+//                            } else if self.zandiArray[i] > 0 && self.zandiArray[i] < 199 {
+//                                self.day_1_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+//                                print("1_depth is : \(self.day_1_dpeth)")
+//                            }
+//
+//                        }
+//
+//                        print(self.day_5_dpeth)
+//                        print(self.day_4_dpeth)
+//                        print(self.day_3_dpeth)
+//                        print(self.day_2_dpeth)
+//                        print(self.day_1_dpeth)
+//
+//                    }
+                    
+                    
+                    
                     self.follwerTableView.reloadData()
-                    print(self.follwerDataModel.count)
-
-                    // 받아와 지면 여기에서는 appende가 됨.
-
-                    
-                    
                 case let .failure(error):
                     debugPrint("error \(error)")
                 }
@@ -123,9 +173,11 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
         ViewController.TodayFocusTime = self.follwerDataModel.getTodayFocusTime(index: indexPath.row)
         ViewController.BrokenCount = self.follwerDataModel.getBrokenCount(index: indexPath.row)
         ViewController.FocusTimeForThisMonth = self.follwerDataModel.getFocusTimeForThisMonth(index: indexPath.row)
+        ViewController.eventsArray = self.eventsArray
+        ViewController.zandiArray = self.zandiArray
+        
     
         self.navigationController?.pushViewController(ViewController, animated: true)
-        
     }
     
     

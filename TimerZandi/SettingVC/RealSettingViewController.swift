@@ -28,7 +28,6 @@ class RealSettingViewController: UIViewController {
     var day_2_dpeth:[Date] = []
     var day_1_dpeth:[Date] = []
 
-
     
     @IBOutlet weak var sumOfThisMonth: UILabel!
     
@@ -81,8 +80,7 @@ class RealSettingViewController: UIViewController {
      
             switch result {
             case let .success(result):
-                
-
+    
                 
                 let sumMonth = result.monthRecord.compactMap{
                     $0.concentratedTime // monthRecord[] 내 각 요소의 .concentratedTime Key를 뽑은후 , reduce를 이용해 0부터 끝까지 그 값을 더한다!
@@ -109,16 +107,16 @@ class RealSettingViewController: UIViewController {
                             
                             if self.zandiArray[i] > 800 && self.zandiArray[i] < 999 {
                                 self.day_5_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-                                print("3_depth is : \(self.day_5_dpeth)")
+                                print("5_depth is : \(self.day_5_dpeth)")
                             } else if self.zandiArray[i] > 600 && self.zandiArray[i] < 799 {
                                 self.day_4_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-                                print("2_depth is : \(self.day_4_dpeth)")
+                                print("4_depth is : \(self.day_4_dpeth)")
                             } else if self.zandiArray[i] > 400 && self.zandiArray[i] < 599 {
                                 self.day_3_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-                                print("1_depth is : \(self.day_3_dpeth)")
+                                print("3_depth is : \(self.day_3_dpeth)")
                             } else if self.zandiArray[i] > 200 && self.zandiArray[i] < 399 {
                                 self.day_2_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-                                print("1_depth is : \(self.day_2_dpeth)")
+                                print("2_depth is : \(self.day_2_dpeth)")
                             } else if self.zandiArray[i] > 0 && self.zandiArray[i] < 199 {
                                 self.day_1_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
                                 print("1_depth is : \(self.day_1_dpeth)")
@@ -128,6 +126,9 @@ class RealSettingViewController: UIViewController {
                     }
                     
                     self.calendar.reloadData()
+                    
+                    print("5_depth is : \(self.day_5_dpeth)")
+                    print("4_depth is : \(self.day_4_dpeth)")
 
                 }
                 

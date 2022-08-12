@@ -14,8 +14,6 @@ class FollwersPageViewController: UIViewController {
     
     @IBOutlet weak var calendar: FSCalendar!
     
-    let dateFormatter = DateFormatter()
-
     @IBOutlet weak var imgae: UIImageView!
     @IBOutlet weak var numberOfFollwer: UILabel!
     @IBOutlet weak var focusTimeForThisMonth: UILabel!
@@ -31,27 +29,48 @@ class FollwersPageViewController: UIViewController {
     var FollwerDesciption:String?
     var TodayFocusTime:Int?
     var BrokenCount:Int?
+    
+    var dates:[Date] = []
+    
+    var eventsArray:[String]? = []
+    var zandiArray:[Int]? = []
+    
+    var newEventsArray:[String] = []
+    var newZandiArray:[Int] = []
+    
+    let dateFormatter = DateFormatter()
+    let matchDateForZandi = DateFormatter()
+    let nowDate = Date()
+    
+    var day_5_dpeth:[Date] = []
+    var day_4_dpeth:[Date] = []
+    var day_3_dpeth:[Date] = []
+    var day_2_dpeth:[Date] = []
+    var day_1_dpeth:[Date] = []
 
+          
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         calendar.delegate = self
         calendar.dataSource = self
+        
+        let matchDateForZandi = DateFormatter()
+        matchDateForZandi.locale = Locale(identifier: "ko_KR")
+        matchDateForZandi.dateFormat = "yyyy-MM-dd"
+               
+         let xmas = matchDateForZandi.date(from: "2022-12-25")
+         let sampledate = matchDateForZandi.date(from: "2022-12-22")
+        self.dates = [xmas!, sampledate!]
         
         self.calendarColor()
         self.languageSet()
         self.fontSize()
         self.calendar.appearance.borderRadius = 0.5
         
-        if let FolloweName = FolloweName, let Image = Image, let NumberOfFollower = NumberOfFollower, let FocusTimeForThisMonth = FocusTimeForThisMonth, let FollwerDesciption = FollwerDesciption, let TodayFocusTime = TodayFocusTime, let BrokenCount = BrokenCount
-        {
-                self.followeName.text = FolloweName
-                self.imgae.image = UIImage(named: Image)
-                self.numberOfFollwer.text = String(NumberOfFollower)
-                self.focusTimeForThisMonth.text = String(FocusTimeForThisMonth)
-                self.follwerDesciption.text = FollwerDesciption
-                self.todayFocusTime.text = String(TodayFocusTime)
-                self.brokenCount.text = String(BrokenCount)
-        }
+        calendar.appearance.eventDefaultColor = UIColor.green
+        calendar.appearance.eventSelectionColor = UIColor.green
         
     }
 
@@ -73,27 +92,54 @@ class FollwersPageViewController: UIViewController {
         } else {
         calendar.backgroundColor = themes[8][0]
         }
+        
+        if let FolloweName = FolloweName, let Image = Image, let NumberOfFollower = NumberOfFollower, let FocusTimeForThisMonth = FocusTimeForThisMonth, let FollwerDesciption = FollwerDesciption, let TodayFocusTime = TodayFocusTime, let BrokenCount = BrokenCount, let eventsArray = eventsArray, let zandiArray = zandiArray
+        {
+            self.followeName.text = FolloweName
+            self.imgae.image = UIImage(named: Image)
+            self.numberOfFollwer.text = String(NumberOfFollower)
+            self.focusTimeForThisMonth.text = String(FocusTimeForThisMonth)
+            self.follwerDesciption.text = FollwerDesciption
+            self.todayFocusTime.text = String(TodayFocusTime)
+            self.brokenCount.text = String(BrokenCount)
+    
+            self.newEventsArray = self.eventsArray!
+            self.newZandiArray = self.zandiArray!
+
+                if self.newEventsArray.count > 0 {
+                    for i in 0...self.newEventsArray.count - 1{
+                        self.dates.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                        
+                        if self.newZandiArray[i] > 800 && self.newZandiArray[i] < 999 {
+                            self.day_5_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                            print("5_depth is : \(self.day_5_dpeth)")
+                        } else if self.newZandiArray[i] > 600 && self.newZandiArray[i] < 799 {
+                            self.day_4_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                            print("4_depth is : \(self.day_4_dpeth)")
+                        } else if self.newZandiArray[i] > 400 && self.newZandiArray[i] < 599 {
+                            self.day_3_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                            print("3_depth is : \(self.day_3_dpeth)")
+                        } else if self.newZandiArray[i] > 200 && self.newZandiArray[i] < 399 {
+                            self.day_2_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                            print("2_depth is : \(self.day_2_dpeth)")
+                        } else if self.newZandiArray[i] > 0 && self.newZandiArray[i] < 199 {
+                            self.day_1_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                            print("1_depth is : \(self.day_1_dpeth)")
+                        }
+                        
+                    }
+                    
+                }
+                self.calendar.reloadData()
+            
+            
+            print("5_depth is : \(self.day_5_dpeth)")
+            print("4_depth is : \(self.day_4_dpeth)")
+
+
+        }
+        
     }
-    
-    
-//
-
-    
-
-//    @objc func test(_ notification:NSNotification){
-//        print("it`s")
-//        guard let image = notification.userInfo!["image"] as? String else {return}
-//        guard let numberOfFollower = notification.userInfo!["numberOfFollower"] as? Int else {return}
-//        guard let focusTimeForThisMonth = notification.userInfo!["focusTimeForThisMonth"] as? Int else {return}
-//        guard let followeName = notification.userInfo!["followeName"] as? String else {return}
-//        guard let follwerDesciption = notification.userInfo!["follwerDesciption"] as? String else {return}
-//        guard let todayFocusTime = notification.userInfo!["todayFocusTime"] as? Int else {return}
-//        guard let brokenCount = notification.userInfo!["brokenCount"] as? Int else {return}
-//        
-//        print(brokenCount)
-//        self.follwerDataModel.inputData(image: image, numberOfFollower: numberOfFollower, focusTimeForThisMonth: focusTimeForThisMonth, followeName: followeName, follwerDesciption: follwerDesciption, todayFocusTime: todayFocusTime, brokenCount: brokenCount)
-//        
-//    }
     
     
     func fontSize() {
@@ -151,6 +197,29 @@ class FollwersPageViewController: UIViewController {
 
 extension FollwersPageViewController : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
 
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if self.dates.contains(date){
+            return 1
+        }
+        return 0
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+
+        if self.day_5_dpeth.contains(date) {
+            return [UIColor(red: 155/255, green: 233/255, blue: 168/255, alpha: 1.00)]
+        } else if self.day_4_dpeth.contains(date) {
+            return [UIColor(red: 64/255, green: 196/255, blue: 99/255, alpha: 1.00)]
+        } else if self.day_3_dpeth.contains(date) {
+            return [UIColor(red: 48/255, green: 161/255, blue: 78/255, alpha: 1.00)]
+        } else if self.day_2_dpeth.contains(date) {
+            return [UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)]
+        } else if self.day_1_dpeth.contains(date) {
+            return [UIColor.lightGray]
+        }
+        return [UIColor.white]
+    }
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택")
 //        self.disturbCount.text = String(UserDefaults.standard.integer(forKey: countTime)) + " 회"
