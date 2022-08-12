@@ -22,9 +22,11 @@ class RealSettingViewController: UIViewController {
     var dates:[Date] = []
     var zandiArray:[Int] = []
     
-    var zandiArray_3th:[Date] = []
-    var zandiArray_2th:[Date] = []
-    var zandiArray_1th:[Date] = []
+    var day_5_dpeth:[Date] = []
+    var day_4_dpeth:[Date] = []
+    var day_3_dpeth:[Date] = []
+    var day_2_dpeth:[Date] = []
+    var day_1_dpeth:[Date] = []
 
 
     
@@ -51,7 +53,7 @@ class RealSettingViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.appearance.eventDefaultColor = UIColor.green
-        calendar.appearance.eventSelectionColor = UIColor.green
+//        calendar.appearance.eventSelectionColor = UIColor.green
         
         getShowMember(accessToken: accessToken, refToken: refToken,onCompleted: {
             [weak self] result in // 순환 참조 방지, 전달인자로 result
@@ -92,44 +94,37 @@ class RealSettingViewController: UIViewController {
                     $0.concentratedTime
                 })
                 
-                DispatchQueue.global(qos: .userInteractive).async {
-                    for i in 0..<self.eventsArray.count {
-                        
-                        if Int(self.zandiArray[i]) > 0 && Int(self.zandiArray[i]) < 150 {
-                            
-                            self.zandiArray_1th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-                  
-                            
-                        } else if Int(self.zandiArray[i]) > 200 && Int(self.zandiArray[i]) < 400 {
-                            self.zandiArray_2th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-
-                        } else if Int(self.zandiArray[i]) > 450 && Int(self.zandiArray[i]) < 800 {
-                            self.zandiArray_3th.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-
-                        }
-                    }
-                 
-
-                    print(self.zandiArray_1th)
-                    print(self.zandiArray_2th)
-                    print(self.zandiArray_3th)
-
-                }
-                
                 DispatchQueue.main.async {
-//                    self.zandiArray = result.monthRecord.map({
-//                        $0.concentratedTime
-//                    })
-//
-        
+
                     self.sumOfThisMonth.text = String(sumMonth)
                     self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0)
                     self.disturbCount.text = String(result.monthRecord.last?.brokenCount ?? 0)
                     
                     self.eventsArray = result.monthRecord.map({ $0.date })
-
-                    for i in 0...self.eventsArray.count - 1{
-                        self.dates.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                    
+               
+                    if self.eventsArray.count > 0 {
+                        for i in 0...self.eventsArray.count - 1{
+                            self.dates.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                            
+                            if self.zandiArray[i] > 800 && self.zandiArray[i] < 999 {
+                                self.day_5_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                                print("3_depth is : \(self.day_5_dpeth)")
+                            } else if self.zandiArray[i] > 600 && self.zandiArray[i] < 799 {
+                                self.day_4_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                                print("2_depth is : \(self.day_4_dpeth)")
+                            } else if self.zandiArray[i] > 400 && self.zandiArray[i] < 599 {
+                                self.day_3_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                                print("1_depth is : \(self.day_3_dpeth)")
+                            } else if self.zandiArray[i] > 200 && self.zandiArray[i] < 399 {
+                                self.day_2_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                                print("1_depth is : \(self.day_2_dpeth)")
+                            } else if self.zandiArray[i] > 0 && self.zandiArray[i] < 199 {
+                                self.day_1_dpeth.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
+                                print("1_depth is : \(self.day_1_dpeth)")
+                            }
+                            
+                        }
                     }
                     
                     self.calendar.reloadData()
@@ -246,12 +241,16 @@ extension RealSettingViewController : FSCalendarDelegate, FSCalendarDataSource, 
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
 
-        if self.zandiArray_3th.contains(date) {
-            return [UIColor.red]
-        } else if self.zandiArray_2th.contains(date) {
-            return [UIColor.orange]
-        } else if self.zandiArray_2th.contains(date){
-            return [UIColor.yellow]
+        if self.day_5_dpeth.contains(date) {
+            return [UIColor(red: 155/255, green: 233/255, blue: 168/255, alpha: 1.00)]
+        } else if self.day_4_dpeth.contains(date) {
+            return [UIColor(red: 64/255, green: 196/255, blue: 99/255, alpha: 1.00)]
+        } else if self.day_3_dpeth.contains(date) {
+            return [UIColor(red: 48/255, green: 161/255, blue: 78/255, alpha: 1.00)]
+        } else if self.day_2_dpeth.contains(date) {
+            return [UIColor(red: 33/255, green: 110/255, blue: 57/255, alpha: 1.00)]
+        } else if self.day_1_dpeth.contains(date) {
+            return [UIColor.lightGray]
         }
         return [UIColor.white]
     }
