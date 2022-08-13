@@ -100,7 +100,10 @@ class RealSettingViewController: UIViewController {
                     
                     self.eventsArray = result.monthRecord.map({ $0.date })
                     
-               
+                    
+                    print("eventArray is \(self.eventsArray)")
+                    print("zandiArray is \(self.zandiArray)")
+                    
                     if self.eventsArray.count > 0 {
                         for i in 0...self.eventsArray.count - 1{
                             self.dates.append(matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )

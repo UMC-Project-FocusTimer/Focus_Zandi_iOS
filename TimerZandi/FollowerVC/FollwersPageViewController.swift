@@ -56,13 +56,11 @@ class FollwersPageViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         
-        let matchDateForZandi = DateFormatter()
-        matchDateForZandi.locale = Locale(identifier: "ko_KR")
-        matchDateForZandi.dateFormat = "yyyy-MM-dd"
+
                
          let xmas = matchDateForZandi.date(from: "2022-12-25")
          let sampledate = matchDateForZandi.date(from: "2022-12-22")
-        self.dates = [xmas!, sampledate!]
+//        self.dates = [xmas!, sampledate!]
         
         self.calendarColor()
         self.languageSet()
@@ -83,6 +81,7 @@ class FollwersPageViewController: UIViewController {
    
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.getInfoFromModel()
+        
         
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
@@ -105,42 +104,58 @@ class FollwersPageViewController: UIViewController {
     
             self.newEventsArray = self.eventsArray!
             self.newZandiArray = self.zandiArray!
-
-                if self.newEventsArray.count > 0 {
-                    for i in 0...self.newEventsArray.count - 1{
-                        self.dates.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                        
-                        if self.newZandiArray[i] > 800 && self.newZandiArray[i] < 999 {
-                            self.day_5_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                            print("5_depth is : \(self.day_5_dpeth)")
-                        } else if self.newZandiArray[i] > 600 && self.newZandiArray[i] < 799 {
-                            self.day_4_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                            print("4_depth is : \(self.day_4_dpeth)")
-                        } else if self.newZandiArray[i] > 400 && self.newZandiArray[i] < 599 {
-                            self.day_3_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                            print("3_depth is : \(self.day_3_dpeth)")
-                        } else if self.newZandiArray[i] > 200 && self.newZandiArray[i] < 399 {
-                            self.day_2_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                            print("2_depth is : \(self.day_2_dpeth)")
-                        } else if self.newZandiArray[i] > 0 && self.newZandiArray[i] < 199 {
-                            self.day_1_dpeth.append(self.matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
-                            print("1_depth is : \(self.day_1_dpeth)")
-                        }
-                        
-                    }
-                    
-                }
-                self.calendar.reloadData()
             
-            
-            print("5_depth is : \(self.day_5_dpeth)")
-            print("4_depth is : \(self.day_4_dpeth)")
+            self.addColorOnDate()
 
 
         }
         
     }
     
+    
+    func addColorOnDate() {
+        
+        let matchDateForZandi = DateFormatter()
+        matchDateForZandi.locale = Locale(identifier: "ko_KR")
+        matchDateForZandi.dateFormat = "yyyy-MM-dd"
+        
+        if self.newEventsArray.count > 0 {
+            for i in 0...self.newEventsArray.count - 1{
+                self.dates.append(matchDateForZandi.date(from: self.newEventsArray[i] ?? "") ?? self.nowDate )
+                
+                if self.newZandiArray[i] > 800 && self.newZandiArray[i] < 999 {
+                    var time_5 = matchDateForZandi.date(from: self.newEventsArray[i])
+                    self.day_5_dpeth.append(time_5!)
+                    
+                    print("5_depth is : \(self.day_5_dpeth)")
+                } else if self.newZandiArray[i] > 600 && self.newZandiArray[i] < 799 {
+                    var time_4 = matchDateForZandi.date(from: self.newEventsArray[i])
+                    self.day_4_dpeth.append(time_4!)
+                    
+                    print("4_depth is : \(self.day_4_dpeth)")
+                } else if self.newZandiArray[i] > 400 && self.newZandiArray[i] < 599 {
+                    var time_3 = matchDateForZandi.date(from: self.newEventsArray[i])
+                    self.day_3_dpeth.append(time_3!)
+                    
+                    print("3_depth is : \(self.day_3_dpeth)")
+                } else if self.newZandiArray[i] > 200 && self.newZandiArray[i] < 399 {
+                    var time_2 = matchDateForZandi.date(from: self.newEventsArray[i])
+                    self.day_2_dpeth.append(time_2!)
+
+                    print("2_depth is : \(self.day_2_dpeth)")
+                } else if self.newZandiArray[i] > 0 && self.newZandiArray[i] < 199 {
+                    var time_1 = matchDateForZandi.date(from: self.newEventsArray[i])
+                    self.day_1_dpeth.append(time_1!)
+
+                    print("1_depth is : \(self.day_1_dpeth)")
+                }
+                
+            }
+        }
+        
+        self.calendar.reloadData()
+
+    }
     
     func fontSize() {
         // 헤더 폰트 설정
@@ -219,6 +234,8 @@ extension FollwersPageViewController : FSCalendarDelegate, FSCalendarDataSource,
         }
         return [UIColor.white]
     }
+    
+    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택")
