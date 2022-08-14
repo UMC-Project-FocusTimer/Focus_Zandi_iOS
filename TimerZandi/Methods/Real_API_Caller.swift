@@ -165,6 +165,10 @@ func addFriend(follweeName:String, accessToken:String, refToken:String, onComple
     //                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
                         accessToken = ACCESS_TOKEN as! String
                         refToken = REF_TOKEN as! String
+                        
+                        print("accessToken is \(accessToken)")
+                        print("accessToken is \(refToken)")
+                        print("userToken is \(userToken)")
                     }
                     
                 } catch {

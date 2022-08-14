@@ -73,12 +73,14 @@ class FollwersPageViewController: UIViewController {
     }
 
     func getInfoFromModel() {
-        let selectedIndex = UserDefaults.standard.integer(forKey: "SELECTED")
-        print(selectedIndex)
+//        let selectedIndex = UserDefaults.standard.integer(forKey: "SELECTED")
+//        print(selectedIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-   
+        print("datamodle count : \(self.follwerDataModel.count)")
+
+        self.calendar.reloadData()
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.getInfoFromModel()
         
@@ -105,9 +107,10 @@ class FollwersPageViewController: UIViewController {
             self.newEventsArray = self.eventsArray!
             self.newZandiArray = self.zandiArray!
             
+            print(self.newEventsArray)
+            print(self.newZandiArray)
+            
             self.addColorOnDate()
-
-
         }
         
     }

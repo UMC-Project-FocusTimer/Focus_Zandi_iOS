@@ -51,42 +51,12 @@ class FollowingViewController: UIViewController {
                     })
                     self.eventsArray = result.monthRecord.map({ $0.date })
 
-                    print(self.eventsArray)
-                    print(self.zandiArray)
+                    self.follwerDataModel.inputNewEventArray(array: self.eventsArray)
+                    self.follwerDataModel.inputNewZandiArray(array: self.zandiArray)
+
+//                    print(self.eventsArray)
+//                    print(self.zandiArray)
 //
-//                    if self.eventsArray.count > 0 {
-//                        for i in 0...self.eventsArray.count - 1{
-//                            self.dates.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//
-//                            if self.zandiArray[i] > 800 && self.zandiArray[i] < 999 {
-//                                self.day_5_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//                                print("5_depth is : \(self.day_5_dpeth)")
-//                            } else if self.zandiArray[i] > 600 && self.zandiArray[i] < 799 {
-//                                self.day_4_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//                                print("4_depth is : \(self.day_4_dpeth)")
-//                            } else if self.zandiArray[i] > 400 && self.zandiArray[i] < 599 {
-//                                self.day_3_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//                                print("3_depth is : \(self.day_3_dpeth)")
-//                            } else if self.zandiArray[i] > 200 && self.zandiArray[i] < 399 {
-//                                self.day_2_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//                                print("2_depth is : \(self.day_2_dpeth)")
-//                            } else if self.zandiArray[i] > 0 && self.zandiArray[i] < 199 {
-//                                self.day_1_dpeth.append(self.matchDateForZandi.date(from: self.eventsArray[i] ?? "") ?? self.nowDate )
-//                                print("1_depth is : \(self.day_1_dpeth)")
-//                            }
-//
-//                        }
-//
-//                        print(self.day_5_dpeth)
-//                        print(self.day_4_dpeth)
-//                        print(self.day_3_dpeth)
-//                        print(self.day_2_dpeth)
-//                        print(self.day_1_dpeth)
-//
-//                    }
-                    
-                    
-                    
                     self.follwerTableView.reloadData()
                 case let .failure(error):
                     debugPrint("error \(error)")
@@ -112,10 +82,8 @@ class FollowingViewController: UIViewController {
         self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
         follwerTableView.dataSource = self
         follwerTableView.delegate = self
-//        followerTableViewAutoLayout()
         follwerTableView.register(UINib(nibName: "FollowerTableViewCell", bundle: .main), forCellReuseIdentifier: "FollowerTableViewCell")
         follwerTableView.allowsSelection = true
-//        follwerTableView.setEditing(true, animated: true)
     }
     
     @objc func doneButtonTap() {
@@ -130,6 +98,8 @@ class FollowingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(self.follwerDataModel.count)
+
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
         super.viewWillAppear(animated)
@@ -161,7 +131,8 @@ class FollowingViewController: UIViewController {
 extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
+        var selectedIndex = UserDefaults.standard.setValue(indexPath.row, forKey: "SELECTED")
+        
     
         guard let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "FollwersPageViewController") as? FollwersPageViewController else {return}
         
@@ -173,8 +144,8 @@ extension FollowingViewController: UITableViewDataSource, UITableViewDelegate {
         ViewController.TodayFocusTime = self.follwerDataModel.getTodayFocusTime(index: indexPath.row)
         ViewController.BrokenCount = self.follwerDataModel.getBrokenCount(index: indexPath.row)
         ViewController.FocusTimeForThisMonth = self.follwerDataModel.getFocusTimeForThisMonth(index: indexPath.row)
-        ViewController.eventsArray = self.eventsArray
-        ViewController.zandiArray = self.zandiArray
+        ViewController.eventsArray = self.follwerDataModel.getNewEventArray(index: indexPath.row) as? [String]
+        ViewController.zandiArray = self.follwerDataModel.getNewZandiArrayModel(index: indexPath.row) as? [Int]
         
     
         self.navigationController?.pushViewController(ViewController, animated: true)

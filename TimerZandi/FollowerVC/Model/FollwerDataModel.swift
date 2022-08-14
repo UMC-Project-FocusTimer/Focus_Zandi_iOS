@@ -15,12 +15,42 @@ class FollwerDataModel {
         follwerInfo(image: "IMG_1482.jpg", numberOfFollower: 13, focusTimeForThisMonth: 29, followeName: "Kason", follwerDesciption: "3번타자", todayFocusTime: 82, brokenCount: 2)
    ]
     
+    public var newEventArrayModel = [
+        ["2022-08-01"],
+        ["2022-08-02"],
+        ["2022-08-03"]
+   ]
+    
+    public var newZandiArrayModel = [
+        [100],
+        [300],
+        [500]
+   ]
+    
+    public func getNewEventArray(index: Int) -> Array<Any> {
+        return newEventArrayModel[index]
+    }
+    
+    public func getNewZandiArrayModel(index: Int) -> Array<Any> {
+        return newZandiArrayModel[index]
+    }
+    
+    public func inputNewEventArray(array:Array<Any>) {
+        self.newEventArrayModel.append(array as! [String])
+    }
+    
+    public func inputNewZandiArray(array:Array<Any>) {
+        self.newZandiArrayModel.append(array as! [Int])
+    }
+    
     public func inputData(image:String, numberOfFollower:Int, focusTimeForThisMonth:Int, followeName:String, follwerDesciption:String, todayFocusTime:Int, brokenCount:Int) {
         self.arrayStruct.append(follwerInfo(image: image, numberOfFollower: numberOfFollower, focusTimeForThisMonth: focusTimeForThisMonth, followeName: followeName, follwerDesciption: follwerDesciption, todayFocusTime: todayFocusTime, brokenCount: brokenCount))
     }
 
     public func removeFromDataModel(index:Int) {
         self.arrayStruct.remove(at: index)
+        self.newEventArrayModel.remove(at: index)
+        self.newZandiArrayModel.remove(at: index)
     }
     
     public var count: Int {
