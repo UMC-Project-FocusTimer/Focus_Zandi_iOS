@@ -59,3 +59,5 @@ struct MonthRecord_AF: Codable {
     let concentratedTime, brokenCount: Int
     let date: String
 }
+
+

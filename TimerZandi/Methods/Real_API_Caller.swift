@@ -116,6 +116,70 @@ func addFriend(follweeName:String, accessToken:String, refToken:String, onComple
 
 //MARK: - POST
     
+    //MARK: -  2.1 오늘 공부기록 저장
+func postTodayRecord(accessToken:String, refToken:String, concentratedTime:Int, brokenCount:Int, date:String) {
+            let Testurl = URL(string: "https://aquistion.shop/saveRecords/today")!
+
+//            var profile = ProfileObj1(userToken: userToken , email: email, fullName: fullName)
+//            var profileOBJ = Pram(profileObj: profile)
+            
+            var profileOBJ = MonthRecord(concentratedTime: concentratedTime, brokenCount: brokenCount, date: date)
+    
+            guard let jsonData = try? JSONEncoder().encode(profileOBJ) else {
+                print("error: cannot encode data")
+                return
+            }
+            print(jsonData)
+            
+            var request1 = URLRequest(url: Testurl)
+            request1.httpMethod = "POST"
+            request1.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request1.setValue("application/json", forHTTPHeaderField: "Accept")
+            request1.setValue(accessToken, forHTTPHeaderField: "ACCESS_TOKEN")
+            request1.setValue(refToken, forHTTPHeaderField: "REFRESH_TOKEN")
+            request1.httpBody = jsonData
+            
+            
+            URLSession.shared.dataTask(with: request1) { (data, response, error) in
+                guard error == nil else {
+                    print("error at first")
+                    print(error)
+                    return
+                }
+                
+                guard let data = data else {
+                    print("error at data")
+                    return
+                }
+                
+                guard let response = response else {
+                    print("error at response")
+                    return
+                }
+                
+//                do {
+//                    guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+//                        print("error cannot convert json")
+//                        return
+//                    }
+//
+//                    if let ACCESS_TOKEN = jsonObject["accessToken"],
+//                        let REF_TOKEN = jsonObject["refToken"]
+//                    {
+//                        accessToken = ACCESS_TOKEN as! String
+//                        refToken = REF_TOKEN as! String
+//
+//                        print("accessToken is \(accessToken)")
+//                        print("accessToken is \(refToken)")
+//                    }
+//
+//                } catch {
+//                    print("error while print json")
+//                }
+
+            }.resume()
+        }
+
     //MARK: -  3.1 유저 로그인
     func postTestnd(userToken:String, email:String, fullName: String) {
             let Testurl = URL(string: "https://aquistion.shop/oauth/google")!
@@ -162,13 +226,12 @@ func addFriend(follweeName:String, accessToken:String, refToken:String, onComple
                     if let ACCESS_TOKEN = jsonObject["accessToken"],
                         let REF_TOKEN = jsonObject["refToken"]
                     {
-    //                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
+//                    getTest(accessToken: ACCESS_TOKEN as! String, refToken: REF_TOKEN as! String)
                         accessToken = ACCESS_TOKEN as! String
                         refToken = REF_TOKEN as! String
-                        
+
                         print("accessToken is \(accessToken)")
                         print("accessToken is \(refToken)")
-                        print("userToken is \(userToken)")
                     }
                     
                 } catch {

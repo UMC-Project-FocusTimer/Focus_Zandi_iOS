@@ -54,6 +54,10 @@ class RealSettingViewController: UIViewController {
         calendar.appearance.eventDefaultColor = UIColor.green
 //        calendar.appearance.eventSelectionColor = UIColor.green
         
+        
+    }
+    
+    func getAPI() {
         getShowMember(accessToken: accessToken, refToken: refToken,onCompleted: {
             [weak self] result in // 순환 참조 방지, 전달인자로 result
             guard let self = self else { return } // 일시적으로 strong ref가 되게
@@ -142,8 +146,9 @@ class RealSettingViewController: UIViewController {
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
+        self.getAPI()
+        
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 
         print(THEME_KEY)

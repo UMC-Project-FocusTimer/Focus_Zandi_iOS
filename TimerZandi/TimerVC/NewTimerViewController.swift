@@ -14,12 +14,12 @@ class NewTimerViewController: UIViewController {
     @IBOutlet var topicTableView: UITableView!
     @IBOutlet var stopButton: UIButton!
     
+    var brokenCount = 0
     var selected = 0
     var time = 0
     var timer: Timer?
     var totalTime = 0
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,13 +124,35 @@ class NewTimerViewController: UIViewController {
     }
     
     @IBAction func stopButtonPush(_ sender: Any) {
+        self.brokenCount += 1
         timer!.invalidate()
         topicTimeList[selected] += time
         time = 0
         UserDefaults.standard.set(topicTimeList, forKey: topicTimeKey)
+        self.sendToServer()
         topicTableView.reloadData()
         topicTableView.isHidden = false
         stopButton.isHidden = true
+    }
+    
+    func sendToServer(){
+        let formatter = DateFormatter() //객체 생성
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        formatter.dateFormat = "yyyy-MM-dd" //데이터 포멧 설정
+        let str = formatter.string(from: Date()) //문자열로 바꾸기
+        
+        print("방해집중 횟수 : \(self.brokenCount)")
+
+        var concentratedTime = topicTimeList.reduce(0) { (a: Int, b: Int) -> Int in
+            return a + b
+        }
+        
+        print(concentratedTime)
+        print(str)
+        
+        postTodayRecord(accessToken: accessToken, refToken: refToken, concentratedTime: concentratedTime, brokenCount: self.brokenCount, date: str)
+        // post 연결하기
     }
     
 }
