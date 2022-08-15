@@ -12,6 +12,11 @@ let sumTime = "sum"
 let countTime = "count"
 let initialKey = "initialKey"
 let themePurchaseKey = "themePurchaseKey"
+let topicKey = "topicKey"
+let topicTimeKey = "topicTimeKey"
+
+var topicList: [String] = ["PreTopic"]
+var topicTimeList: [Int] = [1]
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,8 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !UserDefaults.standard.bool(forKey: initialKey) {
             UserDefaults.standard.set(Array(repeating: false, count: 8), forKey: themePurchaseKey)
+            UserDefaults.standard.set(["터치해서 공부 시작"], forKey: topicKey)
+            UserDefaults.standard.set([0], forKey: topicTimeKey)
             UserDefaults.standard.set(true, forKey: initialKey)
         }
+        
+        topicList = UserDefaults.standard.stringArray(forKey: topicKey)!
+        topicTimeList = (UserDefaults.standard.array(forKey: topicTimeKey) as? [Int])!
         
         
         print(UserDefaults.standard.value(forKey: sumTime))
