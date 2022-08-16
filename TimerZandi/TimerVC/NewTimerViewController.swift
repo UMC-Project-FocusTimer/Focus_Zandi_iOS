@@ -36,7 +36,7 @@ class NewTimerViewController: UIViewController {
         todatDate()
         self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
     }
-    
+     
     func onTimerUI() {
 
         UIView.animate(withDuration: 0.3, animations: {
