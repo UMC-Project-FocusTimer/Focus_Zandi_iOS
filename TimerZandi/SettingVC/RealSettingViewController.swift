@@ -14,6 +14,7 @@ class RealSettingViewController: UIViewController {
     
     @IBOutlet weak var disturbCount: UILabel!
     @IBOutlet weak var sumOfTime: UILabel!
+    @IBOutlet var profileImage: UIImageView!
     
     let dateFormatter = DateFormatter()
     let matchDateForZandi = DateFormatter()
@@ -42,6 +43,7 @@ class RealSettingViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         calendar.appearance.eventDefaultColor = UIColor.green
+        self.profileImage.image = UIImage(named: "imoge_5.png")
     }
     
     func getAPI() {

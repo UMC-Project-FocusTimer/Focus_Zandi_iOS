@@ -8,7 +8,7 @@
 import UIKit
 
 protocol YourCellDelegate : class {
-    func didPressButton(_ tag: Int)
+    func didPressButton(_ tag: Int) 
 }
 
 class ClassTableViewCell: UITableViewCell {

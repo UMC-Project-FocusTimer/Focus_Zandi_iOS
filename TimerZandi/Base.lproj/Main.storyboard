@@ -167,6 +167,12 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bb-gV-xdW">
@@ -197,16 +203,16 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                        <real key="value" value="0.5"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                        <real key="value" value="0.5"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                        <size key="value" width="0.5" height="0.5"/>
+                                                        <size key="value" width="0.0" height="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -242,6 +248,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                         <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -561,16 +570,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SJ-MD-slK">
-                                <rect key="frame" x="103.5" y="242" width="207" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O52-4Z-e7E">
                                 <rect key="frame" x="0.0" y="327" width="414" height="569"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeQ-Ga-SqY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyv-ki-UUs">
                                 <rect key="frame" x="180" y="322" width="54.5" height="31"/>
                                 <state key="normal" title="Button"/>
@@ -579,6 +586,12 @@
                                     <action selector="stopButtonPush:" destination="uZe-Ab-lNu" eventType="touchUpInside" id="Jfp-Nx-vKc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SJ-MD-slK">
+                                <rect key="frame" x="103.5" y="242" width="207" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mpa-Ec-ZT3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -588,14 +601,18 @@
                             <constraint firstItem="mja-tn-27J" firstAttribute="centerX" secondItem="fcK-A5-bzz" secondAttribute="centerX" id="7UY-C6-EqY"/>
                             <constraint firstItem="Zcb-5x-T0r" firstAttribute="centerX" secondItem="fcK-A5-bzz" secondAttribute="centerX" id="ADT-fn-C5D"/>
                             <constraint firstItem="3SJ-MD-slK" firstAttribute="top" secondItem="mja-tn-27J" secondAttribute="bottom" constant="17" id="FSP-dx-dM5"/>
+                            <constraint firstItem="NeQ-Ga-SqY" firstAttribute="leading" secondItem="fcK-A5-bzz" secondAttribute="leading" id="GWe-Bl-cVy"/>
                             <constraint firstAttribute="bottom" secondItem="O52-4Z-e7E" secondAttribute="bottom" id="Gc7-w3-9aG"/>
                             <constraint firstItem="O52-4Z-e7E" firstAttribute="top" secondItem="3SJ-MD-slK" secondAttribute="bottom" constant="25" id="Hfk-XX-4Xv"/>
+                            <constraint firstItem="NeQ-Ga-SqY" firstAttribute="trailing" secondItem="Mpa-Ec-ZT3" secondAttribute="trailing" id="NTE-9m-MAM"/>
                             <constraint firstItem="Mpa-Ec-ZT3" firstAttribute="trailing" secondItem="Zcb-5x-T0r" secondAttribute="trailing" constant="87" id="PTG-iN-kPO"/>
                             <constraint firstItem="x9d-Nj-hvI" firstAttribute="centerX" secondItem="fcK-A5-bzz" secondAttribute="centerX" id="eKB-ij-s8Q"/>
                             <constraint firstItem="Zcb-5x-T0r" firstAttribute="leading" secondItem="Mpa-Ec-ZT3" secondAttribute="leading" constant="87" id="gNX-GQ-gcP"/>
+                            <constraint firstItem="NeQ-Ga-SqY" firstAttribute="top" secondItem="fcK-A5-bzz" secondAttribute="top" id="gNp-rj-NZZ"/>
                             <constraint firstItem="vyv-ki-UUs" firstAttribute="top" secondItem="3SJ-MD-slK" secondAttribute="bottom" constant="20" id="oLz-oa-5AF"/>
                             <constraint firstItem="3SJ-MD-slK" firstAttribute="centerX" secondItem="fcK-A5-bzz" secondAttribute="centerX" id="qkV-vp-KNb"/>
                             <constraint firstItem="Zcb-5x-T0r" firstAttribute="top" secondItem="Mpa-Ec-ZT3" secondAttribute="top" id="tuz-Fz-9Xr"/>
+                            <constraint firstAttribute="bottom" secondItem="NeQ-Ga-SqY" secondAttribute="bottom" id="uXC-EV-dE9"/>
                             <constraint firstItem="O52-4Z-e7E" firstAttribute="trailing" secondItem="Mpa-Ec-ZT3" secondAttribute="trailing" id="udq-vp-nGM"/>
                             <constraint firstItem="x9d-Nj-hvI" firstAttribute="top" secondItem="Zcb-5x-T0r" secondAttribute="bottom" id="xhd-XH-men"/>
                             <constraint firstItem="vyv-ki-UUs" firstAttribute="centerX" secondItem="fcK-A5-bzz" secondAttribute="centerX" id="yS4-64-480"/>
@@ -616,8 +633,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="darkView" destination="NeQ-Ga-SqY" id="0MC-Jy-mZ0"/>
                         <outlet property="dateLabel" destination="x9d-Nj-hvI" id="F0T-cZ-tUe"/>
                         <outlet property="editButton" destination="kT3-Nk-KgS" id="O1S-FZ-eja"/>
+                        <outlet property="plusButtonOutlet" destination="O84-mM-1LX" id="78V-mw-I7p"/>
                         <outlet property="stopButton" destination="vyv-ki-UUs" id="DLb-Wh-NAI"/>
                         <outlet property="timeLabel" destination="3SJ-MD-slK" id="LYS-de-LbS"/>
                         <outlet property="topicTableView" destination="O52-4Z-e7E" id="w1M-82-X3Z"/>
@@ -625,7 +644,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znP-hf-Qwd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="-32"/>
+            <point key="canvasLocation" x="1898.5507246376812" y="-32.142857142857139"/>
         </scene>
         <!--Market-->
         <scene sceneID="agu-46-hz4">
@@ -869,7 +888,7 @@
             </objects>
             <point key="canvasLocation" x="1075" y="1963"/>
         </scene>
-        <!--Real Setting View Controller-->
+        <!--Profile-->
         <scene sceneID="HUE-c1-x5O">
             <objects>
                 <viewController id="XX7-KH-rIm" customClass="RealSettingViewController" customModule="TimerZandi" customModuleProvider="target" sceneMemberID="viewController">
@@ -877,7 +896,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_1482.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZMf-dj-ZPz">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imoge_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZMf-dj-ZPz">
                                 <rect key="frame" x="24" y="88" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="D1w-Xn-Mm7"/>
@@ -901,8 +920,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5x-UB-JGy">
-                                                <rect key="frame" x="14.5" y="23.5" width="20.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5x-UB-JGy">
+                                                <rect key="frame" x="19" y="23.5" width="11" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -918,8 +937,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3시간 50분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-Z9-CTW">
-                                                <rect key="frame" x="13" y="23.5" width="80.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3P-Z9-CTW">
+                                                <rect key="frame" x="38" y="23.5" width="30" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -928,7 +947,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이고진" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhh-qa-CC3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="박민석" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhh-qa-CC3">
                                 <rect key="frame" x="24" y="177" width="44.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -968,8 +987,8 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-nd-HAE">
-                                                <rect key="frame" x="22.5" y="43" width="41.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 회" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-nd-HAE">
+                                                <rect key="frame" x="28.5" y="43" width="29.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -985,8 +1004,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbP-PX-v4a">
-                                                <rect key="frame" x="14" y="43" width="41.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbP-PX-v4a">
+                                                <rect key="frame" x="20" y="43" width="29.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1018,7 +1037,7 @@
                             <constraint firstItem="i5F-EI-Avt" firstAttribute="top" secondItem="TAl-sh-c63" secondAttribute="bottom" constant="20" id="tlw-Jw-GpE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="d7S-HW-eNA">
+                    <navigationItem key="navigationItem" title="Profile" id="d7S-HW-eNA">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="uyv-Ov-FdM">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -1032,6 +1051,7 @@
                         <outlet property="fullName" destination="dhh-qa-CC3" id="wsJ-0P-BLj"/>
                         <outlet property="memo" destination="TAl-sh-c63" id="ULd-RK-HmK"/>
                         <outlet property="numberOfFollwers" destination="i5x-UB-JGy" id="1AG-jK-lNJ"/>
+                        <outlet property="profileImage" destination="ZMf-dj-ZPz" id="hMO-F9-j0R"/>
                         <outlet property="sumOfThisMonth" destination="G3P-Z9-CTW" id="bIV-Um-Xqp"/>
                         <outlet property="sumOfTime" destination="IbP-PX-v4a" id="A2y-Sf-uYU"/>
                     </connections>
@@ -1688,9 +1708,6 @@
                                 <action selector="tapBackButton:" destination="6fU-1o-gPF" id="CTt-Oc-2EU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="3rv-r5-xRF">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="brokenCount" destination="Kl8-7q-YHk" id="oll-J1-A4Z"/>
@@ -1710,7 +1727,6 @@
     </scenes>
     <resources>
         <image name="Group 47.png" width="390" height="844"/>
-        <image name="IMG_1482.jpg" width="76" height="75.666664123535156"/>
         <image name="IMG_1869.jpg" width="367.66665649414062" height="154.66667175292969"/>
         <image name="Vector 32.png" width="304" height="130"/>
         <image name="applelogo" catalog="system" width="103" height="128"/>
@@ -1721,6 +1737,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="imoge_5.png" width="89" height="99"/>
         <image name="moon.circle" catalog="system" width="128" height="121"/>
         <image name="note.text" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="117"/>

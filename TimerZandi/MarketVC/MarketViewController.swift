@@ -20,7 +20,7 @@ var color = [themes[0][0],
 
             ]
 var colorName = [
-                 "Light Green",
+                "Light Red",
                  "Crimson",
                  "Light Orange",
                  "Light Yellow",
@@ -28,7 +28,7 @@ var colorName = [
                  "Deep Blue",
                  "Purple",
                  "Pink",
-                "Light Red",
+                 "Light Green",
                  "Black"
                 ]
 

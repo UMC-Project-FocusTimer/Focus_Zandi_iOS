@@ -9,6 +9,8 @@ import UIKit
 
 class NewTimerViewController: UIViewController {
 
+    @IBOutlet var plusButtonOutlet: UIBarButtonItem!
+    @IBOutlet var darkView: UIView!
     @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -33,6 +35,25 @@ class NewTimerViewController: UIViewController {
         aboutStopButton()
         todatDate()
         self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
+    }
+    
+    func onTimerUI() {
+
+        UIView.animate(withDuration: 0.3, animations: {
+            self.darkView.alpha = 1
+            self.timeLabel.textColor = .white
+            self.tabBarController?.tabBar.isHidden = true
+            self.editButton.tintColor = .black
+            self.plusButtonOutlet.tintColor = .black
+                })
+   
+    }
+    
+    func offTimerUI() {
+        self.darkView.alpha = 0
+        self.tabBarController?.tabBar.isHidden = false
+        self.timeLabel.textColor = .black
+        
     }
     
     func todatDate() {
@@ -153,6 +174,7 @@ class NewTimerViewController: UIViewController {
         topicTableView.reloadData()
         topicTableView.isHidden = false
         stopButton.isHidden = true
+        offTimerUI()
     }
     
     func sendToServer(){
@@ -196,6 +218,7 @@ extension NewTimerViewController: UITableViewDelegate, UITableViewDataSource {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCallBack), userInfo: nil, repeats: true)
         tableView.isHidden = true
         stopButton.isHidden = false
+        onTimerUI()
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

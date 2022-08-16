@@ -41,7 +41,7 @@ class FollowingViewController: UIViewController {
                         return first + second
                     })
                     
-                    self.follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: sumMonth, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
+                    self.follwerDataModel.inputData(image: "imoge_6.png", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: sumMonth, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
                     
                     self.zandiArray = result.monthRecord.map({
                         $0.concentratedTime
@@ -101,11 +101,6 @@ class FollowingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("---------------------------------------------")
-        print("현재 팔로우 수 : \(self.follwerDataModel.count)")
-        print("---------------------------------------------")
-        
-
 
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 

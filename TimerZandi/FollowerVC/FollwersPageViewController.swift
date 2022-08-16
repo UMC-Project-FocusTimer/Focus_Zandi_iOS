@@ -97,6 +97,7 @@ class FollwersPageViewController: UIViewController {
         if let FolloweName = FolloweName, let Image = Image, let NumberOfFollower = NumberOfFollower, let FocusTimeForThisMonth = FocusTimeForThisMonth, let FollwerDesciption = FollwerDesciption, let TodayFocusTime = TodayFocusTime, let BrokenCount = BrokenCount, let eventsArray = eventsArray, let zandiArray = zandiArray
         {
             self.followeName.text = FolloweName
+            self.navigationItem.title = FolloweName
             self.imgae.image = UIImage(named: Image)
             self.numberOfFollwer.text = String(NumberOfFollower)
             self.focusTimeForThisMonth.text = String(FocusTimeForThisMonth)
