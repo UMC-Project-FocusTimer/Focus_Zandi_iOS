@@ -24,8 +24,23 @@
 
 ### 🗣 MOM
 
-<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184874060-8deb2a09-5732-41d5-8989-992e730c9f90.png">
+
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875823-65a2ff88-490e-4ae2-8a02-7fe28b342cb9.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875822-4313a722-216c-4cfb-a264-527dffea0cb1.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875821-2d9d9429-5ddd-4ca4-815c-15d3c9a0137e.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875814-f8060ee9-24c9-404a-854d-1aabc25af87e.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875802-2344526b-539c-43c4-975b-e5197620d405.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875790-08d45267-67c2-4981-ad99-a61a4b30ff6e.png
+">
+<img width="1018" alt="스크린샷 2022-08-16 20 58 09" src="https://user-images.githubusercontent.com/74387813/184875782-bde9e273-a93b-4b9f-b4fe-4b1b42effa90.png
+">
  
+
 
 역할, 아이디어 소개 페이지, UMC 링크
 
