@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
 //
 //        }
         
-        themeDetailLabel.text = "한줄 설명"
+        themeDetailLabel.text = "기본 테마입니다."
         
     }
     

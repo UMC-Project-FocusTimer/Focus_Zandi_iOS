@@ -19,15 +19,16 @@ var color = [themes[0][0],
              themes[9][0],
 
             ]
-var colorName = ["Light Red",
+var colorName = [
+                 "Light Green",
                  "Crimson",
                  "Light Orange",
                  "Light Yellow",
-                 "Light Green",
                  "Sky",
                  "Deep Blue",
                  "Purple",
                  "Pink",
+                "Light Red",
                  "Black"
                 ]
 

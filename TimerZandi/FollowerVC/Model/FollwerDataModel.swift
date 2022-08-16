@@ -10,9 +10,9 @@ import Foundation
 class FollwerDataModel {
     
     public var arrayStruct: [follwerInfo] = [
-        follwerInfo(image: "IMG_0518.jpg", numberOfFollower: 13, focusTimeForThisMonth: 23, followeName: "Jason", follwerDesciption: "1번타자", todayFocusTime: 49, brokenCount: 5),
-        follwerInfo(image: "IMG_1394.JPG", numberOfFollower: 29, focusTimeForThisMonth: 92, followeName: "Mason", follwerDesciption: "2번타자", todayFocusTime: 23, brokenCount: 3),
-        follwerInfo(image: "IMG_1482.jpg", numberOfFollower: 13, focusTimeForThisMonth: 29, followeName: "Kason", follwerDesciption: "3번타자", todayFocusTime: 82, brokenCount: 2)
+        follwerInfo(image: "IMG_0518.jpg", numberOfFollower: 13, focusTimeForThisMonth: 23, followeName: "Jason", follwerDesciption: "오늘을 이롭게", todayFocusTime: 49, brokenCount: 5),
+        follwerInfo(image: "IMG_1394.JPG", numberOfFollower: 29, focusTimeForThisMonth: 92, followeName: "Soey", follwerDesciption: "내일을 새롭게", todayFocusTime: 23, brokenCount: 3),
+        follwerInfo(image: "IMG_1482.jpg", numberOfFollower: 13, focusTimeForThisMonth: 29, followeName: "Emma", follwerDesciption: "오늘도 화이팅", todayFocusTime: 82, brokenCount: 2)
    ]
     
     public var newEventArrayModel = [

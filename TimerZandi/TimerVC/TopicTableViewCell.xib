@@ -24,7 +24,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.57084231100000005" green="0.92549019610000005" blue="0.53385689199999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.84313725490000002" green="0.92156862750000001" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="t4u-ux-ZNR" secondAttribute="trailing" constant="5" id="4ba-Nd-wAJ"/>
                             <constraint firstItem="t4u-ux-ZNR" firstAttribute="top" secondItem="XZK-AE-hpc" secondAttribute="top" constant="5" id="E5n-AW-zVm"/>

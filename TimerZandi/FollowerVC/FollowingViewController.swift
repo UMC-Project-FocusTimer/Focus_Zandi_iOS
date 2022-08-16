@@ -14,18 +14,16 @@ var disturbCount = [3, 5, 6, 3]
 
 class FollowingViewController: UIViewController {
     
-
     var eventsArray:[String] = []
     var dates:[Date] = []
     var zandiArray:[Int] = []
     
-
-        
     @IBOutlet var editButton: UIBarButtonItem!
     var follwerDataModel = FollwerDataModel ()
     var doneButton: UIBarButtonItem?
     
     @IBAction func addFollwer(_ sender: Any) {
+        
         let alert = UIAlertController(title: "팔로워 등록", message: "같이 공부할 친구 추가하기", preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let follwee_Name = alert.textFields?[0].text else {return}
@@ -45,7 +43,6 @@ class FollowingViewController: UIViewController {
                     
                     self.follwerDataModel.inputData(image: "IMG_0518.jpg", numberOfFollower: result.numberOfFollowers, focusTimeForThisMonth: sumMonth, followeName: result.username, follwerDesciption: result.memo, todayFocusTime: 33, brokenCount: 44)
                     
-                    
                     self.zandiArray = result.monthRecord.map({
                         $0.concentratedTime
                     })
@@ -53,15 +50,14 @@ class FollowingViewController: UIViewController {
 
                     self.follwerDataModel.inputNewEventArray(array: self.eventsArray)
                     self.follwerDataModel.inputNewZandiArray(array: self.zandiArray)
+                
 
-//                    print(self.eventsArray)
-//                    print(self.zandiArray)
-//
                     self.follwerTableView.reloadData()
                 case let .failure(error):
                     debugPrint("error \(error)")
                 }
             })
+
             
         })
         let cancleButton = UIAlertAction(title: "취소", style: .default, handler:nil)
@@ -74,6 +70,13 @@ class FollowingViewController: UIViewController {
     }
     
     @IBOutlet weak var follwerTableView: UITableView!
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        var NOF = self.follwerDataModel.count
+
+        AddNumberOfFollowers(accessToken: accessToken, refToken: refToken, numberOfFollowers: NOF)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +101,11 @@ class FollowingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(self.follwerDataModel.count)
+        print("---------------------------------------------")
+        print("현재 팔로우 수 : \(self.follwerDataModel.count)")
+        print("---------------------------------------------")
+        
+
 
         var THEME_KEY = UserDefaults.standard.integer(forKey: "THEME_KEY")
 

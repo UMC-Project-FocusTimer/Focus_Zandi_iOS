@@ -28,7 +28,6 @@ class RealSettingViewController: UIViewController {
     var day_2_dpeth:[Date] = []
     var day_1_dpeth:[Date] = []
 
-    
     @IBOutlet weak var sumOfThisMonth: UILabel!
     
     @IBOutlet weak var numberOfFollwers: UILabel!
@@ -37,8 +36,15 @@ class RealSettingViewController: UIViewController {
     
     @IBAction func reLoadCalendar(_ sender: Any) {
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendar.delegate = self
+        calendar.dataSource = self
+        calendar.appearance.eventDefaultColor = UIColor.green
+    }
+    
+    func getAPI() {
         
         let matchDateForZandi = DateFormatter()
         matchDateForZandi.locale = Locale(identifier: "ko_KR")
@@ -47,17 +53,23 @@ class RealSettingViewController: UIViewController {
          let xmas = matchDateForZandi.date(from: "2022-12-25")
          let sampledate = matchDateForZandi.date(from: "2022-12-22")
         self.dates = [xmas!, sampledate!]
-
         
-        calendar.delegate = self
-        calendar.dataSource = self
-        calendar.appearance.eventDefaultColor = UIColor.green
-//        calendar.appearance.eventSelectionColor = UIColor.green
+        getNumberOfFollowers(accessToken: accessToken, refToken: refToken, onCompleted: {
+                [weak self] result in // 순환 참조 방지, 전달인자로 result
+                guard let self = self else { return } // 일시적으로 strong ref가 되게
+         
+                switch result {
+                case let .success(result):
+                                    
+                    DispatchQueue.main.async {
+                        self.numberOfFollwers.text = String(result.numberOfFollowers)
+                    }
+                    
+                case let .failure(error):
+                    debugPrint("error \(error)")
+                }
+        })
         
-        
-    }
-    
-    func getAPI() {
         getShowMember(accessToken: accessToken, refToken: refToken,onCompleted: {
             [weak self] result in // 순환 참조 방지, 전달인자로 result
             guard let self = self else { return } // 일시적으로 strong ref가 되게
@@ -68,7 +80,6 @@ class RealSettingViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.fullName.text = result.fullName
                     self.memo.text = result.memo
-                    self.numberOfFollwers.text = String(result.numberOfFollowers)
                 }
                 
             case let .failure(error):
@@ -99,8 +110,8 @@ class RealSettingViewController: UIViewController {
                 DispatchQueue.main.async {
 
                     self.sumOfThisMonth.text = String(sumMonth)
-                    self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0)
-                    self.disturbCount.text = String(result.monthRecord.last?.brokenCount ?? 0)
+                    self.sumOfTime.text = String(result.monthRecord.last?.concentratedTime ?? 0) + " 초"
+                    self.disturbCount.text = String(result.monthRecord.last?.brokenCount ?? 0) + " 회"
                     
                     self.eventsArray = result.monthRecord.map({ $0.date })
                     

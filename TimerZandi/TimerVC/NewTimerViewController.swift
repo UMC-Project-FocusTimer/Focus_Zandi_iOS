@@ -9,23 +9,42 @@ import UIKit
 
 class NewTimerViewController: UIViewController {
 
+    @IBOutlet var editButton: UIBarButtonItem!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var topicTableView: UITableView!
     @IBOutlet var stopButton: UIButton!
-    
+    var doneButton: UIBarButtonItem?
+
     var brokenCount = 0
     var selected = 0
     var time = 0
     var timer: Timer?
     var totalTime = 0
+    let formatter = DateFormatter() //객체 생성
 
+    
+    var concentratedTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         aboutTableView()
         aboutDefaultTime()
         aboutStopButton()
+        todatDate()
+        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
+    }
+    
+    func todatDate() {
+        self.formatter.dateStyle = .long
+        self.formatter.timeStyle = .medium
+        self.formatter.dateFormat = "yyyy-MM-dd"
+        self.dateLabel.text = self.formatter.string(from: Date())
+    }
+    
+    @objc func doneButtonTap() {
+        self.navigationItem.leftBarButtonItem = self.editButton
+        self.topicTableView.setEditing(false, animated: true)
     }
     
     func aboutStopButton() {
@@ -42,6 +61,8 @@ class NewTimerViewController: UIViewController {
         totalTime = topicTimeList.reduce(0) { (a: Int, b: Int) -> Int in
             return a + b
         }
+        
+        
         timeLabel.text = timeForm(rowTime: topicTimeList.reduce(0) { (a: Int, b: Int) -> Int in
             return a + b
         })
@@ -64,6 +85,8 @@ class NewTimerViewController: UIViewController {
         }
         
         second = row
+        
+        self.concentratedTime = rowTime
 
         let hourString = String(format: "%02d", hour)
         let minuteString = String(format: "%02d", minute)
@@ -77,7 +100,6 @@ class NewTimerViewController: UIViewController {
         self.timeLabel.text = timeForm(rowTime: totalTime + 1)
         totalTime += 1
     }
-    
     
     @IBAction func plusTopicButtonPush(_ sender: Any) {
         let title = "Add New Topic"
@@ -114,13 +136,11 @@ class NewTimerViewController: UIViewController {
         topicTableView.isHidden = true
     }
     
-    @IBAction func reloadButtonPush(_ sender: Any) {
-        topicTableView.reloadData()
-        aboutDefaultTime()
-    }
-    
-    @IBAction func deleteAllButtonPush(_ sender: Any) {
-        
+
+    @IBAction func tapEditButton(_ sender: Any) {
+        self.navigationItem.leftBarButtonItem = self.doneButton
+        self.doneButton?.tintColor = .darkGray
+        self.topicTableView.setEditing(true, animated: true)
     }
     
     @IBAction func stopButtonPush(_ sender: Any) {
@@ -136,22 +156,21 @@ class NewTimerViewController: UIViewController {
     }
     
     func sendToServer(){
-        let formatter = DateFormatter() //객체 생성
-        formatter.dateStyle = .long
-        formatter.timeStyle = .medium
-        formatter.dateFormat = "yyyy-MM-dd" //데이터 포멧 설정
-        let str = formatter.string(from: Date()) //문자열로 바꾸기
+        self.formatter.dateStyle = .long
+        self.formatter.timeStyle = .medium
+        self.formatter.dateFormat = "yyyy-MM-dd" //데이터 포멧 설정
+        let str = self.formatter.string(from: Date()) //문자열로 바꾸기
         
         print("방해집중 횟수 : \(self.brokenCount)")
 
-        var concentratedTime = topicTimeList.reduce(0) { (a: Int, b: Int) -> Int in
-            return a + b
-        }
+//        var concentratedTime = topicTimeList.reduce(0) { (a: Int, b: Int) -> Int in
+//            return a + b
+//        }
         
-        print(concentratedTime)
+        print(self.concentratedTime)
         print(str)
         
-        postTodayRecord(accessToken: accessToken, refToken: refToken, concentratedTime: concentratedTime, brokenCount: self.brokenCount, date: str)
+        postTodayRecord(accessToken: accessToken, refToken: refToken, concentratedTime: self.concentratedTime, brokenCount: self.brokenCount, date: str)
         // post 연결하기
     }
     
@@ -168,7 +187,7 @@ extension NewTimerViewController: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = timeForm(rowTime: topicTimeList[indexPath.row])
         cell.topicNameLabel.text = topicList[indexPath.row]
         
-        
+
         return cell
     }
     

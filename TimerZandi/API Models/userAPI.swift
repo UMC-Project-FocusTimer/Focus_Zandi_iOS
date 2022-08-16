@@ -60,4 +60,12 @@ struct MonthRecord_AF: Codable {
     let date: String
 }
 
+struct FNumber: Codable {
+    let numberOfFollowers: Int
+}
+
+struct FNumber_post: Codable {
+    let numberOfFollowers: Int
+}
+
 
